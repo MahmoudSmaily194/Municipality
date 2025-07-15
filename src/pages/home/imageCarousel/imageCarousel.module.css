@@ -1,0 +1,131 @@
+.carouselWrapper {
+  text-align: center;
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.carouselWrapper h2 {
+  font-family: "sans";
+  font-weight: 700;
+  font-size: 2.25rem;
+  color: #333;
+  margin-top: 2rem;
+  margin-bottom: 5rem;
+}
+
+.carousel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.carouselImages {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+}
+
+.image {
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 2rem;
+  transition: all 0.5s ease-in-out;
+  opacity: 0;
+  z-index: 0;
+}
+
+.active {
+  left: 25%;
+  width: 50%;
+  z-index: 3;
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
+}
+
+.leftImage {
+  left: 40%;
+  z-index: 2;
+  opacity: 0.8;
+  transform: scale(0.9);
+}
+.leftFarImage {
+  left: 0;
+  left: auto;
+  z-index: 1;
+  opacity: 0.8;
+  transform: scale(0.7);
+}
+.rightImage {
+    
+  right: 40%;
+  left: auto;
+  z-index: 2;
+  opacity: 0.8;
+  transform: scale(0.9);
+}
+.rightFarImage {
+  right: 0;
+  left: auto;
+  z-index: 1;
+  opacity: 0.8;
+  transform: scale(0.7);
+}
+
+.arrow {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 4;
+  color: #555;
+  transition: color 0.3s ease;
+}
+
+.arrow:hover {
+  color: #000;
+}
+
+.left {
+  position: absolute;
+  left: -2rem;
+}
+
+.right {
+  position: absolute;
+  right: -2rem;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  gap: 0.5rem;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ccc;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: #6c63ff;
+}

@@ -1,0 +1,133 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.nav {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+.logo_cont {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #0d141c;
+  margin-left: 3%;
+}
+.logo_cont img {
+  width: 42px;
+  height: 42px;
+}
+.logo_cont h3 {
+  font-family: "sans";
+  font-weight: 700;
+}
+.nav_tags {
+  display: flex;
+  margin-right: 2%;
+  flex: 2;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.nav_tags a {
+  text-decoration: none;
+  color: #0d141c;
+  font-family: "sans";
+  font-weight: 500;
+}
+.search {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e8edf2;
+}
+.menu_icon {
+  display: none;
+}
+.sideBar_con{
+  display: none;
+}
+@media (max-width: 1200px) {
+  .nav_tags {
+    flex: 3;
+  }
+}
+@media (max-width: 920px) {
+  .nav_tags {
+    display: none;
+  }
+  .menu_icon {
+    display: flex;
+    margin-right: 5%;
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e8edf2;
+  }
+  .search {
+    display: none;
+  }
+  .sideBar_con{
+    display: flex;
+    position: absolute;
+    
+    left: 0;
+    background-color: rgb(255, 255, 255);
+    width: 40%;
+    border-bottom-right-radius: 20px;
+    justify-content: center;
+  }
+  .sideBar_tags{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin: 5% 0;
+    width: 90%;
+  
+   
+ 
+  }
+  .sideBar_tags a{
+    text-decoration: none;
+    color: #0d141c;
+    font-family: "sans";
+  font-weight: 500;
+  }
+.sideBar_tags div{
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+ padding-left: 5%;
+  height: 3rem;
+}
+
+.sideBar_tags div:hover{
+background-color: #f0f2f4;
+border-radius: 10px;
+
+}
+.icon{
+  font-size: larger;
+}
+.active{
+  background-color: #f0f2f4;
+border-radius: 10px;
+}
+}
+@media (max-width: 567px) {
+.sideBar_con{
+  width: 60%;
+}
+}
