@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./ImageCarousel.module.css";
 import img1 from "../../../assets/carousel.jpg";
 import img2 from "../../../assets/Carousel2.jpg";
@@ -76,7 +76,7 @@ const ImageCarousel = () => {
         </div>
         <div className={style.dots}>
           <FaAngleLeft onClick={goToPrev} className={style.arrow} />
-          {images.map((j, index) => (
+          {images.map((_, index) => (
             <span
               key={index}
               className={
