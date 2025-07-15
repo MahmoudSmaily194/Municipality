@@ -44,9 +44,11 @@ const Home = () => {
     <div className={style.container}>
       <section>
         <div className={style.home_intro}>
+          <div className={style.home_intro_cont}>
           <h1>Manicipality of Sawirah</h1>
           <p>Your community hub for information, services, and engagement.</p>
           <button>Explore Services</button>
+        </div>
         </div>
       </section>
       <section>
@@ -89,7 +91,7 @@ const Home = () => {
       </section>
       <section className={style.display_flex}>
         <div className={style.news}>
-          <h2>Upcoming Events</h2>
+          <h2>Latest News</h2>
           <div className={style.news_items}>
             {news.map((item, index) => {
               return (
