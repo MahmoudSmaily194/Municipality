@@ -5,7 +5,6 @@ import img2 from "../../../assets/Carousel2.jpg";
 import img3 from "../../../assets/carousel3.png";
 import img4 from "../../../assets/carousel4.jpg";
 import img5 from "../../../assets/carousel5.jpg";
-import style from "./imageCarousel.module.css";
 import { FaAngleLeft } from "react-icons/fa";
 import { FaAngleRight } from "react-icons/fa";
 const images = [img1, img2, img3, img4, img5];
@@ -64,30 +63,30 @@ const ImageCarousel = () => {
     });
   };
   return (
-    <div className={style.carouselWrapper}>
+    <div className={styles.carouselWrapper}>
       <h2>Explore Our Town</h2>
       <div className={styles.carousel}>
         <div
-          className={style.carouselImages}
+          className={styles.carouselImages}
           onMouseEnter={stopAutoSlide}
           onMouseLeave={startAutoSlide}
         >
           {mapImages()}
         </div>
-        <div className={style.dots}>
-          <FaAngleLeft onClick={goToPrev} className={style.arrow} />
+        <div className={styles.dots}>
+          <FaAngleLeft onClick={goToPrev} className={styles.arrow} />
           {images.map((_, index) => (
             <span
               key={index}
               className={
                 index === currentIndex
-                  ? `${style.dot} ${style.active}`
-                  : style.dot
+                  ? `${styles.dot} ${styles.active}`
+                  : styles.dot
               }
               onClick={() => goToIndex(index)}
             />
           ))}
-          <FaAngleRight onClick={goToNext} className={style.arrow} />
+          <FaAngleRight onClick={goToNext} className={styles.arrow} />
         </div>
       </div>
     </div>
