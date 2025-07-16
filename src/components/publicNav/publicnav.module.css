@@ -58,7 +58,7 @@
 }
 .sideBar_con {
   display: flex;
-  position: absolute;  
+  position: absolute;
   background-color: white;
   width: 50%;
   border-bottom-right-radius: 20px;
@@ -67,7 +67,6 @@
 }
 
 @media (max-width: 920px) {
-
   .nav_tags {
     display: none;
   }
@@ -92,6 +91,7 @@
     position: absolute;
     background-color: rgba(0, 0, 0, 0.3);
     height: 100%;
+    z-index: 999;
   }
 
   .sideBar_tags {

@@ -124,7 +124,7 @@ const Service = () => {
             </div>
             <div className={style.pag_dots}>
               <p>
-                .&nbsp;&nbsp;&nbsp;.&nbsp;&nbsp;&nbsp;.&nbsp;&nbsp;&nbsp;&nbsp;.
+                .&nbsp;&nbsp;&nbsp;.&nbsp;&nbsp;&nbsp;.
               </p>
             </div>
             <div className={style.pag_page}>
