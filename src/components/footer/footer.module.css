@@ -45,7 +45,6 @@ nav {
     margin-top: 0.2rem;
     display: flex;
     flex-wrap: wrap;
-    
   }
   .Footer_tags a {
     font-size: small;
@@ -56,8 +55,7 @@ nav {
     border-bottom: 1px solid #616161;
     padding-bottom: 1rem;
   }
- 
 }
- .Footer_tags a:hover{
-color: #0055ff;
-  }
+.Footer_tags a:hover {
+  color: #0055ff;
+}

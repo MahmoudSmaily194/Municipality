@@ -1,0 +1,198 @@
+.serv_page_con {
+  margin-top: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "sans";
+  font-weight: 700;
+}
+.serv_page {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: center;
+  gap: 4rem;
+}
+.serv_page_title {
+  width: 100%;
+}
+.services_con {
+  width: 97%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.filter_con {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.filter_con ul {
+  font-weight: 500;
+  width: 70%;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filter_con ul li {
+  padding: 1rem 1rem;
+  border-radius: 8px;
+}
+.filter_con ul li:hover {
+  background-color: #e8edf2;
+}
+
+.search_inp {
+  position: relative;
+  width: 14rem;
+  height: 2rem;
+  display: flex;
+  border-radius: 8px;
+}
+.search_inp input {
+  border: none;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.search_icon {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.7rem;
+  z-index: 5;
+}
+.services {
+  margin-top: 2rem;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.service {
+  width: 11rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.service img {
+  border-radius: 8px;
+}
+.serv_body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: center;
+}
+.serv_body p {
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+.pagination_cont {
+  margin-top: 4rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.pagination_cont div {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid transparent;
+}
+.left_pag,
+.right_pag {
+  background-color: #919eab;
+}
+.pag_page p {
+  font-size: 1rem;
+}
+.pag_arrow {
+  opacity: 0.5;
+  transition: opacity 0.3s ease-in-out;
+  font-size: large;
+}
+.pag_arrow:active {
+  font-size: larger;
+  opacity: 1;
+  color: #4200ff;
+}
+.pag_page:active {
+  border: 1.5px solid #4200ff;
+  color: #4200ff;
+}
+.filter_con select {
+  display: none;
+}
+@media (max-width: 967px) {
+  .filter_con ul {
+    display: none;
+  }
+  .filter_con select {
+    display: block;
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    font-size: 1rem;
+    color: #333;
+    appearance: none; /* Removes default styling */
+    background-image: url("arrow.svg"); /* Optional custom arrow */
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+  }
+}
+
+@media (max-width: 530px) {
+  .filter_con {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column-reverse;
+  }
+  .search_inp,
+  select {
+    width: 100%;
+  }
+
+  .services {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+  }
+  .service {
+    width: 100%;
+    border-radius: 20px;
+    gap: 2rem;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3);
+    padding-bottom: 1rem;
+  }
+  .serv_body {
+    gap: 1rem;
+  }
+  .serv_page {
+    width: 90%;
+  }
+  .pagination_cont {
+    gap: 0.5rem;
+  }
+  .pagination_cont div {
+    height: 0.7rem;
+    width: 0.7rem;
+    padding: 0.2rem 0.2rem;
+  }
+  .serv_body p {
+    font-size: 0.3rem;
+    font-weight: 400;
+  }
+}
