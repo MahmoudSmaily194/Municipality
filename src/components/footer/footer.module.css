@@ -42,18 +42,17 @@ nav {
     justify-content: center;
   }
   .Footer_tags {
-    margin-top: 1rem;
-
+    margin-top: 0.2rem;
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
+    
   }
   .Footer_tags a {
+    font-size: small;
     color: #616161;
     width: 50%;
     text-align: center;
-    margin-top: 3rem;
+    margin-top: 2rem;
     border-bottom: 1px solid #616161;
     padding-bottom: 1rem;
   }
