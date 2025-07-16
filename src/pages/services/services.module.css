@@ -63,8 +63,9 @@
 }
 .search_icon {
   position: absolute;
-  top: 0.5rem;
-  right: 0.7rem;
+  font-size: larger;
+  top: 0.4rem;
+  right: 0.8rem;
   z-index: 5;
 }
 .services {
@@ -161,6 +162,11 @@
   .search_inp,
   select {
     width: 100%;
+  }
+  .search_icon {
+    font-size: x-large;
+    top: 0.4rem;
+    right: 0.8rem;
   }
 
   .services {
