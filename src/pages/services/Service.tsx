@@ -8,7 +8,7 @@ import sur5 from "../../assets//survices5.png";
 import { FaAngleLeft } from "react-icons/fa";
 import { FaAngleRight } from "react-icons/fa";
 
-const services = () => {
+const Service = () => {
   const services = [
     {
       url: sur1,
@@ -143,4 +143,4 @@ const services = () => {
   );
 };
 
-export default services;
+export default Service;
