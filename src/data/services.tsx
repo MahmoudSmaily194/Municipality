@@ -16,6 +16,12 @@ export const services = [
     details: "Apply for building permits for construction or renovation projects.",
     category: "permits",
   },
+   {
+    url: sur2,
+    title: "Mahmoud is Good",
+    details: "Apply for building permits for construction or renovation projects.",
+    category: "permits",
+  },
   {
     url: sur3,
     title: "Pay Property Taxes",
