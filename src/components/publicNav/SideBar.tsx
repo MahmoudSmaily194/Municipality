@@ -3,7 +3,7 @@ import style from "./publicnav.module.css";
 import { TiHome } from "react-icons/ti";
 import { TfiMenuAlt } from "react-icons/tfi";
 import { PiNewspaperLight } from "react-icons/pi";
-import { Fa0, FaFlag } from "react-icons/fa6";
+import {  FaFlag } from "react-icons/fa6";
 import { IoMdMail } from "react-icons/io";
 
 interface SidebarProps {
