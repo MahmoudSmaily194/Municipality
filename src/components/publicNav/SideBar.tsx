@@ -3,20 +3,23 @@ import style from "./publicnav.module.css";
 import { TiHome } from "react-icons/ti";
 import { TfiMenuAlt } from "react-icons/tfi";
 import { PiNewspaperLight } from "react-icons/pi";
-import { FaFlag } from "react-icons/fa6";
+import { Fa0, FaFlag } from "react-icons/fa6";
 import { IoMdMail } from "react-icons/io";
 
 interface SidebarProps {
- isSidebarOpen : boolean;
- setIsSidebarOpen:  React.Dispatch<React.SetStateAction<boolean>>;
+  isSidebarOpen: boolean;
+  setIsSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const SideBar = ({setIsSidebarOpen}: SidebarProps) => {
+const SideBar = ({ setIsSidebarOpen }: SidebarProps) => {
   return (
-    <div className={style.sidebar_overlay} onClick={()=>{setIsSidebarOpen(false)}}>
-      <div
-        className={style.sideBar_con} 
-      >
+    <div
+      className={style.sidebar_overlay}
+      onClick={() => {
+        setIsSidebarOpen(false);
+      }}
+    >
+      <div className={style.sideBar_con}>
         <div className={style.sideBar_tags}>
           <NavLink
             className={({ isActive }) => (isActive ? style.active : "")}
