@@ -45,7 +45,7 @@ const Home = () => {
       <section>
         <div className={style.home_intro}>
           <div className={style.home_intro_cont}>
-          <h1>Manicipality of Sawirah</h1>
+          <h1>Municipality of Sawirah</h1>
           <p>Your community hub for information, services, and engagement.</p>
           <button>Explore Services</button>
         </div>
