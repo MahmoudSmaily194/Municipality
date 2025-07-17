@@ -95,42 +95,7 @@
   font-size: 0.8rem;
   font-weight: 400;
 }
-.pagination_cont {
-  margin-top: 4rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-.pagination_cont div {
-  height: 2rem;
-  width: 2rem;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1.5px solid transparent;
-}
-.left_pag,
-.right_pag {
-  background-color: #919eab;
-}
-.pag_page p {
-  font-size: 1rem;
-}
-.pag_arrow {
-  opacity: 0.5;
-  transition: opacity 0.3s ease-in-out;
-  font-size: large;
-}
-.pag_arrow:active {
-  font-size: larger;
-  opacity: 1;
-  color: #4200ff;
-}
-.pag_page:active {
-  border: 1.5px solid #4200ff;
-  color: #4200ff;
-}
+
 .filter_con select {
   display: none;
 }
@@ -189,13 +154,6 @@
   .serv_page {
     width: 90%;
   }
-  .pagination_cont {
-    gap: 0.5rem;
-  }
-  .pagination_cont div {
-    height: 0.7rem;
-    width: 0.7rem;
-    padding: 0.2rem 0.2rem;
-  }
+
    
 }

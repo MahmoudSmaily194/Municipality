@@ -1,0 +1,38 @@
+.pagination{
+    margin-top: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ gap: calc(0.5rem + 1vw);
+}
+.pagination button{
+height: calc(2.3rem + 1vw);
+width: calc(2.3rem + 1vw);
+background-color: transparent;
+border: none;
+font-family: "sans";
+font-weight: 500;
+font-size: large;
+border-radius: 8px;
+text-align: center;
+}
+.pagi_arrow_btns{
+background-color:  rgba(145, 158, 171, 0.3) !important;
+color: #4200FF;
+}
+.pagi_arrow_btns:disabled{
+   color: #919EAB;
+}
+.active{
+    border: 1.5px solid #4200FF !important;
+}
+@media(max-width:567px){
+ .pagination{
+     gap: calc(0.3rem + 0.4vw);
+ }
+ .pagination button{
+ height: calc(2rem + 0.8vw);
+width: calc(2rem + 0.8vw);
+font-size: medium;
+ }
+}
