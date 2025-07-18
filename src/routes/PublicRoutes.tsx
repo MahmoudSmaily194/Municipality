@@ -3,15 +3,16 @@ import Home from "../pages/home/Home";
 import PublicLayout from "../layouts/PublicLayout";
 import Service from "../pages/services/Service";
 import News from "../pages/news/News";
-
+import NewsItem from "../pages/news/newsItem/NewsItem";
 
 const PublicRoutes = () => {
   return (
     <PublicLayout>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/services" element={<Service/>}/>
-         <Route path="/news" element={<News/>}/>
+        <Route path="/services" element={<Service />} />
+        <Route path="/news" element={<News />} />
+        <Route path="/news/:id" element={<NewsItem />} />
       </Routes>
     </PublicLayout>
   );

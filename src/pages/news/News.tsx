@@ -1,9 +1,11 @@
+import { useState } from "react";
 import { IoMdSearch } from "react-icons/io";
-import style from "./news.module.css";
+import { Link } from "react-router-dom";
+import img from "../../assets/newsImg.png";
 import NoResults from "../../components/noResults/NoResults";
 import Pagination from "../../components/pagination/Pagination";
-import img from "../../assets/newsImg.png";
-import { useState } from "react";
+import style from "./news.module.css";
+import { useNewsItemProvider } from "../../stores/useNewsItemProvider";
 
 const News = () => {
   const newsItems = [
@@ -98,11 +100,13 @@ const News = () => {
       date: "2025-07-15",
     },
   ];
+    const setNewsItem = useNewsItemProvider((state) => state.setNewsItem);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const pagesNb = Math.ceil((newsItems?.length ?? 0) / 9);
   const FirstIndex = (currentPage - 1) * 9;
   const currentItems = newsItems?.slice(FirstIndex, FirstIndex + 9);
   return (
+    <>
     <div>
       <div className={style.news_page_con}>
         <div className={style.news_page}>
@@ -140,9 +144,11 @@ const News = () => {
                         {newsItem.body.split(" ").length > 20 ? (
                           <>
                             {newsItem.body.split(" ").slice(0, 20).join(" ")}{" "}
-                            <a style={{ color: "blue", cursor: "pointer" }}>
+                            <Link to={`/news/${index}`} style={{ color: "blue", cursor: "pointer" }} onClick={()=>{
+                              setNewsItem(newsItem)
+                            }}>
                               ...view more
-                            </a>
+                            </Link>
                           </>
                         ) : (
                           newsItem.body
@@ -162,7 +168,10 @@ const News = () => {
         </div>
       </div>
     </div>
+   
+</>
   );
+  
 };
 
 export default News;
