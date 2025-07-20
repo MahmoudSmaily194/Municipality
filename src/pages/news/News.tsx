@@ -135,6 +135,7 @@ const News = () => {
                 currentItems?.map((newsItem, index) => (
                   <div key={index} className={style.newsItem}>
                     <img
+                    loading="lazy"
                       src={newsItem.url || "/default.jpg"}
                       alt={newsItem.title}
                     />

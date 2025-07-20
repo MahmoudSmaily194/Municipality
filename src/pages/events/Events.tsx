@@ -29,7 +29,7 @@ const Events = () => {
                   </p>
                   <button>View Details</button>
                 </div>
-                <img src={event.url} alt={event.url} />
+                <img loading="lazy" src={event.url} alt={event.url} />
               </div>
             );
           })}

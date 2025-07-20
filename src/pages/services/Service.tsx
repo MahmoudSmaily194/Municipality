@@ -59,7 +59,7 @@ const Service = () => {
 ) : (
   currentItems?.map((service, index) => (
     <div key={index} className={style.service}>
-      <img src={service.url || "/default.jpg"} alt={service.title} />
+      <img loading="lazy" src={service.url || "/default.jpg"} alt={service.title} />
       <div className={style.serv_body}>
         <h4>{service.title}</h4>
         <p>{service.details}</p>
