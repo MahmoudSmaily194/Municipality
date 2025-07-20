@@ -1,5 +1,5 @@
 // components/LazyImage.tsx
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import placeholderImg from "../assets/Placeholder.png";
 
 type LazyImageProps = {
