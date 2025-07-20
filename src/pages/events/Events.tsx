@@ -1,5 +1,6 @@
 import style from "./events.module.css";
 import { events } from "../../data/events";
+import LazyImage from "../../LazyLoader/LazyImg";
 const Events = () => {
   return (
     <div className={style.events_page}>
@@ -29,7 +30,7 @@ const Events = () => {
                   </p>
                   <button>View Details</button>
                 </div>
-                <img loading="lazy" src={event.url} alt={event.url} />
+                <LazyImage src={event.url} alt={event.url} />
               </div>
             );
           })}

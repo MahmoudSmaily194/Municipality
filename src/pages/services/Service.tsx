@@ -1,21 +1,22 @@
-import style from "./services.module.css";
-import { IoMdSearch } from "react-icons/io";
-import Pagination from "../../components/pagination/Pagination";
 import { useEffect, useState } from "react";
-import { useServiceFilterStore } from "../../stores/useServiceFilterStore";
-import { useFilteredServices } from "../../services/useFilteredServices";
+import { IoMdSearch } from "react-icons/io";
 import NoResults from "../../components/noResults/NoResults";
+import Pagination from "../../components/pagination/Pagination";
+import LazyImage from "../../LazyLoader/LazyImg";
+import { useFilteredServices } from "../../services/useFilteredServices";
+import { useServiceFilterStore } from "../../stores/useServiceFilterStore";
+import style from "./services.module.css";
 
 const Service = () => {
   const { query, category, setQuery, setCategory } = useServiceFilterStore();
-  const { data, isLoading } = useFilteredServices();
+  const { data } = useFilteredServices();
   const [currentPage, setCurrentPage] = useState<number>(1);
   const pagesNb = Math.ceil((data?.length ?? 0) / 15);
   const FirstIndex = (currentPage - 1) * 15;
   const currentItems = data?.slice(FirstIndex, FirstIndex + 15);
   useEffect(() => {
-  setCurrentPage(1);
-}, [query, category]);
+    setCurrentPage(1);
+  }, [query, category]);
   return (
     <div className={style.serv_page_con}>
       <div className={style.serv_page}>
@@ -53,21 +54,19 @@ const Service = () => {
             </div>
           </div>
           <div className={style.services}>
-            {isLoading && <p>Loading...</p>}
-          {currentItems?.length === 0 ? (
-  <NoResults/>
-) : (
-  currentItems?.map((service, index) => (
-    <div key={index} className={style.service}>
-      <img loading="lazy" src={service.url || "/default.jpg"} alt={service.title} />
-      <div className={style.serv_body}>
-        <h4>{service.title}</h4>
-        <p>{service.details}</p>
-      </div>
-    </div>
-  ))
-)}
-
+            {currentItems?.length === 0 ? (
+              <NoResults />
+            ) : (
+              currentItems?.map((service, index) => (
+                <div key={index} className={style.service}>
+                  <LazyImage src={service.url} alt={service.title} />
+                  <div className={style.serv_body}>
+                    <h4>{service.title}</h4>
+                    <p>{service.details}</p>
+                  </div>
+                </div>
+              ))
+            )}
           </div>
           <Pagination
             NbOfPages={pagesNb}

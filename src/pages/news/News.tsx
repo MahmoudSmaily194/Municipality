@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 import img from "../../assets/newsImg.png";
 import NoResults from "../../components/noResults/NoResults";
 import Pagination from "../../components/pagination/Pagination";
-import style from "./news.module.css";
+import LazyImage from "../../LazyLoader/LazyImg";
 import { useNewsItemProvider } from "../../stores/useNewsItemProvider";
+import style from "./news.module.css";
 
 const News = () => {
   const newsItems = [
@@ -100,79 +101,77 @@ const News = () => {
       date: "2025-07-15",
     },
   ];
-    const setNewsItem = useNewsItemProvider((state) => state.setNewsItem);
+  const setNewsItem = useNewsItemProvider((state) => state.setNewsItem);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const pagesNb = Math.ceil((newsItems?.length ?? 0) / 9);
   const FirstIndex = (currentPage - 1) * 9;
   const currentItems = newsItems?.slice(FirstIndex, FirstIndex + 9);
   return (
     <>
-    <div>
-      <div className={style.news_page_con}>
-        <div className={style.news_page}>
-          <div className={style.news_page_title}>
-            <h1>Latest News</h1>
-          </div>
+      <div>
+        <div className={style.news_page_con}>
+          <div className={style.news_page}>
+            <div className={style.news_page_title}>
+              <h1>Latest News</h1>
+            </div>
 
-          <div className={style.news_con}>
-            <div className={style.news_filter_con}>
-              <select>
-                <option value="">Date</option>
-                <option value="week">Last Week</option>
-                <option value="month">last Month</option>
-                <option value="year">Last Year</option>
-              </select>
+            <div className={style.news_con}>
+              <div className={style.news_filter_con}>
+                <select>
+                  <option value="">Date</option>
+                  <option value="week">Last Week</option>
+                  <option value="month">last Month</option>
+                  <option value="year">Last Year</option>
+                </select>
 
-              <div className={style.search_inp}>
-                <IoMdSearch className={style.search_icon} />{" "}
-                <input type="text" placeholder="Search..." />
+                <div className={style.search_inp}>
+                  <IoMdSearch className={style.search_icon} />{" "}
+                  <input type="text" placeholder="Search..." />
+                </div>
               </div>
-            </div>
-            <div className={style.news}>
-              {currentItems?.length === 0 ? (
-                <NoResults />
-              ) : (
-                currentItems?.map((newsItem, index) => (
-                  <div key={index} className={style.newsItem}>
-                    <img
-                    loading="lazy"
-                      src={newsItem.url || "/default.jpg"}
-                      alt={newsItem.title}
-                    />
-                    <div className={style.newsItem_body}>
-                      <h4>{newsItem.title}</h4>
-                      <p>
-                        {newsItem.body.split(" ").length > 20 ? (
-                          <>
-                            {newsItem.body.split(" ").slice(0, 20).join(" ")}{" "}
-                            <Link to={`/news/${index}`} style={{ color: "blue", cursor: "pointer" }} onClick={()=>{
-                              setNewsItem(newsItem)
-                            }}>
-                              ...view more
-                            </Link>
-                          </>
-                        ) : (
-                          newsItem.body
-                        )}
-                      </p>
+              <div className={style.news}>
+                {currentItems?.length === 0 ? (
+                  <NoResults />
+                ) : (
+                  currentItems?.map((newsItem, index) => (
+                    <div key={index} className={style.newsItem}>
+                      <LazyImage src={newsItem.url} alt={newsItem.title} />
+                      <div className={style.newsItem_body}>
+                        <h4>{newsItem.title}</h4>
+                        <p>
+                          {newsItem.body.split(" ").length > 20 ? (
+                            <>
+                              {newsItem.body.split(" ").slice(0, 20).join(" ")}{" "}
+                              <Link
+                                to={`/news/${index}`}
+                                style={{ color: "blue", cursor: "pointer" }}
+                                onClick={() => {
+                                  setNewsItem(newsItem);
+                                }}
+                              >
+                                ...view more
+                              </Link>
+                            </>
+                          ) : (
+                            newsItem.body
+                          )}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                ))
-              )}
+                  ))
+                )}
+              </div>
+              <Pagination
+                NbOfPages={pagesNb}
+                setCurrentPage={setCurrentPage}
+                currentPage={currentPage}
+              />
             </div>
-            <Pagination
-              NbOfPages={pagesNb}
-              setCurrentPage={setCurrentPage}
-              currentPage={currentPage}
-            />
           </div>
         </div>
       </div>
-    </div>
-   
-</>
+    </>
   );
-  
 };
 
 export default News;
