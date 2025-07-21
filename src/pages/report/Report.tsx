@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LocationSelector from "../../components/municipalityMap/LocationSelector";
 import style from "./report.module.css";
+import { TiDeleteOutline } from "react-icons/ti";
+import DeleteDialog from "../../components/deleteDialog/DeleteDialog";
 const Report = () => {
   const [uploadedImage, setUploadedImage] = useState<File | null>(null);
+  const [deleteUploadedImage, setDeleteUploadedImage] = useState(false);
   const hanldeUploadImage = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
@@ -12,33 +15,32 @@ const Report = () => {
   const handleSaveLocation = (coords: [number, number]) => {
     console.log(coords);
   };
-  const handleSubmit =( e: React.FormEvent<HTMLFormElement>)=>{
-e.preventDefault();
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setUploadedImage(null);
+  };
+  useEffect(() => {
+    if (deleteUploadedImage) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
 
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [deleteUploadedImage]);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-setUploadedImage(null);
-  }
   return (
     <div className={style.report_page_con}>
       <div className={style.report_page}>
         <h1>Report an Issue</h1>
         <div className={style.report_form}>
-          <form   onSubmit={ (e)=>{handleSubmit(e) }}>
+          <form
+            onSubmit={(e) => {
+              handleSubmit(e);
+            }}
+          >
             <div className={style.name_phoNb_inpts}>
               <div>
                 <label htmlFor="name">Full Name</label>
@@ -69,13 +71,21 @@ setUploadedImage(null);
             <textarea id="description" />
             <div className={style.uploadImg_con}>
               {uploadedImage ? (
-                <img
-                  className={style.uploaded_img}
-                  src={URL.createObjectURL(uploadedImage)}
-                />
+                <div className={style.image_cont}>
+                  <div
+                    onClick={() => {
+                      setDeleteUploadedImage(true);
+                    }}
+                  >
+                    <TiDeleteOutline className={style.x_icon} />
+                  </div>
+                  <img
+                    className={style.uploaded_img}
+                    src={URL.createObjectURL(uploadedImage)}
+                  />
+                </div>
               ) : (
                 <>
-                
                   <h4>Upload Photo</h4>
                   <p>Add a photo to help us understand the issue better.</p>
                   <label htmlFor="upload" className={style.upload_photo}>
@@ -98,6 +108,12 @@ setUploadedImage(null);
           </form>
         </div>
       </div>
+      {deleteUploadedImage ? (
+        <DeleteDialog
+          setDeleteUploadedImage={setDeleteUploadedImage}
+          setUploadedImage={setUploadedImage}
+        />
+      ) : null}
     </div>
   );
 };

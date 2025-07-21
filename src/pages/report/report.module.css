@@ -93,7 +93,20 @@
   height: 100%;
   object-fit: cover;
 }
-
+.image_cont{
+  position: relative;
+  height: 25rem;
+}
+.image_cont div{
+  position: absolute;
+  top: 0.3rem;
+  right: 0.3rem;
+}
+.x_icon{
+  font-size: 1.5rem;
+  font-weight: bolder;
+  color: rgb(224, 2, 2);
+}
 @media (max-width: 576px) {
   .report_page {
     width: 90%;
