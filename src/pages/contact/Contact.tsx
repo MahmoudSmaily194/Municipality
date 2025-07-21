@@ -1,5 +1,7 @@
 import style from "./contact.module.css";
 import { members } from "../../data/members";
+import MunicipalityMap from "../../components/municipalityMap/MunicipalityMap";
+
 const Contact = () => {
   return (
     <div className={style.contact_page}>
@@ -33,7 +35,7 @@ const Contact = () => {
         </div>
         <div className={style.council_members_con}>
           <h3>Council Members</h3>
-          
+
           <div className={style.counsil_members}>
             {members.map((member, index) => {
               return (
@@ -44,6 +46,27 @@ const Contact = () => {
                 </div>
               );
             })}
+          </div>
+        </div>
+        <MunicipalityMap />
+
+        <div className={style.contact_form_con}>
+          <div className={style.contact_form}>
+            <h3>Contact Form</h3>
+        <form>
+  <label htmlFor="name">Enter your name</label>
+  <input id="name" type="text" placeholder="Your Name"/>
+
+  <label htmlFor="email">Your Email</label>
+  <input id="email" type="email" placeholder="Enter your email"/>
+
+  <label htmlFor="subject">Subject</label>
+  <input id="subject" type="text" placeholder="Enter the subject" />
+
+  <label htmlFor="message">Message</label>
+  <textarea id="message" placeholder="Write your message here"></textarea>
+  <button>Submit</button>
+</form>
           </div>
         </div>
       </div>

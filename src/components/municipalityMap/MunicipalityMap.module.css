@@ -1,0 +1,33 @@
+.map_con {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.map {
+  width: 100%;
+  height: 40rem;
+}
+
+.directionsButton {
+  font-family: "sans";
+  display: block;
+  margin: 1.5rem auto 0;
+  padding: 0.7rem 1.6rem;
+  background-color: #0078d4;
+  color: white;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  max-width: 240px;
+  width: 100%;
+  text-align: center;
+}
+
+.directionsButton:hover {
+  background-color: #005a9e;
+}

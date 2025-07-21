@@ -51,8 +51,8 @@
   margin: 2rem;
   gap: 1rem;
 }
-.form_con form textarea,
-input {
+.form_con form textarea
+{
   width: 336px;
   height: 41px;
   border-radius: 3.48px;
@@ -62,13 +62,22 @@ input {
   font-family: "sans";
   font-family: 400;
 }
-.form_con form textarea,
-input::placeholder {
-  padding: 1rem;
-}
-textarea {
+.form_con input{
+    width: 336px;
+  height: 41px;
+  border-radius: 3.48px;
+  border: none;
+  background-color: #ffffff;
+  border: 1.04px solid var(--Black, #0d141c);
+  font-family: "sans";
+  font-family: 400;
+  padding-left: 8px;
+} 
+
+.form_con textarea {
+   padding-left: 8px;
   height: 114px;
-  width: 308px !important;
+
 }
 .chech_box_con {
   display: flex;
@@ -140,21 +149,28 @@ textarea {
     align-items: center;
     box-shadow: 0 4px 6px -2px rgba(0, 0, 0, 0.3);
   }
-  form {
+  .form_con form {
     width: 90%;
-
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 2.5rem !important;
   }
-  .form_con form textarea,
-  input {
+  .form_con form textarea
+ {
     height: 60px;
     width: 100%;
   }
-  textarea {
+    .form_con input{
+      height: 60px;
+    width: 100%;
+    }
+  .form_con textarea {
     width: 96% !important;
   }
+  .chech_box_con input {
+  height: 15px;
+  width: 15px;
+}
 }
