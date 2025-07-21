@@ -1,0 +1,122 @@
+.contact_page {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "sans";
+}
+.contact {
+  margin-top: 2.5rem;
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.header h1 {
+  font-weight: 700;
+}
+.header p {
+  color: #5e7387;
+  font-weight: 400;
+}
+.general_inquiries {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.info {
+  width:70%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.info div {
+  height: 4rem;
+  width: 45%;
+  border-top: 1px solid #5e7387;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: 1rem;
+}
+.info div h5 {
+  color: #5e7387;
+  font-weight: 500;
+}
+.info div p {
+  font-weight: 500;
+  font-size: 0.75rem;
+}
+.council_members_con {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+}
+.counsil_members {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 2rem;
+}
+.member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+.member p {
+  color: #5e7387;
+}
+
+.member img {
+  width: 9rem;
+  height: 9rem;
+  border-radius: 50%;
+}
+@media(max-width:867px){
+    .info {
+  width:100%;
+}}
+@media (max-width: 530px) {
+  .contact {
+    width: 90%;
+  }
+.info {
+  display: flex;
+flex-direction: column;
+  gap: 1rem;
+}
+.info div{
+    width: 100%;
+}
+  .counsil_members {
+    display: flex;
+    align-items: center;
+    justify-content: space-between !important;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .member {
+    width: 46%;
+  }
+}
+@media (max-width: 435px) {
+   .member img{
+   width: 8rem;
+  height: 8rem;
+  }  
+   .member h4{
+    font-size: 0.95rem;
+   }
+    .member p{
+    font-size: 0.88rem;
+   }
+}
