@@ -1,0 +1,134 @@
+.pub_compls_page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "sans";
+}
+.pub_compls {
+  width: 75%;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+}
+.public_complaints_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.public_complaints_header button {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 5px;
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  color: #1a80e5;
+  border: none;
+  border-radius: 8px;
+  border: 2px solid #1a80e5;
+  font-family: "sans";
+  font-weight: 700;
+  font-size: medium;
+}
+.addCompl_icon{
+   font-size: 1.4rem ; color: "#1A80E5"
+}
+.public_complaints_header button:hover, .addCompl_icon:hover{
+  background-color: #1a80e5;
+    color: white;
+}
+.search_inp {
+  position: relative;
+  width: 100%;
+}
+.search_inp input {
+  width: calc(100% - 2.5rem);
+  height: 2.5rem;
+  background-color: #f0f2f5;
+  border: none;
+  border-radius: 8px;
+  padding-left: 2.5rem;
+}
+.search_icon {
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  font-size: larger;
+}
+.filter_compl_selects {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.filter_compl_selects select {
+  padding: 0.5rem 0.4rem;
+  background-color: #f0f2f5;
+  border: none;
+  border-radius: 8px;
+}
+.copmlaints {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.pub_complaint {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+.complaint_text_content {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.pub_complaint img {
+  width: 40%;
+  height: 15rem;
+  border-radius: 8px;
+  object-fit: cover;
+}
+.complaint_text_content p {
+  color: #61758a;
+}
+.comlplaint_btns {
+  display: flex;
+  gap: 1rem;
+}
+.comlplaint_btns button {
+  padding: 0.5rem 0.5rem;
+  border: none;
+  background-color: #f0f2f5;
+  font-family: "sans";
+  font-weight: 700;
+  border-radius: 8px;
+}
+@media (max-width: 667px) {
+  .pub_compls {
+    width: 90%;
+  }
+  .pub_complaint {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .complaint_text_content {
+    width: 100%;
+  }
+  .pub_complaint img {
+    width: 100%;
+  }
+}
+@media (max-width: 467px) {
+  .public_complaints_header h2 {
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+  .public_complaints_header button {
+    width: 48%;
+    font-size: smaller;
+    padding: 2px 3px;
+  }
+}

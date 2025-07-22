@@ -7,6 +7,7 @@ import News from "../pages/news/News";
 import NewsItem from "../pages/news/newsItem/NewsItem";
 import Report from "../pages/report/Report";
 import Service from "../pages/services/Service";
+import PublicComplaints from "../pages/publicComplaints/PublicComplaints";
 
 const PublicRoutes = () => {
   return (
@@ -17,8 +18,9 @@ const PublicRoutes = () => {
         <Route path="/news" element={<News />} />
         <Route path="/news/:id" element={<NewsItem />} />
         <Route path="/events" element={<Events/>}/>
+        <Route path="/complaints" element={<PublicComplaints/>}/>
         <Route path="/report" element={<Report/>}/>
-           <Route path="/contact" element={<Contact/>}/>
+        <Route path="/contact" element={<Contact/>}/>
       </Routes>
     </PublicLayout>
   );

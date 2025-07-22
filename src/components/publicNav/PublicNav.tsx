@@ -31,13 +31,11 @@ const PublicNav = () => {
           <NavLink to={"/services"}>Services</NavLink>
           <NavLink to={"/news"}>News</NavLink>
           <NavLink to={"/events"}>Events</NavLink>
-          <NavLink to={"/report"}>Report Issue</NavLink>
+          <NavLink to={"/complaints"}>Public Complaints</NavLink>
           <NavLink to={"/contact"}>Contact</NavLink>
-          <NavLink className={style.search} to={"/search"}>
-            <div className={style.search}>
-              <IoIosSearch style={{ height: "20px", width: "20px" }} />
-            </div>
-          </NavLink>
+          <div className={style.search}>
+            <IoIosSearch style={{ height: "20px", width: "20px" }} />
+          </div>
         </div>
       </nav>
       {isSidebarOpen && (
