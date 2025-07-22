@@ -57,7 +57,7 @@ const SideBar = ({ setIsSidebarOpen }: SidebarProps) => {
           </NavLink>
           <NavLink
             className={({ isActive }) => (isActive ? style.active : "")}
-            to={"/compliants"}
+            to={"/complaints"}
           >
             <div>
               <FaFlag className={style.icon} />
