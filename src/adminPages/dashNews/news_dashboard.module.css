@@ -140,3 +140,6 @@
     min-width: 130px;
   }
 }
+.news_dashboard_uploadPhoto_con{
+  aspect-ratio: 1/1;
+}

@@ -6,7 +6,7 @@
   gap: 1.6rem;
   border: 2px dashed #1a80e5;
   width: 100%;
-  aspect-ratio: 1 / 1;
+ height: 100%;
   font-family: "sans";
 }
 .news_upload_image label {

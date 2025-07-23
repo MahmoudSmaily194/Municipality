@@ -4,6 +4,7 @@ import DashBoard from "../adminPages/dashBoard/DashBoard";
 import AdminLayout from "../layouts/AdminLatout";
 import NewsDashBoared from "../adminPages/dashNews/NewsDashBoared";
 import EventsControlPage from "../adminPages/eventsControlPage/EventsControlPage";
+import EventModel from "../adminPages/eventModel/EventModel";
 
 const AdminRoutes = () => {
   return (
@@ -13,6 +14,7 @@ const AdminRoutes = () => {
         <Route index element={<DashBoard />} />
         <Route path="news" element={<NewsDashBoared/>}/>
           <Route path="events" element={<EventsControlPage/>}/>
+          <Route path="eventmodel" element={<EventModel/>}/>
       </Route>
     </Routes>
   );

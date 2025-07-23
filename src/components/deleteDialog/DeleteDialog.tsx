@@ -17,7 +17,7 @@ const DeleteDialog: FC<Props>= ({
           undone.
         </p>
         <div className={style.delete_dialog_btns}>
-          <button onClick={()=>{setDeleteUploadedImage(false)}} className={style.cancel_delete}> Cancel</button>
+          <button onClick={()=>{setDeleteUploadedImage(false)}} className={style.cancel_delete} style={{backgroundColor:" #d1d5db" ,color:"#111827"}}> Cancel</button>
           <button  onClick={()=>{setUploadedImage(null) ,setDeleteUploadedImage(false)}}>Delete</button>
         </div>
       </div>

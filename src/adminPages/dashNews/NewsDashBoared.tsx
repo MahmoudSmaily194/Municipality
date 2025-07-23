@@ -70,12 +70,13 @@ const NewsDashBoared = () => {
               <p>Visibility</p>
               <input className={style.checkbox} type="checkbox" />
             </div>
-
-            <UploadPhoto
-              setUploadImage={setUploadImage}
-              uploadImage={uploadImage}
-              setDeleteDialog={setDeleteDialog}
-            />
+            <div className={style.news_dashboard_uploadPhoto_con}>
+              <UploadPhoto
+                setUploadImage={setUploadImage}
+                uploadImage={uploadImage}
+                setDeleteDialog={setDeleteDialog}
+              />
+            </div>
             <button className={style.publish_news}>Publish</button>
           </div>
         </div>

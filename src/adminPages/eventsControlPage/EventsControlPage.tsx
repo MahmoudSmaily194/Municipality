@@ -1,11 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import style from "./eventsControlPage.module.css";
 
 const EventsControlPage = () => {
+  const navigate=useNavigate();
   return (
     <div className={style.events_control_page_con}>
       <div className={style.events_control_page}>
         <div className={style.events_control_page_header}>
-          <h1>Events Management</h1> <button>Add Event</button>
+          <h1>Events Management</h1> <button onClick={()=>{navigate("../eventmodel")}}>Add Event</button>
         </div>
         <p>Manage and create events for the city of Springfield</p>
         <h3>Existing Events</h3>
