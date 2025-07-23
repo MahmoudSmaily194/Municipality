@@ -91,7 +91,7 @@
 .RxHamburgerMenu_icon_cont {
   display: none;
   cursor: pointer;
-  position: fixed;
+  position: absolute;
   top: 1rem;
   right: 1rem;
   z-index: 1100;
