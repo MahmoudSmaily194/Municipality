@@ -1,0 +1,166 @@
+
+
+/* Sidebar container */
+.dashBoardSideBar_con {
+  margin-top: 1rem;
+  width: 27%;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  background-color: transparent;
+  overflow: hidden;
+  z-index: 1000;
+  transition: transform 0.3s ease-in-out;
+}
+
+.dashboard_sideBar {
+  margin-top: 1rem;
+  width: 90%;
+}
+
+.dashboard_sideBar_header {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.dashboard_sideBar_header img {
+  height: 40px;
+  width: 40px;
+}
+
+.dashboard_sideBar_header div h3 {
+  margin: 0;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #0d141c;
+}
+
+.dashboard_sideBar_header div p {
+  margin: 0;
+  font-size: 1rem;
+  color: #4f7396;
+}
+
+.dashboard_sideBar_nav_con {
+  margin-top: 1.5rem;
+}
+
+.dashboard_sideBar_nav_con nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.dashboard_sideBar_nav_con nav a {
+  font-weight: 600;
+  text-decoration: none;
+  color: #0d141c;
+}
+
+.dashboard_sideBar_nav_con nav div {
+  padding: 0.8rem 1rem;
+  display: flex;
+  gap: 1rem;
+  border-radius: 12px;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.dashboard_sideBar_nav_con nav div:hover {
+  background-color: #1a80e5;
+  color: white;
+}
+
+.dashboard_icon {
+  font-size: larger;
+}
+
+/* Vertical blue separator line on desktop */
+.hr {
+  width: 0.2rem;
+  min-height: calc(100vh + 100%);
+  background-color: #1a80e5;
+  position: relative;
+  z-index: 900;
+  margin: 0 1rem;
+}
+
+/* Hamburger menu container - hidden on desktop */
+.RxHamburgerMenu_icon_cont {
+  display: none;
+  cursor: pointer;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1100;
+}
+
+/* Hamburger icon style */
+.RxHamburgerMenu_icon {
+  font-size: 2rem;
+  color: #1a80e5;
+}
+
+/* Overlay behind sidebar on mobile */
+.admin_body_overlay {
+  display: none;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 900;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+}
+
+/* Overlay active state */
+.admin_body_overlay.active {
+  display: block;
+}
+
+/* MOBILE STYLES */
+@media (max-width: 867px) {
+  .dashBoardSideBar_con {
+    margin-top: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 270px;
+    height: 100vh;
+    background-color: white;
+    border-right: 2px solid #1a80e5;
+    transform: translateX(-270px);
+  }
+
+  /* When sidebar is open */
+  .dashBoardSideBar_con.sidebar_open {
+    transform: translateX(0);
+  }
+
+  /* Show hamburger icon on mobile */
+  .RxHamburgerMenu_icon_cont {
+    display: flex;
+  }
+
+  /* Hide vertical separator on mobile */
+  .hr {
+    display: none;
+  }
+}
+
+/* DESKTOP STYLES */
+@media (min-width: 868px) {
+  .dashBoardSideBar_con {
+    
+    position: relative !important;
+    transform: none !important;
+    width: 27% !important;
+    height: 100vh !important;
+    border-right: none !important;
+  }
+  .admin_body_overlay {
+    display: none !important;
+  }
+}

@@ -1,7 +1,6 @@
 import type { FC } from "react";
 import style from "./deleteDialog.module.css";
 type Props={
-
     setDeleteUploadedImage: React.Dispatch<React.SetStateAction<boolean>>;
     setUploadedImage: React.Dispatch<React.SetStateAction<File | null>>;
 }

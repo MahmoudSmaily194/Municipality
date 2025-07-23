@@ -1,0 +1,33 @@
+.news_upload_image {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.6rem;
+  border: 2px dashed #1a80e5;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  font-family: "sans";
+}
+.news_upload_image label {
+  padding: 0.8rem 1.5rem;
+  background-color: #1a80e5;
+  color: white;
+  border-radius: 8px;
+  font-family: 700;
+}
+.image_cont{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.image_cont img{
+    width: 100%;
+    height: 100%;
+}
+.image_cont .x_icon{
+    position: absolute;
+    top: 0.3rem;
+    left: 0.3rem;
+    font-size: 1.5rem;
+}
