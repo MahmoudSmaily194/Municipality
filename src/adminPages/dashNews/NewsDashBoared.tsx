@@ -11,6 +11,7 @@ const NewsDashBoared = () => {
         <div className={style.news_dashboard_page}>
           <h1>News</h1>
           <div className={style.news_table_con}>
+            <div className={style.news_table_wrapper}>
             <table className={style.news_table}>
               <tr>
                 <th>Title</th> <th>Date</th> <th>Visibility</th>
@@ -59,6 +60,7 @@ const NewsDashBoared = () => {
                 </td>
               </tr>
             </table>
+            </div>
           </div>
         </div>
         <div className={style.AddNews_Con}>
