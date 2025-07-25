@@ -31,3 +31,7 @@
     left: 0.3rem;
     font-size: 1.5rem;
 }
+.dragging {
+  border: 2px dashed #3498db;
+  background-color: #f0f8ff;
+}

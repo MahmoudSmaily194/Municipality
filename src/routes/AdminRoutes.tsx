@@ -5,6 +5,9 @@ import AdminLayout from "../layouts/AdminLatout";
 import NewsDashBoared from "../adminPages/dashNews/NewsDashBoared";
 import EventsControlPage from "../adminPages/eventsControlPage/EventsControlPage";
 import EventModel from "../adminPages/eventModel/EventModel";
+import ManageServices from "../adminPages/manageServices/ManageServices";
+import ServiceModel from "../adminPages/serviceModel/ServiceModel";
+import ManageCompliants from "../adminPages/manageComplaints/ManageComplaints";
 
 const AdminRoutes = () => {
   return (
@@ -12,9 +15,12 @@ const AdminRoutes = () => {
       <Route path="/" element={<AdminLogin />} />
       <Route path="dashboard" element={<AdminLayout />}>
         <Route index element={<DashBoard />} />
-        <Route path="news" element={<NewsDashBoared/>}/>
-          <Route path="events" element={<EventsControlPage/>}/>
-          <Route path="eventmodel" element={<EventModel/>}/>
+        <Route path="news" element={<NewsDashBoared />} />
+        <Route path="events" element={<EventsControlPage />} />
+        <Route path="eventmodel" element={<EventModel />} />
+        <Route path="services" element={<ManageServices />} />
+        <Route path="servicemodel" element={<ServiceModel />} />
+        <Route path="complaints" element={<ManageCompliants />} />
       </Route>
     </Routes>
   );
