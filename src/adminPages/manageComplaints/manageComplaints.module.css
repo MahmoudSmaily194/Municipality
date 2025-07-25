@@ -106,6 +106,9 @@
   .ManageComplaints_header h1 {
     font-size: 1.5rem;
   }
+  .ManageComplaints_table_con td div p{
+    font-size: 0.75rem;
+  }
 }
 @media (max-width: 436px) {
   .ManageComplaints_header h1 {
