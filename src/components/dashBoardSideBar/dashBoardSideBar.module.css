@@ -11,6 +11,7 @@
   overflow: hidden;
   z-index: 1000;
   transition: transform 0.3s ease-in-out;
+  font-family: "sans";
 }
 
 .dashboard_sideBar {
@@ -56,6 +57,7 @@
   font-weight: 600;
   text-decoration: none;
   color: #0d141c;
+  font-family: "sans";
 }
 
 .dashboard_sideBar_nav_con nav div {
