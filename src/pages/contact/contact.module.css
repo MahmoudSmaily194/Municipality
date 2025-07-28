@@ -23,7 +23,7 @@
 }
 .header p {
   color: #5e7387;
-  font-weight: 400;
+  font-weight: 500;
 }
 .general_inquiries {
   display: flex;
@@ -48,11 +48,12 @@
 }
 .info div h5 {
   color: #5e7387;
-  font-weight: 500;
+  font-weight: 700;
+  font-size:1.1rem;
 }
 .info div p {
   font-weight: 500;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
 }
 .council_members_con {
   display: flex;

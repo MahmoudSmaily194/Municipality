@@ -8,6 +8,7 @@ import EventModel from "../adminPages/eventModel/EventModel";
 import ManageServices from "../adminPages/manageServices/ManageServices";
 import ServiceModel from "../adminPages/serviceModel/ServiceModel";
 import ManageCompliants from "../adminPages/manageComplaints/ManageComplaints";
+import IssueTypeModal from "../adminPages/issueTypeModal/IssueTypeModal";
 
 const AdminRoutes = () => {
   return (
@@ -21,6 +22,7 @@ const AdminRoutes = () => {
         <Route path="services" element={<ManageServices />} />
         <Route path="servicemodel" element={<ServiceModel />} />
         <Route path="complaints" element={<ManageCompliants />} />
+        <Route path="issuemodel" element={<IssueTypeModal />} />
       </Route>
     </Routes>
   );

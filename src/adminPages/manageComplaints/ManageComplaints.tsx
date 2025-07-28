@@ -9,7 +9,7 @@ const ManageCompliants = () => {
           <h1>Complaints</h1>
           <button
             onClick={() => {
-              navigate("../servicemodel");
+              navigate("../issuemodel");
             }}
           >
             Add issue type
