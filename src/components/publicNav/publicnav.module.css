@@ -168,3 +168,6 @@
   align-items: center;
   gap: 0.4rem;
 }
+.nav_tags .isactive {
+  color: #1a80e5;
+}

@@ -30,14 +30,42 @@ const PublicNav = () => {
         </div>
 
         <div className={style.nav_tags}>
-          <NavLink to={"/"}>{t("public.nav.home")}</NavLink>
-          <NavLink to={"/services"}>{t("public.nav.services")}</NavLink>
-          <NavLink to={"/news"}>{t("public.nav.news")}</NavLink>
-          <NavLink to={"/events"}>{t("public.nav.events")}</NavLink>
-          <NavLink to={"/complaints"}>
+          <NavLink
+            className={({ isActive }) => (isActive ? style.isactive : "")}
+            to={"/"}
+          >
+            {t("public.nav.home")}
+          </NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? style.isactive : "")}
+            to={"/services"}
+          >
+            {t("public.nav.services")}
+          </NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? style.isactive : "")}
+            to={"/news"}
+          >
+            {t("public.nav.news")}
+          </NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? style.isactive : "")}
+            to={"/events"}
+          >
+            {t("public.nav.events")}
+          </NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? style.isactive : "")}
+            to={"/complaints"}
+          >
             {t("public.nav.publicComplaints")}
           </NavLink>
-          <NavLink to={"/contact"}>{t("public.nav.contact")}</NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? style.isactive : "")}
+            to={"/contact"}
+          >
+            {t("public.nav.contact")}
+          </NavLink>
           <div className={style.translate}>
             <button onClick={toggleLanguage}>
               {i18n.language === "en" ? "AR" : "EN"}
