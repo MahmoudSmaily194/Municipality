@@ -2,7 +2,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "sans";
 }
 .pub_compls {
   width: 75%;
@@ -25,19 +24,22 @@
   padding: 0.5rem 1rem;
   background-color: transparent;
   color: #1a80e5;
-  border: none; 
+  border: none;
   border-radius: 8px;
   border: 2px solid #1a80e5;
-  font-family: "sans";
+
   font-weight: 700;
   font-size: medium;
+  cursor: pointer;
 }
-.addCompl_icon{
-   font-size: 1.4rem ; color: "#1A80E5"
+.addCompl_icon {
+  font-size: 1.4rem;
+  color: "#1A80E5";
 }
-.public_complaints_header button:hover, .addCompl_icon:hover{
+.public_complaints_header button:hover,
+.addCompl_icon:hover {
   background-color: #1a80e5;
-    color: white;
+  color: white;
 }
 .search_inp {
   position: relative;
@@ -49,7 +51,7 @@
   background-color: #f0f2f5;
   border: none;
   border-radius: 8px;
-  padding-left: 2.5rem;
+  padding-inline-start: 2.5rem;
 }
 .search_icon {
   position: absolute;
@@ -102,7 +104,7 @@
   padding: 0.5rem 0.5rem;
   border: none;
   background-color: #f0f2f5;
-  font-family: "sans";
+
   font-weight: 700;
   border-radius: 8px;
 }

@@ -1,22 +1,60 @@
-
+/* Public Sans - English */
 @font-face {
-    font-family: "sans";
-    src: url("../public/fonts/PublicSans-Bold.ttf");
-    font-weight: 700;
-}
-@font-face {
-    font-family: "sans";
-    src: url("../public/fonts/PublicSans-Medium.ttf");
-    font-weight: 500;
-}
-@font-face {
-    font-family: "sans";
-    src: url("../public/fonts/PublicSans-Regular.ttf");
-    font-weight: 400;
-}
-@font-face {
-    font-family: "sans";
-    src: url("../public/fonts/PublicSans-Thin.ttf");
-    font-weight: 300;
+  font-family: "sans";
+  src: url("../public/fonts/PublicSans-Bold.ttf");
+  font-weight: 700;
+  font-display: swap;
 }
 
+@font-face {
+  font-family: "sans";
+  src: url("../public/fonts/PublicSans-Medium.ttf");
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "sans";
+  src: url("../public/fonts/PublicSans-Regular.ttf");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "sans";
+  src: url("../public/fonts/PublicSans-Thin.ttf");
+  font-weight: 300;
+  font-display: swap;
+}
+
+/* Tajawal - Arabic */
+@font-face {
+  font-family: "Tajawal";
+  src: url("../public/fonts/arabic/Tajawal-Bold.ttf");
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Tajawal";
+  src: url("../public/fonts/arabic/Tajawal-Regular.ttf");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Tajawal";
+  src: url("../public/fonts/arabic/Tajawal-Light.ttf"); /* ← NEW light/300 weight */
+  font-weight: 300;
+  font-display: swap;
+}
+
+/* Apply mixed font-family */
+body {
+  font-family: "sans", "Tajawal", sans-serif;
+}
+
+/* Automatically switch for Arabic text */
+:lang(ar) {
+  font-family: "Tajawal", "sans", sans-serif;
+}
+
+button{
+  cursor: pointer;
+}

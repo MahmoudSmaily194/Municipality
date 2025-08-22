@@ -1,10 +1,9 @@
 .serviceModel_page {
   width: 100%;
   margin-top: 1rem;
-  border-left: 2px solid #1a80e5;
+  border-inline-start: 2px solid #1a80e5;
   display: flex;
   justify-content: center;
-  font-family: "sans";
 }
 .serviceModel {
   margin-top: 3rem;
@@ -51,16 +50,14 @@
   font-weight: 500;
 }
 
-
 .serviceModel_form_con form input {
   height: 2.5rem;
   background-color: #e8edf2;
   border: none;
   border-radius: 8px;
-  padding-left: 1rem;
+  padding-inline-start: 1rem;
   font-size: 1rem;
   color: #4f7396;
-  font-family: "sans";
 }
 
 .serviceModel_form_con form textarea {
@@ -69,10 +66,9 @@
   background-color: #e8edf2;
   border: none;
   border-radius: 8px;
-  padding-left: 1rem;
+  padding-inline-start: 1rem;
   font-size: 1rem;
   color: #4f7396;
-  font-family: "sans";
 }
 .serviceModel_upload_photo {
   height: 17rem;
@@ -91,42 +87,46 @@
   border: none;
   height: 2.5rem;
   width: 8rem;
-  margin-right: 1rem;
+  margin-inline-end: 1rem;
   border-radius: 12px;
-  font-family: "sans";
+
   font-weight: 700;
   border: 2px solid #1a80e5;
   background-color: #1a80e5;
   color: white;
 }
 .serviceModel_form_btns button:hover {
- border: 2px solid #0d61b5;
+  border: 2px solid #0d61b5;
   background-color: #0d61b5;
 }
-.serviceModel_status_btns{
-    display: flex;
-    gap: 1rem;
+.serviceModel_status_btns {
+  display: flex;
+  gap: 1rem;
 }
-.serviceModel_status_btns button{
-    height: 2.5rem;
-    width: 50%;
-    font-family: "sans";
-    font-weight: 700;
-    background-color: transparent;
-    border: none;
-    border-radius: 10px;
-    color: #1a80e5;
-    border: 2px solid #1a80e5;
+.serviceModel_status_btns button {
+  height: 2.5rem;
+  width: 50%;
+
+  font-weight: 700;
+  background-color: transparent;
+  border: none;
+  border-radius: 10px;
+  color: #1a80e5;
+  border: 2px solid #1a80e5;
 }
-.serviceModel_status_btns button:hover{
-    background-color: #1a80e5;
-    color: white;
+.serviceModel_status_btns button:hover {
+  background-color: #1a80e5;
+  color: white;
 }
-.serviceModel_inpts_con select{
-height: 2.5rem;
- border: 2px solid #1a80e5;
- border-radius: 10px;
- background-color: transparent;
+.serviceModel_inpts_con select {
+  height: 2.5rem;
+  border: 2px solid #1a80e5;
+  border-radius: 10px;
+  background-color: transparent;
+}
+.active {
+  background-color: #1a80e5 !important;
+  color: white !important;
 }
 @media (max-width: 675px) {
   .serviceModel {
@@ -135,7 +135,7 @@ height: 2.5rem;
   .serviceModel_form_con form input {
     width: 100%;
     font-size: 0.8rem;
-    padding-left: 0.3rem;
+    padding-inline-start: 0.3rem;
   }
   .serviceModel label {
     font-size: 0.8rem;

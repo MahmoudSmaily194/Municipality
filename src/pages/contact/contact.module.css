@@ -3,7 +3,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "sans";
 }
 .contact {
   margin-top: 2.5rem;
@@ -31,7 +30,7 @@
   gap: 1.2rem;
 }
 .info {
-  width:70%;
+  width: 70%;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -49,7 +48,7 @@
 .info div h5 {
   color: #5e7387;
   font-weight: 700;
-  font-size:1.1rem;
+  font-size: 1.1rem;
 }
 .info div p {
   font-weight: 500;
@@ -83,40 +82,38 @@
   border-radius: 50%;
 }
 
-.contact_form_con{
-width: 100%;
-  font-family: "sans";
+.contact_form_con {
+  width: 100%;
 }
-.contact_form{
-width: 60%;
+.contact_form {
+  width: 60%;
 }
-.contact_form form{
+.contact_form form {
   margin-top: 3rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.contact_form input{
-  font-family: "sans";
-  padding:15px 10px;
-border-radius: 12px;
-border: none;
-border: 1px solid #D6DBE3;
+.contact_form input {
+  padding: 15px 10px;
+  border-radius: 12px;
+  border: none;
+  border: 1px solid #d6dbe3;
 }
 
-.contact_form  textarea{
-   font-family: "sans";
-  padding:20px 10px;
-border-radius: 12px;
-border: none;
-border: 1px solid #D6DBE3;
+.contact_form textarea {
+  resize: vertical;
+
+  padding: 20px 10px;
+  border-radius: 12px;
+  border: none;
+  border: 1px solid #d6dbe3;
 }
 
-.contact_form  button{
-  font-family: "sans";
+.contact_form button {
   display: block;
-  margin: 1.5rem  0;
+  margin: 1.5rem 0;
   padding: 0.7rem 1.6rem;
   background-color: #0078d4;
   color: white;
@@ -131,35 +128,30 @@ border: 1px solid #D6DBE3;
   text-align: center;
 }
 
-.contact_form  button:hover {
+.contact_form button:hover {
   background-color: #005a9e;
 }
 
-
-
-
-
-
-@media(max-width:867px){
-    .info {
-  width:100%;
+@media (max-width: 867px) {
+  .info {
+    width: 100%;
+  }
+  .contact_form {
+    width: 85%;
+  }
 }
-.contact_form{
-
-  width: 85%;
-}}
 @media (max-width: 530px) {
   .contact {
     width: 90%;
   }
-.info {
-  display: flex;
-flex-direction: column;
-  gap: 1rem;
-}
-.info div{
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .info div {
     width: 100%;
-}
+  }
   .counsil_members {
     display: flex;
     align-items: center;
@@ -170,20 +162,19 @@ flex-direction: column;
   .member {
     width: 46%;
   }
-.contact_form{
-
-  width: 100%;
-}
+  .contact_form {
+    width: 100%;
+  }
 }
 @media (max-width: 435px) {
-   .member img{
-   width: 8rem;
-  height: 8rem;
-  }  
-   .member h4{
+  .member img {
+    width: 8rem;
+    height: 8rem;
+  }
+  .member h4 {
     font-size: 0.95rem;
-   }
-    .member p{
+  }
+  .member p {
     font-size: 0.88rem;
-   }
+  }
 }

@@ -3,15 +3,21 @@ import style from "./publicnav.module.css";
 import { TiHome } from "react-icons/ti";
 import { TfiMenuAlt } from "react-icons/tfi";
 import { PiNewspaperLight } from "react-icons/pi";
-import {  FaFlag } from "react-icons/fa6";
+import { FaFlag } from "react-icons/fa6";
 import { IoMdMail } from "react-icons/io";
-
+import { useTranslation } from "react-i18next";
+import { RiTranslateAi2 } from "react-icons/ri";
 interface SidebarProps {
   isSidebarOpen: boolean;
   setIsSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const SideBar = ({ setIsSidebarOpen }: SidebarProps) => {
+  const { t, i18n } = useTranslation();
+  const toggleLanguage = () => {
+    const newLang = i18n.language === "en" ? "ar" : "en";
+    i18n.changeLanguage(newLang);
+  };
   return (
     <div
       className={style.sidebar_overlay}
@@ -26,7 +32,7 @@ const SideBar = ({ setIsSidebarOpen }: SidebarProps) => {
             to={"/"}
           >
             <div>
-              <TiHome className={style.icon} /> <h5>Home</h5>
+              <TiHome className={style.icon} /> <h5>{t("public.nav.home")}</h5>
             </div>
           </NavLink>
           <NavLink
@@ -34,7 +40,8 @@ const SideBar = ({ setIsSidebarOpen }: SidebarProps) => {
             to={"/services"}
           >
             <div>
-              <TfiMenuAlt className={style.icon} /> <h5>Services</h5>
+              <TfiMenuAlt className={style.icon} />{" "}
+              <h5>{t("public.nav.services")}</h5>
             </div>
           </NavLink>
           <NavLink
@@ -43,7 +50,7 @@ const SideBar = ({ setIsSidebarOpen }: SidebarProps) => {
           >
             <div>
               <PiNewspaperLight className={style.icon} />
-              <h5>News</h5>
+              <h5>{t("public.nav.news")}</h5>
             </div>
           </NavLink>
           <NavLink
@@ -52,7 +59,7 @@ const SideBar = ({ setIsSidebarOpen }: SidebarProps) => {
           >
             <div>
               <PiNewspaperLight className={style.icon} />
-              <h5>Events</h5>
+              <h5>{t("public.nav.events")}</h5>
             </div>
           </NavLink>
           <NavLink
@@ -61,7 +68,7 @@ const SideBar = ({ setIsSidebarOpen }: SidebarProps) => {
           >
             <div>
               <FaFlag className={style.icon} />
-              <h5>Public Complaints</h5>
+              <h5> {t("public.nav.publicComplaints")}</h5>
             </div>
           </NavLink>
           <NavLink
@@ -70,9 +77,18 @@ const SideBar = ({ setIsSidebarOpen }: SidebarProps) => {
           >
             <div>
               <IoMdMail className={style.icon} />
-              <h5>Contact</h5>
+              <h5>{t("public.nav.contact")}</h5>
             </div>
           </NavLink>
+          <div className={style.translate_side_bar} onClick={toggleLanguage}>
+            <RiTranslateAi2 className={style.icon} />
+            <h5>
+              {t("public.nav.translateTo")}
+              <span style={{ color: "#1a80e5" }}>
+                {i18n.language === "en" ? "AR" : "EN"}
+              </span>
+            </h5>
+          </div>
         </div>
       </div>
     </div>

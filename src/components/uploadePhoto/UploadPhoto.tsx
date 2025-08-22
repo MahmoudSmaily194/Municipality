@@ -2,6 +2,7 @@ import type { FC } from "react";
 import style from "./uploade_image.module.css";
 import { TiDeleteOutline } from "react-icons/ti";
 import { useRef, useCallback, useEffect, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   setUploadImage: React.Dispatch<React.SetStateAction<File | null>>;
@@ -14,9 +15,9 @@ const UploadPhoto: FC<Props> = ({
   uploadImage,
   setDeleteDialog,
 }) => {
+  const { t } = useTranslation();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [dragging, setDragging] = useState(false);
-
   const handleFile = useCallback(
     (file: File) => {
       if (!file.type.startsWith("image/")) {
@@ -108,9 +109,9 @@ const UploadPhoto: FC<Props> = ({
         </div>
       ) : (
         <>
-          <h3>Upload Image</h3>
-          <p>Drag and drop or browse to upload</p>
-          <label htmlFor="file">Upload</label>
+          <h3> {t("admin.news.add.fields.image.label")}</h3>
+          <p>{t("admin.news.add.fields.image.helper")}</p>
+          <label htmlFor="file">{t("admin.news.add.actions.upload")}</label>
           <input
             type="file"
             accept="image/*"

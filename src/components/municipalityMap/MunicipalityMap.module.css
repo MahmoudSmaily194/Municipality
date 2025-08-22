@@ -1,8 +1,7 @@
 .map_con {
-  margin-top: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 .map {
@@ -11,11 +10,10 @@
 }
 
 .directionsButton {
-  font-family: "sans";
   display: block;
   margin: 1.5rem auto 0;
   padding: 0.7rem 1.6rem;
-  background-color: #0078d4;
+  background-color: #1a80e5;
   color: white;
   font-weight: 700;
   border: none;
@@ -28,11 +26,11 @@
   text-align: center;
 }
 
-.directionsButton,.mylocation_btn:hover {
+.directionsButton:hover {
   background-color: #005a9e;
 }
-.mylocation_btn{
-    display: block;
+.mylocation_btn {
+  display: block;
   padding: 0.7rem 1.6rem;
   background-color: #0078d4;
   color: white;
@@ -45,11 +43,13 @@
   width: 40%;
   text-align: center;
 }
-.loca_btns{
+.mylocation_btn:hover {
+  background-color: #005a9e;
+}
+.loca_btns {
   display: flex;
- align-items: center;
- justify-content: center;
+  align-items: center;
+  justify-content: center;
   gap: 1rem;
   margin-top: 1.5rem;
- 
 }

@@ -1,10 +1,9 @@
 .eventModel_page {
   width: 100%;
   margin-top: 1rem;
-  border-left: 2px solid #1a80e5;
+  border-inline-start: 2px solid #1a80e5;
   display: flex;
   justify-content: center;
-  font-family: "sans";
 }
 .eventModel {
   margin-top: 3rem;
@@ -66,10 +65,9 @@
   background-color: #e8edf2;
   border: none;
   border-radius: 8px;
-  padding-left: 1rem;
+  padding-inline-start: 1rem;
   font-size: 1rem;
   color: #4f7396;
-  font-family: "sans";
 }
 .eventModel_form_title_date_inpts div input {
   width: calc(100% - 1rem);
@@ -80,10 +78,9 @@
   background-color: #e8edf2;
   border: none;
   border-radius: 8px;
-  padding-left: 1rem;
+  padding-inline-start: 1rem;
   font-size: 1rem;
   color: #4f7396;
-  font-family: "sans";
 }
 .eventModel_upload_photo {
   height: 17rem;
@@ -102,9 +99,9 @@
   border: none;
   height: 2.5rem;
   width: 8rem;
-  margin-right: 1rem;
+  margin-inline-end: 1rem;
   border-radius: 12px;
-  font-family: "sans";
+
   font-weight: 700;
   background-color: transparent;
   border: 2px solid black;
@@ -136,7 +133,7 @@
   .eventModel_form_con form input {
     width: 100%;
     font-size: 0.8rem;
-    padding-left: 0.3rem;
+    padding-inline-start: 0.3rem;
   }
   .eventModel label {
     font-size: 0.8rem;

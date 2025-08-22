@@ -3,7 +3,6 @@
   align-items: center;
   justify-content: center;
   margin-top: 4rem;
-  font-family: "sans";
 }
 .events_con {
   width: 75%;
@@ -11,8 +10,7 @@
   flex-direction: column;
   gap: 2rem;
 }
-.header {
-}
+
 .events {
   display: flex;
   flex-direction: column;
@@ -55,10 +53,14 @@
 .event_text_con button:hover {
   background-color: #1a75d0;
 }
-.event img {
+.event_img_con {
   width: 35%;
   height: 100%;
   border-radius: 12px;
+}
+.event_image {
+  height: 10.5rem;
+  border-radius: 8px;
 }
 @media (max-width: 867px) {
   .event {
@@ -71,14 +73,13 @@
   }
   .event_text_con {
     width: 95%;
-   
   }
-  .event img {
+  .event_img_con {
     width: 100%;
   }
 }
 @media (max-width: 567px) {
-.events_con{
+  .events_con {
     width: 90%;
-}
+  }
 }

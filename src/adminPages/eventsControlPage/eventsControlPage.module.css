@@ -2,14 +2,14 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  border-left: 2px solid #1a80e5;
+  border-inline-start: 2px solid #1a80e5;
   margin-top: 1rem;
   margin-bottom: 3rem;
 }
 .events_control_page {
   margin-top: 0.5rem;
   width: 90%;
-  font-family: "sans";
+
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -30,7 +30,7 @@
   background-color: transparent;
   border: 2px solid #1a80e5;
   border-radius: 8px;
-  font-family: "sans";
+
   font-weight: 700;
   color: #1a80e5;
 }
@@ -54,7 +54,6 @@
 }
 .events_control_table_con table {
   width: 100%;
-  font-family: "sans";
 }
 .events_control_table_con th {
   text-align: start;
@@ -70,44 +69,55 @@
 }
 .events_control_table_con td div {
   display: flex;
+  gap: 0.7rem;
 }
 .events_control_table_con td div p {
   font-weight: 700;
 }
-@media(max-width:876px){
-    .events_control_page_con{
-        margin-top: 4rem;
-    }
+.events_edit_btn,
+.events_delete_btn {
+  cursor: pointer;
 }
-@media(max-width:636px){
-    .events_control_page_con{
-        max-width:99% ;
-    }
-    .events_control_table_con{
-        overflow: hidden;
-    }
-     .events_control_table_con>div{
- overflow-x:auto ;
-     }
-.events_control_table_con table {
-    width: 550px; 
+.events_delete_btn:hover {
+  color: #e82933;
 }
-.events_control_page_header button{
-     width: 6rem ; 
+.events_edit_btn:hover {
+  color: #1a80e5;
 }
-.events_control_page_header h1 {
-      font-size: 1.5rem;
+@media (max-width: 876px) {
+  .events_control_page_con {
+    margin-top: 4rem;
+  }
 }
+@media (max-width: 636px) {
+  .events_control_page_con {
+    max-width: 99%;
+  }
+  .events_control_table_con {
+    overflow: hidden;
+  }
+  .events_control_table_con > div {
+    overflow-x: auto;
+  }
+  .events_control_table_con table {
+    width: 550px;
+  }
+  .events_control_page_header button {
+    width: 6rem;
+  }
+  .events_control_page_header h1 {
+    font-size: 1.5rem;
+  }
 }
-@media(max-width:436px){
-    .events_control_page_header h1 {
-        text-align: start;
-      font-size: 1.28rem;
-}
- .events_control_page>p{
+@media (max-width: 436px) {
+  .events_control_page_header h1 {
+    text-align: start;
+    font-size: 1.28rem;
+  }
+  .events_control_page > p {
     font-size: 0.85rem !important;
   }
-  .events_control_page>h3{
+  .events_control_page > h3 {
     font-size: 1rem !important;
   }
 }

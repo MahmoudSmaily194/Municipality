@@ -6,8 +6,8 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  margin-top: 12px;
-  margin-bottom: 12px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 .logo_cont {
   flex: 2;
@@ -15,19 +15,19 @@
   align-items: center;
   gap: 1rem;
   color: #0d141c;
-  margin-left: 3%;
+  margin-inline-start: 3%;
 }
 .logo_cont img {
-  width: 42px;
-  height: 42px;
+  width: 41px;
+  height: 41px;
 }
 .logo_cont h3 {
-  font-family: "sans";
   font-weight: 700;
+  font-size: 1.3rem;
 }
 .nav_tags {
   display: flex;
-  margin-right: 2%;
+  margin-inline-end: 2%;
   flex: 2;
   align-items: center;
   justify-content: space-evenly;
@@ -35,11 +35,8 @@
 .nav_tags a {
   text-decoration: none;
   color: #0d141c;
-  font-family: "sans";
   font-weight: 500;
-  transition: 
-    transform 0.2s ease-in-out,
-    color 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
   padding: 6px 12px;
   border-radius: 6px;
@@ -49,8 +46,7 @@
 .nav_tags a:hover {
   transform: translateY(-4px);
 
-  color: #1A80E5; /* soft blue for emphasis */
-
+  color: #1a80e5; /* soft blue for emphasis */
 }
 .search {
   width: 40px;
@@ -70,12 +66,15 @@
     flex: 3;
   }
 }
+.sidebar_overlay {
+  display: none;
+}
 .sideBar_con {
   display: flex;
   position: absolute;
   background-color: white;
   width: 50%;
-  border-bottom-right-radius: 20px;
+  border-end-end-radius: 20px;
   justify-content: center;
   z-index: 999;
 }
@@ -86,7 +85,7 @@
   }
   .menu_icon {
     display: flex;
-    margin-right: 5%;
+    margin-inline-end: 5%;
     font-size: 1.5rem;
     width: 40px;
     height: 40px;
@@ -100,7 +99,9 @@
   .search {
     display: none;
   }
+
   .sidebar_overlay {
+    display: flex;
     width: 100%;
     position: absolute;
     background-color: rgba(0, 0, 0, 0.3);
@@ -111,21 +112,21 @@
   .sideBar_tags {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.5rem;
     margin: 5% 0;
     width: 90%;
   }
   .sideBar_tags a {
     text-decoration: none;
     color: #0d141c;
-    font-family: "sans";
+
     font-weight: 500;
   }
   .sideBar_tags div {
     display: flex;
     align-items: center;
     gap: 2rem;
-    padding-left: 5%;
+    padding-inline-start: 5%;
     height: 3rem;
   }
 
@@ -145,4 +146,25 @@
   .sideBar_con {
     width: 60%;
   }
+}
+.translate button {
+  height: 2.5rem;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 50%;
+  width: 2.5rem;
+  background-color: transparent;
+  border: none;
+  border: 2px solid #1a80e5;
+  background-color: #1a80e5;
+  color: white;
+  transition: scale 0.1s ease-in-out;
+}
+.translate button:hover {
+  scale: 1.05;
+}
+.translate_side_bar h5 {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
 }

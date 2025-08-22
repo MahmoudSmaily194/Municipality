@@ -1,12 +1,11 @@
-import img from "../assets/event.png"
-
+import img from "../assets/event.png";
 
 export const events = [
   {
     url: img,
     title: "Community Cleanup Day",
     details:
-      "Join us for a day of community service as we work together to clean up our local parks and streets. Bring your friends and family for a fun and rewarding experience.",
+      "Join us for a day of community service as we work together to clean up our local parks and streets Bring your friends and family for a fun and rewarding experience Join us for a day of community service as we work together to clean up our local parks and streets Bring your friends and family for a fun and rewarding experience.",
     date: "July 15, 2024",
     location: "next to clock tower",
   },

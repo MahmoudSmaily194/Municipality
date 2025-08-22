@@ -9,10 +9,12 @@ import { PiMegaphoneLight } from "react-icons/pi";
 import { IoSettingsOutline } from "react-icons/io5";
 import { useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
+import LogoutButton from "../logoutBtn/LogoutButton";
+import { useTranslation } from "react-i18next";
 
 const DashBoardSideBar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const { t } = useTranslation();
   return (
     <>
       <div
@@ -24,48 +26,91 @@ const DashBoardSideBar = () => {
           <div className={style.dashboard_sideBar_header}>
             <img src={img} alt="logo" />
             <div>
-              <h3>Municipality of Sawirah</h3>
-              <p>Admin</p>
+              <h3>{t("public.branding.municipality")}</h3>
+              <p>{t("admin.sidebar.admin")}</p>
             </div>
           </div>
           <div className={style.dashboard_sideBar_nav_con}>
             <nav>
-              <NavLink to="">
-                <div>
+              <NavLink
+                to=""
+                className={({ isActive }) => (isActive ? style.isactive : "")}
+                end
+              >
+                <div
+                  onClick={() => {
+                    setIsOpen(false);
+                  }}
+                >
                   <GoHomeFill className={style.dashboard_icon} />
-                  <p>Dashboard</p>
+                  <p>{t("admin.sidebar.dashboard")}</p>
                 </div>
               </NavLink>
-              <NavLink to="news">
-                <div>
+              <NavLink
+                to="news"
+                className={({ isActive }) => (isActive ? style.isactive : "")}
+              >
+                <div
+                  onClick={() => {
+                    setIsOpen(false);
+                  }}
+                >
                   <PiNewspaperLight className={style.dashboard_icon} />
-                  <p>News</p>
+                  <p>{t("admin.sidebar.news")}</p>
                 </div>
               </NavLink>
-              <NavLink to="events">
-                <div>
+              <NavLink
+                to="events"
+                className={({ isActive }) => (isActive ? style.isactive : "")}
+              >
+                <div
+                  onClick={() => {
+                    setIsOpen(false);
+                  }}
+                >
                   <MdEventNote className={style.dashboard_icon} />
-                  <p>Events</p>
+                  <p>{t("admin.sidebar.events")}</p>
                 </div>
               </NavLink>
-              <NavLink to="services">
-                <div>
+              <NavLink
+                to="services"
+                className={({ isActive }) => (isActive ? style.isactive : "")}
+              >
+                <div
+                  onClick={() => {
+                    setIsOpen(false);
+                  }}
+                >
                   <PiHandWavingBold className={style.dashboard_icon} />
-                  <p>Services</p>
+                  <p>{t("admin.sidebar.services")}</p>
                 </div>
               </NavLink>
-              <NavLink to="complaints">
-                <div>
+              <NavLink
+                to="complaints"
+                className={({ isActive }) => (isActive ? style.isactive : "")}
+              >
+                <div
+                  onClick={() => {
+                    setIsOpen(false);
+                  }}
+                >
                   <PiMegaphoneLight className={style.dashboard_icon} />
-                  <p>Complaints</p>
+                  <p>{t("admin.sidebar.complaints")}</p>
                 </div>
               </NavLink>
-              <NavLink to="settings">
+              <NavLink
+                onClick={() => {
+                  setIsOpen(false);
+                }}
+                to="settings"
+                className={({ isActive }) => (isActive ? style.isactive : "")}
+              >
                 <div>
                   <IoSettingsOutline className={style.dashboard_icon} />
-                  <p>Settings</p>
+                  <p>{t("admin.sidebar.settings")}</p>
                 </div>
               </NavLink>
+              <LogoutButton />
             </nav>
           </div>
         </div>
@@ -81,9 +126,7 @@ const DashBoardSideBar = () => {
 
       {/* Overlay only active when sidebar open */}
       <div
-        className={`${style.admin_body_overlay} ${
-          isOpen ? style.active : ""
-        }`}
+        className={`${style.admin_body_overlay} ${isOpen ? style.active : ""}`}
         onClick={() => setIsOpen(false)}
       />
     </>

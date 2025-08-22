@@ -1,119 +1,283 @@
-import { useEffect, useState } from "react";
-import LocationSelector from "../../components/municipalityMap/LocationSelector";
-import style from "./report.module.css";
-import { TiDeleteOutline } from "react-icons/ti";
+import React, { useEffect, useRef, useState } from "react";
+import toast from "react-hot-toast";
+import { useTranslation } from "react-i18next";
+import AlertDialog from "../../components/alertDialog/AlertDialog";
 import DeleteDialog from "../../components/deleteDialog/DeleteDialog";
+import LocationSelector from "../../components/municipalityMap/LocationSelector";
+import {
+  useCreateComplaint,
+  usegetComplaintIssueType,
+} from "../../hooks/useComplaints";
+import { useAlertDialogStore } from "../../stores/AlertDialogStore";
+import type { ComplaintFormDataType } from "./ComplaintFormDataType";
+
+import style from "./report.module.css";
+import UploadPhoto from "../../components/uploadePhoto/UploadPhoto";
+
 const Report = () => {
+  const { t } = useTranslation();
+  const { isOpen } = useAlertDialogStore();
   const [uploadedImage, setUploadedImage] = useState<File | null>(null);
   const [deleteUploadedImage, setDeleteUploadedImage] = useState(false);
-  const hanldeUploadImage = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      setUploadedImage(file);
-    }
-  };
-  const handleSaveLocation = (coords: [number, number]) => {
-    console.log(coords);
-  };
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setUploadedImage(null);
-  };
-  useEffect(() => {
-    if (deleteUploadedImage) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+  const fullNameRef = useRef<HTMLInputElement>(null);
+  const phoneNumberRef = useRef<HTMLInputElement>(null);
+  const locationRef = useRef<HTMLDivElement>(null);
+  const { data } = usegetComplaintIssueType();
+  const [validateInputs, setValidateInputs] = useState<{
+    nameError: string | null;
+    phoneError: string | null;
+  }>({
+    nameError: null,
+    phoneError: null,
+  });
 
+  const [complaintFormData, setComplaintFormData] =
+    useState<ComplaintFormDataType>({
+      fullName: "",
+      phoneNumber: "",
+      issueTypeId: "",
+      description: "",
+      latitude: "",
+      longitude: "",
+    });
+
+  const handleSaveLocation = (coords: [number, number]) => {
+    setComplaintFormData((prev) => ({
+      ...prev,
+      latitude: coords[0].toString(),
+      longitude: coords[1].toString(),
+    }));
+  };
+
+  useEffect(() => {
+    document.body.style.overflow = deleteUploadedImage ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
   }, [deleteUploadedImage]);
 
+  const { mutate: createComplaint, isPending } = useCreateComplaint();
+
+  const fullNameHandleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value.trim();
+
+    let error: string | null = null;
+    const nameRegex = /^[\u0600-\u06FFa-zA-Z\s]+$/; // Arabic + English + spaces
+
+    if (value === "")
+      error = t("public.reportForm.validation.fullName.required");
+    else if (value.length < 3)
+      error = t("public.reportForm.validation.fullName.minLength");
+    else if (!nameRegex.test(value))
+      error = t("public.reportForm.validation.fullName.lettersOnly");
+    else if (value.split(" ").filter(Boolean).length < 2)
+      error = t("public.reportForm.validation.fullName.firstLast");
+
+    setValidateInputs((prev) => ({ ...prev, nameError: error }));
+    setComplaintFormData((prev) => ({ ...prev, fullName: event.target.value }));
+  };
+
+  const phoneNbHandleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value.trim();
+    const regex = /^(3\d{6}|7[013689]\d{6}|81\d{6})$/;
+
+    let error: string | null = null;
+    if (value === "")
+      error = t("public.reportForm.validation.mobileNumber.required");
+    else if (!/^\d+$/.test(value))
+      error = t("public.reportForm.validation.mobileNumber.digitsOnly");
+    else if (value.length !== 8)
+      error = t("public.reportForm.validation.mobileNumber.exactLength");
+    else if (!regex.test(value))
+      error = t("public.reportForm.validation.mobileNumber.invalid");
+
+    setValidateInputs((prev) => ({ ...prev, phoneError: error }));
+    setComplaintFormData((prev) => ({ ...prev, phoneNumber: value }));
+  };
+
+  const scrollToError = () => {
+    if (validateInputs.nameError && fullNameRef.current) {
+      fullNameRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+      fullNameRef.current.focus();
+      return true;
+    }
+    if (validateInputs.phoneError && phoneNumberRef.current) {
+      phoneNumberRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+      phoneNumberRef.current.focus();
+      return true;
+    }
+    if (
+      (!complaintFormData.latitude || !complaintFormData.longitude) &&
+      locationRef.current
+    ) {
+      locationRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+      return true;
+    }
+    return false;
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    // Trigger validation
+    fullNameHandleChange({
+      target: { value: complaintFormData.fullName },
+    } as any);
+    phoneNbHandleChange({
+      target: { value: complaintFormData.phoneNumber },
+    } as any);
+
+    const hasErrors = scrollToError();
+    if (hasErrors) return;
+    toast.success(t("public.reportForm.submit") + " ✅");
+    const formData = new FormData();
+    formData.append("FullName", complaintFormData.fullName);
+    formData.append("PhoneNumber", `+961${complaintFormData.phoneNumber}`);
+    formData.append("Description", complaintFormData.description);
+    formData.append("IssueId", complaintFormData.issueTypeId);
+    formData.append("Latitude", complaintFormData.latitude);
+    formData.append("Longitude", complaintFormData.longitude);
+    if (uploadedImage) formData.append("Image", uploadedImage);
+
+    createComplaint(formData);
+    setUploadedImage(null);
+    setComplaintFormData({
+      fullName: "",
+      phoneNumber: "",
+      issueTypeId: "",
+      description: "",
+      latitude: "",
+      longitude: "",
+    });
+  };
+
+  useEffect(() => {
+    if (data && data.length > 0 && complaintFormData.issueTypeId === "") {
+      setComplaintFormData((prev) => ({
+        ...prev,
+        issueTypeId: data[0].id,
+      }));
+    }
+  }, [data]);
+
   return (
     <div className={style.report_page_con}>
       <div className={style.report_page}>
-        <h1>Report an Issue</h1>
+        <h1>{t("public.reportForm.title")}</h1>
         <div className={style.report_form}>
-          <form
-            onSubmit={(e) => {
-              handleSubmit(e);
-            }}
-          >
+          <form onSubmit={handleSubmit}>
             <div className={style.name_phoNb_inpts}>
               <div>
-                <label htmlFor="name">Full Name</label>
+                <label htmlFor="name">
+                  {t("public.reportForm.fullName.label")}
+                </label>
                 <input
                   type="text"
                   id="name"
-                  placeholder="Please write your full name"
-                  required
+                  placeholder={t("public.reportForm.fullName.placeholder")}
+                  ref={fullNameRef}
+                  onChange={fullNameHandleChange}
+                  value={complaintFormData.fullName}
+                  maxLength={100}
                 />
+                {validateInputs.nameError && (
+                  <p className={style.error}>{validateInputs.nameError}</p>
+                )}
               </div>
+
               <div>
-                <label htmlFor="phoneNb">Mobile Number</label>
+                <label htmlFor="phoneNb">
+                  {t("public.reportForm.mobileNumber.label")}
+                </label>
                 <input
                   type="tel"
                   id="mobile"
-                  required
-                  placeholder="Enter your phone nb"
+                  placeholder={t("public.reportForm.mobileNumber.placeholder")}
+                  ref={phoneNumberRef}
+                  onChange={phoneNbHandleChange}
+                  value={complaintFormData.phoneNumber}
+                  maxLength={15}
                 />
+                {validateInputs.phoneError && (
+                  <p className={style.error}>{validateInputs.phoneError}</p>
+                )}
               </div>
             </div>
-            <label htmlFor="issueType">Issue Type</label>
-            <select id="issueType">
-              <option value="">kjaoiduq</option>
-              <option value="">djksaufd</option>
-              <option value="">ahfiqwe</option>
+
+            <label htmlFor="issueType">
+              {t("public.reportForm.issueType.label")}
+            </label>
+            <select
+              id="issueType"
+              onChange={(event) => {
+                setComplaintFormData((prev) => ({
+                  ...prev,
+                  issueTypeId: event.target.value,
+                }));
+              }}
+            >
+              {data?.map((issue) => {
+                return (
+                  <option key={issue.id} value={issue.id}>
+                    {issue.issueName}
+                  </option>
+                );
+              })}
             </select>
-            <label htmlFor="description">Description</label>
-            <textarea id="description" />
+
+            <label htmlFor="description">
+              {t("public.reportForm.description.label")}
+            </label>
+            <textarea
+              id="description"
+              value={complaintFormData.description}
+              onChange={(event) =>
+                setComplaintFormData((prev) => ({
+                  ...prev,
+                  description: event.target.value,
+                }))
+              }
+              maxLength={1000}
+            />
+
+            {/* ✅ Replaced old upload logic with UploadPhoto */}
             <div className={style.uploadImg_con}>
-              {uploadedImage ? (
-                <div className={style.image_cont}>
-                  <div
-                    onClick={() => {
-                      setDeleteUploadedImage(true);
-                    }}
-                  >
-                    <TiDeleteOutline className={style.x_icon} />
-                  </div>
-                  <img
-                    className={style.uploaded_img}
-                    src={URL.createObjectURL(uploadedImage)}
-                  />
-                </div>
-              ) : (
-                <>
-                  <h4>Upload Photo</h4>
-                  <p>Add a photo to help us understand the issue better.</p>
-                  <label htmlFor="upload" className={style.upload_photo}>
-                    Upload Photo
-                  </label>
-                  <input
-                    type="file"
-                    accept=".jpg,.jpeg,.png,.gif,.webp,.svg,.bmp,.tiff,.heif,.heic,.raw,.cr2,.nef,.arw,.jp2,.jpf"
-                    hidden
-                    id="upload"
-                    onChange={(e) => {
-                      hanldeUploadImage(e);
-                    }}
-                  />
-                </>
-              )}
+              <UploadPhoto
+                setUploadImage={setUploadedImage}
+                uploadImage={uploadedImage}
+                setDeleteDialog={setDeleteUploadedImage}
+              />
             </div>
-            <LocationSelector onSave={handleSaveLocation} />
-            <button type="submit">Submit Report</button>
+
+            <div ref={locationRef}>
+              <LocationSelector onSave={handleSaveLocation} />
+            </div>
+
+            <button type="submit" disabled={isPending}>
+              {isPending
+                ? t("public.reportForm.submitting")
+                : t("public.reportForm.submit")}
+            </button>
           </form>
         </div>
       </div>
-      {deleteUploadedImage ? (
+
+      {deleteUploadedImage && (
         <DeleteDialog
           setDeleteUploadedImage={setDeleteUploadedImage}
           setUploadedImage={setUploadedImage}
         />
-      ) : null}
+      )}
+      {isOpen && <AlertDialog />}
     </div>
   );
 };

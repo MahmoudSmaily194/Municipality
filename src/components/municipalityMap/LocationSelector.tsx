@@ -9,6 +9,9 @@ import {
 } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+import { useAlertDialogStore } from "../../stores/AlertDialogStore";
+import toast from "react-hot-toast";
+import { useTranslation } from "react-i18next";
 
 // Fix marker icon
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -48,12 +51,13 @@ export default function LocationSelector({
 }: {
   onSave: (coords: Coordinates) => void;
 }) {
-  const [location, setLocation] = useState<Coordinates | null>(null);
+  const { setIsOpen, setActionText } = useAlertDialogStore();
 
+  const [location, setLocation] = useState<Coordinates | null>(null);
   const handleUseMyLocation = () => {
     if (!navigator.geolocation) {
-      alert("Geolocation is not supported by your browser.");
-      return;
+      setActionText("Geolocation is not supported by your browser.");
+      setIsOpen(true);
     }
 
     navigator.geolocation.getCurrentPosition(
@@ -65,7 +69,8 @@ export default function LocationSelector({
         setLocation(coords);
       },
       (error) => {
-        alert("Unable to retrieve your location.");
+        setActionText("Unable to retrieve your location.");
+        setIsOpen(true);
         console.error(error);
       }
     );
@@ -74,48 +79,51 @@ export default function LocationSelector({
   const handleSave = () => {
     if (location) {
       onSave(location);
-      alert("Location saved!");
+      toast.success(t("toast.saveLocation"));
     } else {
-      alert("⚠️ Please select a location first.");
+      setActionText("Please select your location");
+      setIsOpen(true);
     }
   };
-
+  const { t } = useTranslation();
   return (
-    <div>
-      <MapContainer
-        center={[33.6863, 35.909]}
-        zoom={13}
-        scrollWheelZoom
-        style={{
-          height: "400px",
-          width: "100%",
-          marginTop: "10px",
-          borderRadius: "12px",
-        }}
-      >
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution="&copy; OpenStreetMap contributors"
-        />
-        <LocationMarker location={location} setLocation={setLocation} />
-        <FlyToLocation location={location} />
-      </MapContainer>
-      <div className={style.loca_btns}>
-        <button
-          onClick={handleUseMyLocation}
-          className={style.mylocation_btn}
-          type="button"
+    <>
+      <div>
+        <MapContainer
+          center={[33.6863, 35.909]}
+          zoom={13}
+          scrollWheelZoom
+          style={{
+            height: "400px",
+            width: "100%",
+            marginTop: "10px",
+            borderRadius: "12px",
+          }}
         >
-          Use My Location
-        </button>
-        <button
-          onClick={handleSave}
-          className={style.mylocation_btn}
-          type="button"
-        >
-          Save the location
-        </button>
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution="&copy; OpenStreetMap contributors"
+          />
+          <LocationMarker location={location} setLocation={setLocation} />
+          <FlyToLocation location={location} />
+        </MapContainer>
+        <div className={style.loca_btns}>
+          <button
+            onClick={handleUseMyLocation}
+            className={style.mylocation_btn}
+            type="button"
+          >
+            {t("public.location.useMyLocation")}
+          </button>
+          <button
+            onClick={handleSave}
+            className={style.mylocation_btn}
+            type="button"
+          >
+            {t("public.location.saveLocation")}
+          </button>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

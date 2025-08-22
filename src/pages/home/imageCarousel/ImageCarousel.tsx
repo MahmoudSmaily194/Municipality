@@ -7,9 +7,11 @@ import img4 from "../../../assets/carousel4.jpg";
 import img5 from "../../../assets/carousel5.jpg";
 import { FaAngleLeft } from "react-icons/fa";
 import { FaAngleRight } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 const images = [img1, img2, img3, img4, img5];
 
 const ImageCarousel = () => {
+  const { t, i18n } = useTranslation();
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const [currentIndex, setCurrentIndex] = useState(2);
   const goToIndex = (index: number) => {
@@ -25,7 +27,7 @@ const ImageCarousel = () => {
   const startAutoSlide = () => {
     intervalRef.current = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % images.length);
-    }, 3000);
+    }, 5000);
   };
 
   const stopAutoSlide = () => {
@@ -64,7 +66,7 @@ const ImageCarousel = () => {
   };
   return (
     <div className={styles.carouselWrapper}>
-      <h2>Explore Our Town</h2>
+      <h2>{t("public.home.exploreOurTown")}</h2>
       <div className={styles.carousel}>
         <div
           className={styles.carouselImages}
@@ -80,7 +82,7 @@ const ImageCarousel = () => {
               key={index}
               className={
                 index === currentIndex
-                  ? `${styles.dot} ${styles.active}`
+                  ? `${styles.dot} ${styles.dot_active}`
                   : styles.dot
               }
               onClick={() => goToIndex(index)}

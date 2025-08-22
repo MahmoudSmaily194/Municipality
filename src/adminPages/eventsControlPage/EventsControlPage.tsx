@@ -1,69 +1,136 @@
+import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import DeleteRowDialog from "../../components/deleteRowDialog/DeleteRowDialog";
+import { useDeleteEvent, useEvents } from "../../hooks/useEvents";
+import { useDeleteDialogStore } from "../../stores/DeleteRowDialogStore";
 import style from "./eventsControlPage.module.css";
+import { useTranslation } from "react-i18next";
+import DateConverter from "../../components/date/Date";
 
 const EventsControlPage = () => {
-  const navigate=useNavigate();
+  const filters = {
+    SortBy: "",
+    SortDirection: "",
+    ComplaintStatus: "",
+    DateFilter: "",
+    SearchTerm: "",
+  };
+  const { t } = useTranslation();
+  const navigate = useNavigate();
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
+    useEvents(filters);
+  const { openDialog, isOpen } = useDeleteDialogStore();
+  const { mutate: deleteEvent } = useDeleteEvent();
+
+  const handleDeleteClick = (eventId: string) => {
+    openDialog(eventId, () => {
+      deleteEvent(eventId);
+    });
+  };
+
+  const loaderRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && hasNextPage && !isFetchingNextPage) {
+        fetchNextPage();
+      }
+    });
+
+    if (loaderRef.current) {
+      observer.observe(loaderRef.current);
+    }
+
+    return () => {
+      if (loaderRef.current) {
+        observer.unobserve(loaderRef.current);
+      }
+    };
+  }, [hasNextPage, isFetchingNextPage, fetchNextPage]);
+
   return (
     <div className={style.events_control_page_con}>
       <div className={style.events_control_page}>
         <div className={style.events_control_page_header}>
-          <h1>Events Management</h1> <button onClick={()=>{navigate("../eventmodel")}}>Add Event</button>
+          <h1>{t("admin.events.management.title")}</h1>
+          <button onClick={() => navigate("../eventmodel")}>
+            {t("admin.events.management.add.button")}
+          </button>
         </div>
-        <p>Manage and create events for the city of Springfield</p>
-        <h3>Existing Events</h3>
+
+        <p>{t("admin.events.management.add.description")}</p>
+
+        <h3>{t("admin.events.management.existing.title")}</h3>
+
         <div className={style.events_control_table_con}>
-            <div>
-          <table>
-            <tr>
-              <th>Title</th>
-              <th>Date</th>
-              <th>Location</th>
-              <th>Actions</th>
-            </tr>
-            <tr>
-              <td style={{ color: "black" }}>Community Cleanup</td>
-              <td>2024-07-15</td>
-              <td>Central Park</td>
-              <td>
-                <div>
-                  <p>Edit</p> <p> |</p> <p>Delete</p>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td style={{ color: "black" }}>Summer Concert Series</td>
-              <td>2024-07-15</td>
-              <td>Central Park</td>
-              <td>
-                <div>
-                  <p>Edit</p> <p> |</p> <p>Delete</p>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td style={{ color: "black" }}>Community Cleanup</td>
-              <td>2024-07-15</td>
-              <td>Central Park</td>
-              <td>
-                <div>
-                  <p>Edit</p> <p> |</p> <p>Delete</p>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td style={{ color: "black" }}>Community Cleanup</td>
-              <td>2024-07-15</td>
-              <td>Central Park</td>
-              <td>
-                <div>
-                  <p>Edit</p> <p> |</p> <p>Delete</p>
-                </div>
-              </td>
-            </tr>
-          </table>
+          <div>
+            <table>
+              <thead>
+                <tr>
+                  <th>
+                    {t("admin.events.management.existing.table.headers.title")}
+                  </th>
+                  <th>
+                    {t("admin.events.management.existing.table.headers.date")}
+                  </th>
+                  <th>
+                    {t(
+                      "admin.events.management.existing.table.headers.location"
+                    )}
+                  </th>
+                  <th>
+                    {t(
+                      "admin.events.management.existing.table.headers.actions"
+                    )}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {/* Dynamic Data from React Query */}
+                {data?.pages
+                  .flatMap((page) => page.items)
+                  .map((event) => (
+                    <tr key={event.id}>
+                      <td style={{ color: "black" }}>
+                        {event.title.split(" ").slice(0, 5).join(" ")}
+                      </td>
+                      <td>
+                        <DateConverter date={new Date(event.date ?? "")} />
+                      </td>
+                      <td>{event.location}</td>
+                      <td>
+                        <div>
+                          <p
+                            onClick={() => navigate(`${event.slug}`)}
+                            className={style.events_edit_btn}
+                          >
+                            {t(
+                              "admin.events.management.existing.table.actions.view"
+                            )}
+                          </p>
+                          <p> |</p>
+                          <p
+                            className={style.events_delete_btn}
+                            onClick={() => handleDeleteClick(event.id ?? "")}
+                          >
+                            {t(
+                              "admin.events.management.existing.table.actions.delete"
+                            )}
+                          </p>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+
+            {/* Loader Trigger for Infinite Scroll */}
+            <div ref={loaderRef} style={{ height: "20px" }}></div>
           </div>
         </div>
       </div>
+
+      {isOpen && <DeleteRowDialog />}
     </div>
   );
 };

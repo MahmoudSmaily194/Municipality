@@ -3,10 +3,10 @@
   padding: 2rem 1rem;
   max-width: 1200px;
   margin: 0 auto;
+  direction: ltr;
 }
 
 .carouselWrapper h2 {
-  font-family: "sans";
   font-weight: 700;
   font-size: 2.25rem;
   color: #333;
@@ -32,7 +32,6 @@
 }
 
 .image {
-
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -70,7 +69,6 @@
   transform: scale(0.7);
 }
 .rightImage {
-    
   right: 40%;
   left: auto;
   z-index: 2;
@@ -126,6 +124,26 @@
   transition: background-color 0.3s ease;
 }
 
-.dot.active {
+.dot_active {
   background-color: #6c63ff;
+}
+@media (max-width: 576px) {
+  .active {
+    left: 20%;
+    width: 60%;
+    z-index: 3;
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+@media (max-width: 436px) {
+  .active {
+    left: 15%;
+    width: 70%;
+    z-index: 3;
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
 }

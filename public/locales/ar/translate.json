@@ -1,0 +1,532 @@
+{
+  "public": {
+    "site": {
+      "title": "بلدية الصويرة"
+    },
+    "location": {
+      "useMyLocation": "استخدام موقعي",
+      "saveLocation": "حفظ الموقع"
+    },
+    "auth": {
+      "login": {
+        "title": "تسجيل الدخول",
+        "email": {
+          "label": "بريدك الإلكتروني"
+        },
+        "password": {
+          "label": "كلمة المرور"
+        },
+        "forgot": "نسيت كلمة المرور؟",
+        "submit": "تسجيل الدخول",
+        "loggingIn": "جارٍ تسجيل الدخول",
+        "failed": "فشل تسجيل الدخول",
+        "tryAgain": "ًحاول مجدداً"
+      }
+    },
+    "branding": {
+      "municipality": "بلدية الصويرة"
+    },
+    "nav": {
+      "home": "الرئيسية",
+      "services": "الخدمات",
+      "news": "الأخبار",
+      "events": "الفعاليات",
+      "publicComplaints": "الشكاوى العامة",
+      "contact": "اتصل بنا",
+      "translateTo": "ترجم الى الغة "
+    },
+    "footer": {
+      "followUs": "تابعنا للحصول على آخر التحديثات والفعاليات.",
+      "contactEmail": "info@municipality.gov.lb",
+      "copyright": "تم إنشاء الموقع بواسطة محمود محمد الصميلي © 2025"
+    },
+    "deleteDialog": {
+      "title": "حذف العنصر",
+      "message": "هل أنت متأكد أنك تريد حذف هذه الصورة؟ لا يمكن التراجع عن هذا الإجراء.",
+      "buttons": {
+        "cancel": "إلغاء",
+        "delete": "حذف"
+      }
+    },
+    "home": {
+      "title": "بلدية الصويرة",
+      "body": "بوابتك المجتمعية للمعلومات والخدمات والمشاركة.",
+      "button": "استكشاف الخدمات",
+      "exploreOurTown": "استكشف مدينتنا",
+      "quickAccess": {
+        "title": "الوصول السريع",
+        "payBills": "دفع الفواتير",
+        "applyforPermits": "التقدم للحصول على تصاريح",
+        "trashSchedule": "جدول جمع النفايات",
+        "reportaProblem": "الإبلاغ عن مشكلة"
+      },
+      "events": {
+        "upcomingEvents": "الفعاليات القادمة",
+        "button": "عرض التفاصيل"
+      },
+      "news": {
+        "title": "آخر الأخبار",
+        "readMore": "اقرأ المزيد"
+      },
+      "contact": {
+        "title": "اتصل بنا لمزيد من المعلومات",
+        "body": "هل لديك سؤال أو تحتاج إلى مساعدة؟ نحن هنا لدعمك بالخدمات والتصاريح والمعلومات المحلية. تواصل معنا عبر الهاتف أو البريد الإلكتروني أو قم بزيارتنا شخصيًا. مشاركتك تساعدنا في خدمتك بشكل أفضل.",
+        "fullName": "الاسم الكامل",
+        "email": "البريد الإلكتروني",
+        "subject": "الموضوع",
+        "message": "الرسالة",
+        "accept": "قبول",
+        "terms": " الشروط والاحكام",
+        "submit": "إرسال",
+        "sending": "جارٍ الإرسال"
+      }
+    },
+    "services": {
+      "title": "خدمات البلدية",
+      "viewDetails": "عرض التفاصيل",
+      "allServices": "جميع الخدمات",
+      "search": "بحث... "
+    },
+    "viewService": {
+      "back": "رجوع",
+      "category": "الفئة:",
+      "active": "نشط",
+      "notActive": "غير نشط"
+    },
+    "news": {
+      "title": "آخر الأخبار",
+      "viewMore": "عرض المزيد",
+      "date": {
+        "title": "التاريخ",
+        "today": "اليوم",
+        "lastWeek": "الاسبوع الاخير",
+        "lastMonth": "الشهر الاخير",
+        "lastYear": " السنة الاخيرة"
+      },
+      "search": "بحث... "
+    },
+    "events": {
+      "title": "الفعاليات القادمة",
+      "body": "كن على اطلاع على أحدث الأحداث في مجتمعنا. استكشف مجموعة متنوعة من الفعاليات، من المهرجانات الثقافية إلى ورش العمل المجتمعية، المصممة لتعزيز التفاعل بين السكان.",
+      "viewMore": "عرض المزيد",
+      "date": "التاريخ:",
+      "location": "الموقع:",
+      "viewDetails": "عرض التفاصيل",
+      "viewLess": "عرض اقل"
+    },
+    "complaints": {
+      "title": "الشكاوى العامة",
+      "button": "إضافة شكوى",
+      "date": "التاريخ",
+      "location": "الموقع",
+      "viewDetails": "عرض التفاصيل",
+      "status": {
+        "title": "كل الحالات",
+        "pending": "قيد الانتظار",
+        "inProgress": "قيد المعالجة",
+        "rejected": "مرفوضة",
+        "resolved": "تم الحل"
+      },
+      "issueType": "كل انواع المشاكل"
+    },
+    "reportForm": {
+      "title": "الإبلاغ عن مشكلة",
+      "fullName": {
+        "label": "الاسم الكامل",
+        "placeholder": "يرجى كتابة اسمك الكامل",
+        "required": "الاسم الكامل مطلوب."
+      },
+      "mobileNumber": {
+        "label": "رقم الهاتف",
+        "placeholder": "أدخل رقم هاتفك",
+        "required": "رقم الهاتف مطلوب."
+      },
+      "issueType": {
+        "label": "نوع المشكلة",
+        "placeholder": "اختر نوع المشكلة"
+      },
+      "description": {
+        "label": "الوصف"
+      },
+      "uploadPhoto": {
+        "label": "رفع صورة",
+        "helper": "أضف صورة لمساعدتنا على فهم المشكلة بشكل أفضل."
+      },
+
+      "submit": "إرسال البلاغ",
+      "submitting": "جارٍ الإرسال",
+      "validation": {
+        "fullName": {
+          "required": "الاسم الكامل مطلوب.",
+          "minLength": "يجب أن يتكون الاسم الكامل من 3 أحرف على الأقل.",
+          "lettersOnly": "يمكن أن يحتوي الاسم الكامل على أحرف ومسافات فقط.",
+          "firstLast": "يرجى إدخال الاسم الأول واسم العائلة على الأقل."
+        },
+        "mobileNumber": {
+          "required": "رقم الهاتف مطلوب.",
+          "digitsOnly": "يجب أن يحتوي رقم الهاتف على أرقام فقط.",
+          "exactLength": "يجب أن يتكون رقم الهاتف من 8 أرقام بالضبط.",
+          "invalid": "يرجى إدخال رقم هاتف لبناني صالح."
+        }
+      }
+    },
+    "contact": {
+      "title": "اتصل بنا",
+      "subtitle": "نحن هنا لمساعدتك. تواصل معنا لأي أسئلة أو استفسارات.",
+      "visitUs": "زرنا",
+      "getDirections": "احصل على الاتجاهات",
+      "generalInquiries": {
+        "title": "الاستفسارات العامة",
+        "description": "للاستفسارات العامة، يرجى الاتصال بنا باستخدام المعلومات أدناه:",
+        "address": {
+          "label": "العنوان",
+          "value": "123 Main Street, Willow Creek, CA 91234"
+        },
+        "phone": {
+          "label": "الهاتف",
+          "value": "(555) 123-4567"
+        },
+        "email": {
+          "label": "البريد الإلكتروني",
+          "value": "info@willowcreektown.gov"
+        }
+      },
+      "councilMembers": "أعضاء المجلس",
+      "form": {
+        "title": "نموذج الاتصال",
+        "name": {
+          "label": "اسمك",
+          "placeholder": "أدخل اسمك"
+        },
+        "email": {
+          "label": "بريدك الإلكتروني",
+          "placeholder": "أدخل بريدك الإلكتروني"
+        },
+        "subject": {
+          "label": "الموضوع",
+          "placeholder": "أدخل الموضوع"
+        },
+        "message": {
+          "label": "الرسالة",
+          "placeholder": "اكتب رسالتك هنا"
+        },
+        "submit": "إرسال",
+        "sending": "جارٍ الإرسال",
+        "successMessage": "تم إرسال البريد الإلكتروني بنجاح!",
+        "errorMessage": "فشل إرسال البريد الإلكتروني: "
+      }
+    }
+  },
+  "admin": {
+    "sidebar": {
+      "admin": "المسؤول",
+      "dashboard": "لوحة التحكم",
+      "news": "الأخبار",
+      "events": "الفعاليات",
+      "services": "الخدمات",
+      "complaints": "الشكاوى",
+      "settings": "الإعدادات",
+      "logout": "تسجيل الخروج"
+    },
+    "deleteDialog": {
+      "title": "حذف الصف",
+      "message": "هل أنت متأكد أنك تريد حذف هذا الصف؟ لا يمكن التراجع عن هذا الإجراء.",
+      "buttons": {
+        "cancel": "إلغاء",
+        "delete": "حذف",
+        "deletedToast": "تم حذف العنصر"
+      }
+    },
+    "dashboard": {
+      "title": "لوحة التحكم",
+      "overview": "نظرة عامة",
+      "metrics": {
+        "news": {
+          "label": "إجمالي المقالات الإخبارية"
+        },
+        "events": {
+          "label": "الفعاليات القادمة"
+        },
+        "services": {
+          "label": "الخدمات المقدمة"
+        },
+        "complaints": {
+          "label": "الشكاوى المستلمة"
+        }
+      },
+      "recentActivity": "النشاط الأخير",
+      "issueType": "نوع المشكلة :"
+    },
+    "news": {
+      "title": "الأخبار",
+      "table": {
+        "headers": {
+          "title": "العنوان",
+          "date": "التاريخ",
+          "visibility": "الظهور",
+          "actions": "الإجراءات"
+        },
+        "visibility": {
+          "public": "عام",
+          "private": "خاص"
+        },
+        "actions": {
+          "view": "عرض",
+          "delete": "حذف"
+        }
+      },
+      "add": {
+        "title": "إضافة خبر",
+        "fields": {
+          "title": {
+            "label": "العنوان"
+          },
+          "description": {
+            "label": "الوصف"
+          },
+          "visibility": {
+            "label": "الظهور",
+            "options": {
+              "public": "عام",
+              "private": "خاص"
+            }
+          },
+          "image": {
+            "label": "رفع صورة",
+            "helper": "اسحب وأفلت أو تصفح للتحميل"
+          }
+        },
+        "actions": {
+          "upload": "رفع",
+          "publish": "نشر",
+          "publishing": "يتم النشر..."
+        }
+      }
+    },
+    "events": {
+      "management": {
+        "title": "إدارة الفعاليات",
+        "add": {
+          "button": "إضافة فعالية",
+          "description": "إدارة وإنشاء الفعاليات لمدينة صويره"
+        },
+        "existing": {
+          "title": "الفعاليات الحالية",
+          "table": {
+            "headers": {
+              "title": "العنوان",
+              "date": "التاريخ",
+              "location": "الموقع",
+              "actions": "الإجراءات"
+            },
+            "actions": {
+              "delete": "حذف",
+              "view": "عرض"
+            }
+          }
+        }
+      },
+      "add": {
+        "title": "إضافة فعالية جديدة",
+        "fields": {
+          "title": {
+            "label": "العنوان",
+            "placeholder": "أدخل العنوان"
+          },
+          "datetime": {
+            "label": "التاريخ والوقت",
+            "placeholder": "شهر/يوم/سنة"
+          },
+          "description": {
+            "label": "الوصف"
+          },
+          "location": {
+            "label": "الموقع",
+            "placeholder": "موقع الفعالية"
+          },
+          "image": {
+            "label": "رفع صورة",
+            "helper": "اسحب وأفلت أو تصفح للتحميل"
+          }
+        },
+        "actions": {
+          "upload": "رفع",
+          "submit": "إضافة الفعالية",
+          "close": "إغلاق"
+        }
+      }
+    },
+    "services": {
+      "management": {
+        "title": "إدارة الخدمات",
+        "add": {
+          "button": "إضافة خدمة",
+          "add": "إضافة فئة",
+          "description": "إدارة وإنشاء خدمات لبلدية صويره"
+        },
+        "existing": {
+          "title": "الخدمات الحالية"
+        },
+        "actions": {
+          "delete": "حذف",
+          "edit": "تعديل"
+        },
+        "name": "الاسم",
+        "category": "الفئة",
+        "status": "الحالة",
+        "action": "الإجراءات",
+        "loading": "جارٍ التحميل"
+      },
+      "add": {
+        "title": "إضافة خدمة جديدة",
+        "fields": {
+          "name": {
+            "label": "اسم الخدمة",
+            "placeholder": "أدخل اسم الخدمة"
+          },
+          "description": {
+            "label": "الوصف"
+          },
+          "category": {
+            "label": "الفئة",
+            "placeholder": "اختر الفئة"
+          },
+          "status": {
+            "active": "نشط",
+            "inactive": "غير نشط"
+          },
+          "image": {
+            "label": "رفع صورة",
+            "helper": "اسحب وأفلت أو تصفح للتحميل"
+          }
+        },
+        "actions": {
+          "upload": "رفع",
+          "submit": "إضافة الخدمة"
+        }
+      }
+    },
+    "complaints": {
+      "management": {
+        "title": "الشكاوى",
+        "button": "إضافة نوع مشكلة",
+        "description": "إدارة الشكاوى لبلدية صويره",
+        "existing": {
+          "title": "الشكاوى الحالية",
+          "table": {
+            "headers": {
+              "name": "الاسم الكامل",
+              "date": "التاريخ",
+              "type": "نوع المشكلة",
+              "status": {
+                "title": "الحالة",
+                "pending": "قيد الانتظار",
+                "inProgress": "قيد المعالجة",
+                "rejected": "مرفوضة",
+                "resolved": "تم الحل"
+              },
+              "actions": "الإجراءات"
+            },
+            "actions": {
+              "view": "عرض"
+            }
+          }
+        }
+      }
+    },
+    "issues": {
+      "addTitle": "إضافة نوع مشكلة",
+      "inputLabel": "نوع المشكلة",
+      "inputPlaceholder": "يرجى إضافة نوع المشكلة",
+      "submitButton": "إضافة",
+      "tableTitle": "أنواع المشاكل"
+    },
+    "viewNewsItem": {
+      "title": "العنوان:",
+      "description": "الوصف:",
+      "visibility": "الظهور:",
+      "createdAt": "تاريخ الإنشاء:",
+      "button": "رجوع"
+    },
+    "viewEvent": {
+      "date": "التاريخ:",
+      "source": " المصدر: بلدية الصويري",
+      "publishedOn": "نُشر في:",
+      "location": "الموقع:"
+    },
+    "viewComplaint": {
+      "title": "معلومات المشكلة",
+      "back": "رجوع",
+      "issueType": "نوع المشكلة:",
+      "status": "الحالة",
+      "description": "الوصف:",
+      "userInformation": "معلزمات المستخدم",
+      "fullName": "الاسم الكامل",
+      "phoneNumber": "رقم الهاتف",
+      "date": "التاريخ:",
+      "location": "الموقع:",
+      "manageInfo": "إدارة وتحديث معلومات الشكاوى",
+      "public": "عام",
+      "important": "مهم",
+      "updateButton": "تحديث"
+    },
+    "updateService": {
+      "title": "تحديث الخدمة",
+      "serviceName": "اسم الخدمة",
+      "placeholder": "أدخل اسم الخدمة",
+      "description": "الوصف",
+      "category": "الفئة",
+      "active": "نشطة",
+      "inActive": "غير نشطة",
+      "updating": "جارٍ التحديث...",
+      "update": "تحديث الخدمة"
+    },
+    "addCategory": {
+      "addTitle": "إضافة فئة خدمة",
+      "inputLabel": "فئة الخدمة",
+      "inputPlaceholder": "الرجاء إضافة فئة خدمة",
+      "submitButton": "إضافة",
+      "tableTitle": "الفئات",
+      "err": "اسم الفئة موجود بالفعل",
+      "nameLength": "يجب أن يكون اسم الفئة 3 أحرف على الأقل",
+      "success": "تمت إضافة فئة الخدمة بنجاح"
+    },
+    "settings": {
+      "title": "الإعدادات",
+      "adminInformation": "معلومات المسؤول",
+      "userName": "اسم المستخدم",
+      "email": "البريد الإلكتروني",
+      "role": "الدور",
+      "appearance": "المظهر",
+      "lightDarkMode": "التبديل بين الوضع الفاتح والداكن",
+      "websiteLanguage": "لغة الموقع",
+      "english": "الإنجليزية",
+      "arabic": "العربية",
+      "confirmTitle": "تأكيد إجراء تحديث صورة الملف الشخصي",
+      "yes": "تحديث",
+      "no": "إلغاء"
+    }
+  },
+  "toast": {
+    "updatedComplaint": "تم  تحديث الشكوى بنجاح",
+    "publishNews": "تم نشر الخبر بنجاح",
+    "publishEvent": "تمت إضافة الحدث بنجاح",
+    "addService": "تمت إضافة الخدمة الجديدة بنجاح",
+    "updateService": "تم تحديث الخدمة بنجاح",
+    "saveLocation": "تم حفظ الموقع بنجاح",
+    "sendEmail": "تم الارسال البريد الاكتروني بنجاح",
+    "uploadImageError": "يرجى تحميل صورة",
+    "enterTitleError": "يرجى إدخال العنوان",
+    "enterDescriptionError": "يرجى إدخال الوصف",
+    "emailSendFail": "فشل في إرسال البريد الإلكتروني",
+    "deleteRow": "تم الحذف بنجاح ",
+    "publishNewsError": "فشل تحميل الخبر"
+  },
+  "date": {
+    "now": "الان",
+    "min": "دقيقة مضت",
+    "today": "اليوم عند الساعة :",
+    "yesterDay": "أمس عند الساعة :",
+    "at": "عند"
+  }
+}

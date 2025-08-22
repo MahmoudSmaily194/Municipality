@@ -2,12 +2,14 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "../../map/leaflet-icon-fix"; // Keep this to show marker icons correctly
 import styles from "./MunicipalityMap.module.css";
-const MunicipalityMap = () => {
-  const position = {
-    lat: 33.68632543618543,
-    lng: 35.908985301202556,
-  };
+import { useTranslation } from "react-i18next";
 
+const MunicipalityMap = ({
+  position,
+}: {
+  position: { lat: number; lng: number };
+}) => {
+  const { t } = useTranslation();
   const openGoogleMapsDirections = () => {
     const url = `https://www.google.com/maps/dir/?api=1&destination=${position.lat},${position.lng}`;
     window.open(url, "_blank");
@@ -15,7 +17,6 @@ const MunicipalityMap = () => {
 
   return (
     <div className={styles.map_con}>
-      <h3>Visit Us</h3>
       <div className={styles.map}>
         <MapContainer
           center={[position.lat, position.lng]}
@@ -40,7 +41,7 @@ const MunicipalityMap = () => {
         className={styles.directionsButton}
         onClick={openGoogleMapsDirections}
       >
-        Get Directions
+        {t("public.contact.getDirections")}
       </button>
     </div>
   );

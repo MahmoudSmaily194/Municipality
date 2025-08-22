@@ -1,8 +1,8 @@
 .dashboard_page_con {
   display: flex;
   justify-content: center;
-  border-left: 2px solid #1a80e5;
-  font-family: "sans";
+  border-inline-start: 2px solid #1a80e5;
+
   margin-top: 1rem;
   width: 100%;
 }
@@ -40,39 +40,50 @@
 .dashboard_notification_boxes_con div h2 {
   color: #1a80e5;
 }
-.dashboard_recent_ac_cont{
-    display: flex;
-    flex-direction: column;
-    gap: 1.8rem;
-}
-.dashboard_recent_ac{
-    display: flex;
-    gap: 1.5rem;
-}
-.dashboard_recent_ac .icon{
-    padding: 0.9rem 1rem ;
-    border: 1.7px solid #1a80e5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-}
-.dashboard_recent_ac .textCon{
+.dashboard_recent_ac_cont {
   display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
+  flex-direction: column;
+  gap: 1.8rem;
+  margin-bottom: 2rem;
 }
-.dashboard_recent_ac .textCon p{ 
-    color: #4F7396;
-    font-weight: 400;
-    font-size: small;
+.dashboard_recent_ac {
+  height: 4.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  transition: border 0.5ms ease-in-out;
+  cursor: pointer;
 }
-.dashboard_recent_ac .textCon h5{
-    font-family: 500;
-    font-size: 0.89rem;
+.dashboard_recent_ac:hover {
+  border: 2px solid #1a80e5;
 }
-@media(max-width:1100px){
-  .dashboard_notification_boxes_con{
+.dashboard_recent_ac .icon {
+  padding: 0.9rem 1rem;
+  border: 1.7px solid #1a80e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  margin-inline-start: 2rem;
+}
+.dashboard_recent_ac .textCon {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.dashboard_recent_ac .textCon p {
+  color: #4f7396;
+  font-weight: 400;
+  font-size: small;
+}
+.dashboard_recent_ac .textCon h5 {
+  font-family: 500;
+  font-size: 0.89rem;
+}
+@media (max-width: 1100px) {
+  .dashboard_notification_boxes_con {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -80,13 +91,12 @@
   }
   .dashboard_notification_boxes_con div {
     width: 45%;
-    
   }
-    .dashboard_notification_boxes_con div h3{
-       font-size: medium;
+  .dashboard_notification_boxes_con div h3 {
+    font-size: medium;
     text-align: center;
-    }
-  .dashboard_notification_boxes_con div h2{
+  }
+  .dashboard_notification_boxes_con div h2 {
     font-size: medium;
     text-align: center;
   }

@@ -1,0 +1,186 @@
+.admin_settings_page_con {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  border-inline-start: 2px solid #1a80e5;
+  margin-top: 1rem;
+}
+.admin_settings_page {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  gap: 2rem;
+}
+.settings_header {
+  width: 100%;
+}
+.settings_header h2 {
+  color: #1a80e5;
+}
+.adminInfo_card_con {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+.adminInfo_card {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+}
+.adminInfo_card img {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+}
+.adminInfo_card div {
+  display: flex;
+  align-content: center;
+  width: 100%;
+  justify-content: space-between;
+  font-weight: 500;
+}
+.adminInfo_card div div {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  width: 50%;
+  justify-content: initial;
+  color: #495562;
+  font-weight: bold;
+  font-size: 1rem;
+}
+.settings_theme_toggle_con {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+.settings_theme_toggle {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.settings_theme_toggle_text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.theme_icon_con {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-inline-end: 1rem;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 2rem;
+}
+.settings_language_con {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+.settings_language {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.settings_language div {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.settings_language div label {
+  color: #495562;
+  font-weight: 500;
+}
+.adminProfilePhoto {
+  position: relative;
+  width: 10rem !important;
+  height: 10rem !important;
+  border-radius: 50%;
+}
+.adminProfilePhoto_uploade_camera {
+  position: absolute;
+  width: initial !important;
+  height: initial;
+  inset-inline-end: 0.5rem;
+  inset-block-end: 0.5rem;
+}
+.adminProfilePhoto_uploade_camera label {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.confirm_overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: 100362355;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.confirm_box {
+  width: calc(8rem + 30vw);
+  height: 15rem;
+  background-color: white;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.confirm_buttons {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+.confirm_buttons button {
+  width: 7rem;
+  height: 2.5rem;
+  background-color: transparent;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  font-weight: 700;
+}
+.confirm_buttons > :first-child {
+  background-color: #1a80e5;
+}
+.confirm_buttons > :first-child:hover {
+  background-color: #146fc9;
+  scale: (1.05);
+}
+.confirm_buttons > :nth-child(2) {
+  background-color: #5b6773;
+}
+.confirm_buttons > :nth-child(2):hover {
+  background-color: #495562;
+  scale: (1.05);
+}
+@media (max-width: 600px) {
+  .admin_settings_page {
+    width: 90%;
+  }
+}

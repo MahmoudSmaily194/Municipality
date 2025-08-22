@@ -1,0 +1,534 @@
+{
+  "public": {
+    "site": {
+      "title": "Sawirah Municipality"
+    },
+    "location": {
+      "useMyLocation": "Use My Location",
+      "saveLocation": "Save Location"
+    },
+    "auth": {
+      "login": {
+        "title": "Log in",
+        "email": {
+          "label": "Your email"
+        },
+        "password": {
+          "label": "Your password"
+        },
+        "forgot": "Forget your password?",
+        "submit": "Log in",
+        "loggingIn": "Logging in",
+        "failed": "Login Failed",
+        "tryAgain": "Try again."
+      }
+    },
+    "branding": {
+      "municipality": "Municipality of Sawirah"
+    },
+    "nav": {
+      "home": "Home",
+      "services": "Services",
+      "news": "News",
+      "events": "Events",
+      "publicComplaints": "Public Complaints",
+      "contact": "Contact",
+      "translateTo": "Translate to:"
+    },
+    "footer": {
+      "followUs": "Follow us for updates & events.",
+      "contactEmail": "info@municipality.gov.lb",
+      "copyright": "Website created by Mahmoud Mohammad Smaily © 2025"
+    },
+    "deleteDialog": {
+      "title": "Delete item",
+      "message": "Are you sure you want to delete this photo? This action cannot be undone.",
+      "buttons": {
+        "cancel": "Cancel",
+        "delete": "Delete"
+      }
+    },
+    "home": {
+      "title": "Municipality of Sawirah",
+      "body": "Your community hub for information, services, and engagement.",
+      "button": "Explore Services",
+      "exploreOurTown": "Explore Our Town",
+      "quickAccess": {
+        "title": "Quick Access",
+        "payBills": "Pay Bills",
+        "applyforPermits": "Apply for Permits",
+        "trashSchedule": "Trash Schedule",
+        "reportaProblem": "Report a Problem"
+      },
+      "events": {
+        "upcomingEvents": "Upcoming Events",
+        "button": "View Details"
+      },
+      "news": {
+        "title": "Latest News",
+        "readMore": "Read more"
+      },
+      "contact": {
+        "title": "Contact us for more information",
+        "body": "Have a question or need assistance? We're here to help with services, permits, and local info. Contact us by phone, email, or visit in person. Your input helps us serve you better.",
+        "fullName": "Full Name",
+        "email": "Enail",
+        "subject": "Subject",
+        "message": "Message",
+        "accept": "Accept",
+        "terms": "Terms And Conditions",
+        "submit": "submit",
+        "sending": "sending "
+      }
+    },
+    "services": {
+      "title": "City Services",
+      "viewDetails": "view details",
+      "allServices": "All Services",
+      "search": "Search..."
+    },
+    "viewService": {
+      "back": "Back",
+      "category": "Category:",
+      "active": "Active",
+      "notActive": "Not Active"
+    },
+    "news": {
+      "title": "Latest News",
+      "viewMore": "view more",
+      "date": {
+        "title": "Date",
+        "today": "Today",
+        "lastWeek": "Last week",
+        "lastMonth": "Last month",
+        "lastYear": "Last Year"
+      },
+      "search": "Search..."
+    },
+    "events": {
+      "title": "Upcoming Events",
+      "body": "Stay informed about the latest happenings in our community. Explore a variety of events, from cultural festivals to community workshops, designed to engage and connect residents.",
+      "viewMore": "view more",
+      "date": "Date:",
+      "location": "Location:",
+      "viewDetails": "view details",
+      "viewLess": "view less"
+    },
+    "complaints": {
+      "title": "Public Copmlaints",
+      "button": "Add Complaint",
+      "viewMore": "view more",
+      "date": "Date",
+      "location": "Location",
+      "viewDetails": "view details",
+      "status": {
+        "title": "Status: All",
+        "pending": "Pending",
+        "inProgress": "InProgress",
+        "rejected": "Rejected",
+        "resolved": "Resolved"
+      },
+      "issueType": "All Issue Types"
+    },
+    "reportForm": {
+      "title": "Report an Issue",
+      "fullName": {
+        "label": "Full Name",
+        "placeholder": "Please enter your full name",
+        "required": "Full name is required."
+      },
+      "mobileNumber": {
+        "label": "Mobile Number",
+        "placeholder": "Enter your mobile number",
+        "required": "Mobile number is required."
+      },
+      "issueType": {
+        "label": "Issue Type",
+        "placeholder": "Select the issue type"
+      },
+      "description": {
+        "label": "Description"
+      },
+      "uploadPhoto": {
+        "label": "Upload Photo",
+        "helper": "Add a photo to help us better understand the issue."
+      },
+
+      "submit": "Submit Report",
+      "submitting": "Submitting...",
+      "validation": {
+        "fullName": {
+          "required": "Full name is required.",
+          "minLength": "Full name must be at least 3 characters long.",
+          "lettersOnly": "Full name can only contain letters and spaces.",
+          "firstLast": "Please enter at least a first and last name."
+        },
+        "mobileNumber": {
+          "required": "Mobile number is required.",
+          "digitsOnly": "Mobile number must contain only digits.",
+          "exactLength": "Mobile number must be exactly 8 digits.",
+          "invalid": "Please enter a valid Lebanese mobile number."
+        }
+      }
+    },
+    "contact": {
+      "title": "Contact Us",
+      "subtitle": "We're here to help. Reach out to us with any questions or concerns.",
+      "visitUs": "Visit Us",
+      "getDirections": "Get Directions",
+      "generalInquiries": {
+        "title": "General Inquiries",
+        "description": "For general inquiries, please contact us using the information below:",
+        "address": {
+          "label": "Address",
+          "value": "123 Main Street, Willow Creek, CA 91234"
+        },
+        "phone": {
+          "label": "Phone",
+          "value": "(555) 123-4567"
+        },
+        "email": {
+          "label": "Email",
+          "value": "info@willowcreektown.gov"
+        }
+      },
+      "councilMembers": "Council Members",
+      "form": {
+        "title": "Contact Form",
+        "name": {
+          "label": "Your Name",
+          "placeholder": "Enter your name"
+        },
+        "email": {
+          "label": "Your Email",
+          "placeholder": "Enter your email"
+        },
+        "subject": {
+          "label": "Subject",
+          "placeholder": "Enter the subject"
+        },
+        "message": {
+          "label": "Message",
+          "placeholder": "Write your message here"
+        },
+        "submit": "Submit",
+        "sending": "Sending...",
+        "successMessage": "Email sent successfully!",
+        "errorMessage": "Failed to send email: "
+      }
+    }
+  },
+
+  "admin": {
+    "sidebar": {
+      "admin": "Admin",
+      "dashboard": "Dashboard",
+      "news": "News",
+      "events": "Events",
+      "services": "Services",
+      "complaints": "Complaints",
+      "settings": "Settings",
+      "logout": "Logout"
+    },
+    "deleteDialog": {
+      "title": "Delete Row",
+      "message": "Are you sure you want to delete this row? This action cannot be undone.",
+      "buttons": {
+        "cancel": "Cancel",
+        "delete": "Delete",
+        "deletedToast": "Item deleted"
+      }
+    },
+    "dashboard": {
+      "title": "Dashboard",
+      "overview": "Overview",
+      "metrics": {
+        "news": {
+          "label": "Total News Articles"
+        },
+        "events": {
+          "label": "Upcoming Events"
+        },
+        "services": {
+          "label": "Services Offered"
+        },
+        "complaints": {
+          "label": "Complaints Received"
+        }
+      },
+      "recentActivity": "Recent Activity",
+      "issueType": "Issue type :"
+    },
+    "news": {
+      "title": "News",
+      "table": {
+        "headers": {
+          "title": "Title",
+          "date": "Date",
+          "visibility": "Visibility",
+          "actions": "Actions"
+        },
+        "visibility": {
+          "public": "Public",
+          "private": "Private"
+        },
+        "actions": {
+          "view": "View",
+          "delete": "Delete"
+        }
+      },
+      "add": {
+        "title": "Add News",
+        "fields": {
+          "title": {
+            "label": "Title"
+          },
+          "description": {
+            "label": "Description"
+          },
+          "visibility": {
+            "label": "Visibility",
+            "options": {
+              "public": "Public",
+              "private": "Private"
+            }
+          },
+          "image": {
+            "label": "Upload Image",
+            "helper": "Drag and drop or browse to upload"
+          }
+        },
+        "actions": {
+          "upload": "Upload",
+          "publish": "Publish",
+          "publishing": "Publishing..."
+        }
+      }
+    },
+    "events": {
+      "management": {
+        "title": "Events Management",
+        "add": {
+          "button": "Add Event",
+          "description": "Manage and create events for the city of Springfield"
+        },
+        "existing": {
+          "title": "Existing Events",
+          "table": {
+            "headers": {
+              "title": "Title",
+              "date": "Date",
+              "location": "Location",
+              "actions": "Actions"
+            },
+            "actions": {
+              "delete": "Delete",
+              "view": "View"
+            }
+          }
+        }
+      },
+      "add": {
+        "title": "Add New Event",
+        "fields": {
+          "title": {
+            "label": "Title",
+            "placeholder": "Enter title"
+          },
+          "datetime": {
+            "label": "Date and time",
+            "placeholder": "mm/dd/yyyy"
+          },
+          "description": {
+            "label": "Description"
+          },
+          "location": {
+            "label": "Location",
+            "placeholder": "Event Location"
+          },
+          "image": {
+            "label": "Upload Image",
+            "helper": "Drag and drop or browse to upload"
+          }
+        },
+        "actions": {
+          "upload": "Upload",
+          "submit": "Add Event",
+          "close": "Close"
+        }
+      }
+    },
+    "services": {
+      "management": {
+        "title": "Manage Services",
+        "add": {
+          "button": "Add Service",
+          "add": "Add Category",
+          "description": "Manage and create services for the municipality of Sawirah"
+        },
+        "existing": {
+          "title": "Existing Services"
+        },
+        "actions": {
+          "delete": "Delete",
+          "edit": "Edit"
+        },
+        "name": " Name",
+        "category": " Category",
+        "status": "Status",
+        "action": "Actions",
+        "loading": "Loading"
+      },
+      "add": {
+        "title": "Add New Service",
+        "fields": {
+          "name": {
+            "label": "Service name",
+            "placeholder": "Enter Service name"
+          },
+          "description": {
+            "label": "Description"
+          },
+          "category": {
+            "label": "Category",
+            "placeholder": "Select Category"
+          },
+          "status": {
+            "active": "Active",
+            "inactive": "Inactive"
+          },
+          "image": {
+            "label": "Upload Image",
+            "helper": "Drag and drop or browse to upload"
+          }
+        },
+        "actions": {
+          "upload": "Upload",
+          "submit": "Add Service"
+        }
+      }
+    },
+    "complaints": {
+      "management": {
+        "title": "Complaints",
+        "button": "Add Issue Type",
+        "description": "Manage Complaints for the municipality of Sawirah",
+        "existing": {
+          "title": "Existing Complaints",
+          "table": {
+            "headers": {
+              "name": "Full Name",
+              "date": "Date",
+              "type": "Issue type",
+              "status": {
+                "title": "Status",
+                "pending": "Pending",
+                "inProgress": "InProgress",
+                "rejected": "Rejected",
+                "resolved": "Resolved"
+              },
+              "actions": "Actions"
+            },
+            "actions": {
+              "view": "View"
+            }
+          }
+        }
+      }
+    },
+    "issues": {
+      "addTitle": "Add Issue Type",
+      "inputLabel": "Issue Type",
+      "inputPlaceholder": "Please add Issue Type",
+      "submitButton": "Add",
+      "tableTitle": "Issues"
+    },
+    "viewNewsItem": {
+      "title": "Title:",
+      "description": "Description:",
+      "visibility": "Visibility:",
+      "createdAt": "Created at:",
+      "button": "Back"
+    },
+    "viewEvent": {
+      "date": "Date:",
+      "source": "Source: Sawirah Municipality",
+      "publishedOn": "published on:",
+      "location": "Location:"
+    },
+    "viewComplaint": {
+      "title": "Complaint Details",
+      "back": "Back",
+      "issueType": "Issue type:",
+      "status": "Status:",
+      "description": "Description:",
+      "userInformation": "User Information",
+      "fullName": "Full Name",
+      "phoneNumber": "Phone Number",
+      "date": "Date:",
+      "location": "Location:",
+      "manageInfo": "Manage and update complaint information",
+      "public": "Public",
+      "important": "Important",
+      "updateButton": "Update"
+    },
+    "updateService": {
+      "title": "Update Service",
+      "serviceName": "Service name",
+      "placeholder": "Enter Service name",
+      "description": "Description",
+      "category": "Category",
+      "active": " Active",
+      "inActive": "In Active",
+      "updating": "Updating...",
+      "update": "Update Service"
+    },
+    "addCategory": {
+      "addTitle": "Add service Category",
+      "inputLabel": "Service Category",
+      "inputPlaceholder": "Please add Service Category",
+      "submitButton": "Add",
+      "tableTitle": "Categories",
+      "err":"Category name already exists",
+      "nameLength":"Category name must be at least 3 characters",
+      "success":"Service category added successfully"
+    },
+    "settings": {
+      "title": "Settings",
+      "adminInformation": "Admin Information",
+      "userName": "User name",
+      "email": "Email",
+      "role": "Role",
+      "appearance": "Appearance",
+      "lightDarkMode": "Switch between light and dark mode",
+      "websiteLanguage": "Website Language",
+      "english": "English",
+      "arabic": "Arabic",
+      "confirmTitle": "Confirm the action of updating the profile photo",
+      "yes": "Update",
+      "no": "cancel"
+    }
+  },
+  "toast": {
+    "updatedComplaint": "Complaint updated successfully",
+    "publishNews": "News item was published successfully",
+    "publishEvent": "Event added successfully",
+    "addService": "New service added successfully",
+    "updateService": "Service is updated successfully",
+    "saveLocation": "Location is saved",
+    "sendEmail": "Email send successfully",
+    "uploadImageError": "Please upload an image",
+    "enterTitleError": "Please enter a title",
+    "enterDescriptionError": "Please enter description",
+    "emailSendFail": "Failed to send email",
+    "deleteRow": "Deleted successfully",
+    "publishNewsError": "Upload news faild"
+  },
+  "date": {
+    "now": "now",
+    "min": "minute ago",
+    "today": "today at:",
+    "yesterDay": "yesterday at:",
+    "at": "at"
+  }
+}

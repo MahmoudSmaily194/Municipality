@@ -1,54 +1,54 @@
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { Link, useNavigate } from "react-router-dom";
+import fullImage from "../../assets/homeBackGround.png";
+import DateConverter from "../../components/date/Date";
+import { accessItems } from "../../data/accessItems";
+import { useEvents } from "../../hooks/useEvents";
+import { useVissibleNews } from "../../hooks/useNews";
+import type { FetchPaginatedParamsType } from "../../types/FetchNewsParamsType";
 import ContactForm from "./contactForm/ContactForm";
 import style from "./home.module.css";
 import ImageCarousel from "./imageCarousel/ImageCarousel";
 const Home = () => {
-  const accessItems = [
-    { label: "Pay Bills", iconClass: "icon-pay" },
-    { label: "Apply for Permits", iconClass: "icon-permit" },
-    { label: "Trash Schedule", iconClass: "icon-trash" },
-    { label: "Report a Problem", iconClass: "icon-report" },
-  ];
-  const events = [
-    { title: "Town Council Meeting", date: "July 15, 2024" },
-    { title: "Summer Concert Series", date: "July 20, 2024" },
-    { title: "Community Clean-Up Day", date: "August 5, 2024" },
-    { title: "Back to School Fair", date: "August 12, 2024" },
-  ];
-  const news = [
-    {
-      label: "New Park Opens in Central District",
-      iconClass: "icon-park",
-      date: "July 10, 2024",
-      body: "The city celebrates the grand opening of Central Green Park, offering walking trails, playgrounds, and community spaces.",
-    },
-    {
-      label: "Road Closure on Elm Street",
-      iconClass: "icon-road",
-      date: "July 12, 2024",
-      body: "Elm Street will be closed for maintenance starting July 12. Drivers are advised to use alternate routes until work is completed.",
-    },
-    {
-      label: "Summer Concert Series Announced",
-      iconClass: "icon-concert",
-      date: "July 15, 2024",
-      body: "Local bands and guest performers will take the stage every Saturday evening through August. Free admission for all residents.",
-    },
-    {
-      label: "Water Conservation Tips",
-      iconClass: "icon-water",
-      date: "July 14, 2024",
-      body: "Learn simple ways to save water during the dry season, including efficient irrigation and household habits that reduce waste.",
-    },
-  ];
+  const navigate = useNavigate();
+
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    const img = new Image();
+    img.src = fullImage; // This is a resolved URL path
+    img.onload = () => {
+      setIsLoaded(true);
+    };
+  }, []);
+  const [filters] = useState<FetchPaginatedParamsType>({
+    PageNumber: 1,
+    PageSize: 5,
+    SortBy: "",
+    SortDirection: "",
+    ComplaintStatus: "",
+    DateFilter: "",
+    SearchTerm: "",
+  });
+  const { data: news } = useVissibleNews(filters);
+  const { data: events } = useEvents(filters);
+  const { t } = useTranslation();
   return (
     <div className={style.container}>
       <section>
-        <div className={style.home_intro}>
+        <div className={`${style.home_intro} ${isLoaded ? style.loaded : ""}`}>
           <div className={style.home_intro_cont}>
-          <h1>Municipality of Sawirah</h1>
-          <p>Your community hub for information, services, and engagement.</p>
-          <button>Explore Services</button>
-        </div>
+            <h1 lang="ar">{t("public.home.title")}</h1>
+            <p>{t("public.home.body")}</p>
+            <button
+              onClick={() => {
+                navigate("/services");
+              }}
+            >
+              {t("public.home.button")}
+            </button>
+          </div>
         </div>
       </section>
       <section>
@@ -56,9 +56,9 @@ const Home = () => {
       </section>
       <section className={style.display_flex}>
         <div className={style.quick_access}>
-          <h2>Quick Access</h2>
+          <h2>{t("public.home.quickAccess.title")}</h2>
           <div className={style.quick_access_items}>
-            {accessItems.map(({ label, iconClass }) => {
+            {accessItems(t).map(({ label, iconClass }) => {
               return (
                 <div key={label} className={style.access_item}>
                   <div className={`${style.access_icon} ${style[iconClass]}`} />
@@ -71,38 +71,65 @@ const Home = () => {
       </section>
       <section className={style.display_flex}>
         <div className={style.events}>
-          <h2>Upcoming Events</h2>
+          <h2>{t("public.home.events.upcomingEvents")}</h2>
           <div className={style.events_items}>
-            {events.map((item, index) => {
-              return (
-                <div key={index} className={style.event}>
-                  <div className={style.event_text_cont}>
-                    <h1>{item.title}</h1>
-                    <p className={style.event_date}> {item.date} </p>
+            {events?.pages
+              .flatMap((page) => page.items)
+              .map((item, index) => {
+                return (
+                  <div key={index} className={style.event}>
+                    <div className={style.event_text_cont}>
+                      <h1>{item.title}</h1>
+                      <p className={style.event_date}>
+                        <DateConverter date={new Date(item.date ?? "")} />
+                      </p>
+                    </div>
+                    <div
+                      className={style.event_btn}
+                      onClick={() => {
+                        navigate(`/events/${item.slug}`);
+                      }}
+                    >
+                      <h1>{t("public.home.events.button")}</h1>
+                    </div>
                   </div>
-                  <div className={style.event_btn}>
-                    <h1>View Details</h1>
-                  </div>
-                </div>
-              );
-            })}
+                );
+              })}
           </div>
         </div>
       </section>
       <section className={style.display_flex}>
         <div className={style.news}>
-          <h2>Latest News</h2>
+          <h2>{t("public.home.news.title")}</h2>
           <div className={style.news_items}>
-            {news.map((item, index) => {
+            {news?.items.map((item) => {
               return (
-                <div key={index} className={style.news_item}>
+                <div key={item.id} className={style.news_item}>
                   <div className={style.news_text_cont}>
-                    <p className={style.news_date}> {item.date} </p>
-                    <h1>{item.label}</h1>
-                    <p className={style.news_body}> {item.body} </p>
+                    <p className={style.news_date}>
+                      <DateConverter date={new Date(item.updatedAt ?? "")} />
+                    </p>
+                    <h1>{item.title}</h1>
+                    <p className={style.news_body}>
+                      {item.description ? (
+                        item.description.split(" ").length > 30 ? (
+                          <>
+                            {item.description.split(" ").slice(0, 30).join(" ")}
+                            <Link to={`news/${item.slug}`}>
+                              {t("public.home.news.readMore")}
+                            </Link>
+                          </>
+                        ) : (
+                          item.description
+                        )
+                      ) : null}
+                    </p>
                   </div>
                   <div
-                    className={`${style.event_img} ${style[item.iconClass]}`}
+                    style={{
+                      backgroundImage: `url(${item.imageUrl})`,
+                    }}
+                    className={`${style.home_newsItem_img}`}
                   />
                 </div>
               );
@@ -110,7 +137,9 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section><ContactForm/></section>
+      <section>
+        <ContactForm />
+      </section>
     </div>
   );
 };

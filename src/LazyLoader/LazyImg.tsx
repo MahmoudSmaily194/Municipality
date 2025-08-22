@@ -9,7 +9,12 @@ type LazyImageProps = {
   style?: React.CSSProperties;
 };
 
-const LazyImage: React.FC<LazyImageProps> = ({ src, alt, className, style }) => {
+const LazyImage: React.FC<LazyImageProps> = ({
+  src,
+  alt,
+  className,
+  style,
+}) => {
   const imgRef = useRef<HTMLImageElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [loaded, setLoaded] = useState(false);
@@ -48,7 +53,7 @@ const LazyImage: React.FC<LazyImageProps> = ({ src, alt, className, style }) => 
           alt="placeholder"
           style={{
             width: "100%",
-            height: "auto",
+            height: "100%",
             filter: "blur(10px)",
             position: "absolute",
             top: 0,
@@ -67,7 +72,7 @@ const LazyImage: React.FC<LazyImageProps> = ({ src, alt, className, style }) => 
         onLoad={() => setLoaded(true)}
         style={{
           width: "100%",
-          height: "auto",
+          height: "100%",
           opacity: loaded ? 1 : 0,
           transition: "opacity 0.5s ease",
           position: "relative",

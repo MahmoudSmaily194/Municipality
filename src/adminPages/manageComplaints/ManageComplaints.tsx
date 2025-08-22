@@ -1,48 +1,129 @@
+import { useEffect, useRef } from "react";
+import { useComplaints } from "../../hooks/useComplaints";
 import style from "./manageComplaints.module.css";
 import { useNavigate } from "react-router-dom";
-const ManageCompliants = () => {
+import { useTranslation } from "react-i18next";
+import DateConverter from "../../components/date/Date";
+
+const ManageComplaints = () => {
+  const { t } = useTranslation();
+  const filters = {
+    SortBy: "",
+    SortDirection: "",
+    ComplaintStatus: "",
+    DateFilter: "",
+    SearchTerm: "",
+  };
   const navigate = useNavigate();
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
+    useComplaints(filters);
+  const loaderRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && hasNextPage && !isFetchingNextPage) {
+        fetchNextPage();
+      }
+    });
+
+    if (loaderRef.current) {
+      observer.observe(loaderRef.current);
+    }
+
+    return () => {
+      if (loaderRef.current) {
+        observer.unobserve(loaderRef.current);
+      }
+    };
+  }, [hasNextPage, isFetchingNextPage, fetchNextPage]);
+
   return (
     <div className={style.ManageComplaints_page_con}>
       <div className={style.ManageComplaints_page}>
         <div className={style.ManageComplaints_header}>
-          <h1>Complaints</h1>
+          <h1>{t("admin.complaints.management.title")}</h1>
           <button
             onClick={() => {
               navigate("../issuemodel");
             }}
           >
-            Add issue type
+            {t("admin.complaints.management.button")}
           </button>
         </div>
-        <p>Manage Compliants for the municipality of Sawirah</p>
-        <h3>Existing Complaints</h3>
+        <p>{t("admin.complaints.management.description")}</p>
+        <h3>{t("admin.complaints.management.existing.title")}</h3>
+
         <div className={style.ManageComplaints_table_con}>
           <div>
             <table>
-              <tr>
-                <th>Name</th>
-                <th>Date</th>
-                <th>Issue type</th>
-                <th>Status</th>
-                <th>Actions</th>
-              </tr>
-              <tr>
-                <td style={{ color: "black" }}> Sarah Johnson </td>
-                <td>2024-01-15</td>
-                <td>Issue type</td>
-                <td>
-                  <div>
-                    <p>Pending</p>
-                  </div>
-                </td>
-                <td>
-                  <div>
-                    <p>View</p>
-                  </div>
-                </td>
-              </tr>
+              <thead>
+                <tr>
+                  <th>
+                    {t(
+                      "admin.complaints.management.existing.table.headers.name"
+                    )}
+                  </th>
+                  <th>
+                    {t(
+                      "admin.complaints.management.existing.table.headers.date"
+                    )}
+                  </th>
+                  <th>
+                    {t(
+                      "admin.complaints.management.existing.table.headers.type"
+                    )}
+                  </th>
+                  <th>
+                    {t(
+                      "admin.complaints.management.existing.table.headers.status.title"
+                    )}
+                  </th>{" "}
+                  {/* This header should probably be "Status" label instead, fix below */}
+                  <th>
+                    {t(
+                      "admin.complaints.management.existing.table.headers.actions"
+                    )}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {data?.pages
+                  .flatMap((page) => page.items)
+                  .map((complaint) => {
+                    return (
+                      <tr key={complaint.id}>
+                        <td style={{ color: "black" }}>{complaint.fullName}</td>
+                        <td>
+                          <DateConverter
+                            date={new Date(complaint?.updatedAt ?? "")}
+                          />
+                        </td>
+                        <td>{complaint.issueName}</td>
+                        <td>
+                          <div>
+                            <p>{complaint.status}</p>
+                          </div>
+                        </td>
+                        <td>
+                          <div
+                            onClick={() => {
+                              navigate(`./${complaint.id}`);
+                            }}
+                            className={style.ManageCompliants_div_viewBtn}
+                          >
+                            <p>
+                              {t(
+                                "admin.complaints.management.existing.table.actions.view"
+                              )}
+                            </p>
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })}
+              </tbody>
             </table>
+            <div ref={loaderRef} style={{ height: "20px" }}></div>
           </div>
         </div>
       </div>
@@ -50,4 +131,4 @@ const ManageCompliants = () => {
   );
 };
 
-export default ManageCompliants;
+export default ManageComplaints;

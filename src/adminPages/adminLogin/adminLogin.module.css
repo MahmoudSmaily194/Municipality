@@ -8,7 +8,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "sans";
 }
 .admin_login_form_con {
   width: 37%;
@@ -54,7 +53,7 @@
 .admin_login_form_con form input {
   height: 2rem;
   width: calc(100% - 0.7rem);
-  padding-left: 0.7rem;
+  padding-inline-start: 0.7rem;
   border: none;
   border: 1px solid #666666;
   border-radius: 10px;
@@ -70,32 +69,32 @@
 .admin_login_form_con button {
   border: none;
   border-radius: 28.3px;
-  background-color: #1A80E5;
-  font-family: "sans";
+  background-color: #1a80e5;
+
   font-weight: 700;
   height: 2.5rem;
-  color: #FFFFFF;
+  color: #ffffff;
   width: 65%;
   margin-bottom: 2rem;
 }
-@media(max-width:767px){
-.admin_login_form_con input{
+@media (max-width: 767px) {
+  .admin_login_form_con input {
     height: 2rem !important;
-}
-.admin_login_form_con button{
-     height: 2rem !important;
-}
-.admin_login_form_con{
+  }
+  .admin_login_form_con button {
+    height: 2rem !important;
+  }
+  .admin_login_form_con {
     width: 65%;
+  }
 }
-}
-@media(max-width:567px){
-.admin_login_form_con{
+@media (max-width: 567px) {
+  .admin_login_form_con {
     width: 75%;
+  }
 }
-}
-@media(max-width:467px){
-.admin_login_form_con{
+@media (max-width: 467px) {
+  .admin_login_form_con {
     width: 90%;
-}
+  }
 }
