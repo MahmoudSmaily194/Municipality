@@ -126,6 +126,7 @@
   .ltr.dashBoardSideBar_con {
     left: 0;
     border-inline-end: 2px solid #1a80e5;
+    border-inline-start: 2px solid #1a80e5;
     transform: translateX(-270px);
     transition: transform 0.3s ease-in-out;
   }
