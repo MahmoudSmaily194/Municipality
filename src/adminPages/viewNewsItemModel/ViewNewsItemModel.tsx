@@ -1,19 +1,41 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 import { useNavigate, useParams } from "react-router-dom";
 import DateConverter from "../../components/date/Date";
 import LazyImage from "../../LazyLoader/LazyImg";
-import { getNewsItemByAdmin } from "../../services/News";
+import { getNewsItemByAdmin, updateNewsItem } from "../../services/News";
 import style from "./viewNewsItemModel.module.css";
+import { useState } from "react";
+import toast from "react-hot-toast";
 
 const ViewNewsItemModel = () => {
   const { t } = useTranslation();
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
+
+  // Fetch single news item
   const { data: newsItem } = useQuery({
-    queryKey: ["newsItem", slug],
+    queryKey: ["news", slug],
     queryFn: () => getNewsItemByAdmin(slug!),
-    enabled: !!slug, // ✅ تأكد أنه لن يعمل إلا لو slug موجود
+    enabled: !!slug,
+  });
+
+  // Local state for visibility
+  const [visibility, setVisibility] = useState(newsItem?.visibility?.toString() ?? "0");
+
+  // Mutation for updating news item
+  const { mutate: updateNewsMutate, isPending } = useMutation({
+    mutationFn: ({ id, visibility }: { id: string; visibility: number }) =>
+      updateNewsItem(id, visibility),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["news", slug] });
+      toast.success(t("updated"));
+      navigate("../news");
+    },
+    onError: () => {
+      toast.error(t("failed"));
+    },
   });
 
   return (
@@ -34,7 +56,28 @@ const ViewNewsItemModel = () => {
         </div>
         <div>
           <h2>{t("admin.viewNewsItem.visibility")}</h2>
-          <span>{newsItem?.visibility}</span>
+          <div className={style.newsItem_visiility_update_model}>
+            <span>{newsItem?.visibility === 1 ? "Public" : "Private"}</span>
+            <select
+              value={visibility}
+              onChange={(e) => setVisibility(e.target.value)}
+            >
+              <option value="0">Private</option>
+              <option value="1">Public</option>
+            </select>
+            <button
+              disabled={isPending}
+              onClick={() =>
+                newsItem?.id &&
+                updateNewsMutate({
+                  id: newsItem.id,
+                  visibility: Number(visibility),
+                })
+              }
+            >
+              {isPending ? "Updating..." : "Update"}
+            </button>
+          </div>
         </div>
         <div>
           <h2>{t("admin.viewNewsItem.createdAt")}</h2>

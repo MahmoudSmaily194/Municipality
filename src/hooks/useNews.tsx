@@ -17,7 +17,7 @@ export const useVissibleNews = (params: FetchPaginatedParamsType) => {
     PaginatedResponse<NewsItemType>,
     (string | FetchPaginatedParamsType)[]
   >({
-    queryKey: ["vissible_news", params],
+    queryKey: ["news", params],
     queryFn: () => fetchedNews(params),
     staleTime: 1000 * 5,
   });
@@ -25,7 +25,7 @@ export const useVissibleNews = (params: FetchPaginatedParamsType) => {
 
 export const useGetAllNews = (filters: Omit<FetchPaginatedParamsType, 'PageNumber' | 'PageSize'>) => {
  return useInfiniteQuery({
-    queryKey: ['events', filters],
+    queryKey: ['news', filters],
     queryFn: ({ pageParam = 1, queryKey }) => {
       const [, filterParams] = queryKey as [string, Omit<FetchPaginatedParamsType, 'PageNumber' | 'PageSize'>];
       return allFetchedNews({ ...filterParams, PageNumber: pageParam, PageSize: 5});
@@ -44,7 +44,7 @@ export const useCreateNewsItem = () => {
   return useMutation<NewsItemType, Error, FormData>({
     mutationFn: createNewsItem,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["vissible_news"] });
+      queryClient.invalidateQueries({ queryKey: ["news"] });
     },
   });
 };
@@ -53,7 +53,7 @@ export const useDeleteNewsItem = () => {
   return useMutation<void, Error, string>({
     mutationFn: deleteNewsItem,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["vissible_news"] });
+      queryClient.invalidateQueries({ queryKey: ["news"] });
     },
   });
 };

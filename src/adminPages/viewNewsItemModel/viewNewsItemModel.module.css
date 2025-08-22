@@ -38,6 +38,16 @@
   color: #515d71;
   font-size: large;
 }
+.newsItem_visiility_update_model span {
+  width: 7.5rem;
+  height: 2rem;
+  color: white !important;
+  background-color: #61708a;
+  border-radius: 8px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
 .viewNewsItemModel div p,
 .viewNewsItemModel div span,
 .viewNewsItemModel div h3 {
@@ -59,6 +69,17 @@
   border: 2px solid #0465c5;
   color: white;
   scale: 1.05;
+}
+.newsItem_visiility_update_model {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.newsItem_visiility_update_model select {
+  border: 2px solid #1a80e5;
+  border-radius: 8px;
+  width: 8rem;
+  height: 2rem;
 }
 @media (max-width: 576px) {
   .viewNewsItemModel {

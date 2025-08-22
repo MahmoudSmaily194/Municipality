@@ -121,3 +121,17 @@ export const deleteNewsItem = async (id: string) => {
     throw new Error("Unknown error");
   }
 };
+export const updateNewsItem = async(id:string , visibility:number) : Promise<void> =>{
+ try{
+   const res = await axiosInstance.put("/News/update_newsItem", {visibility:visibility} ,{params:{id}});
+   return res.data;
+ }catch (err) {
+    console.error("updateNewsItem error:", err);
+
+    if (isAxiosError(err)) {
+      throw new Error(err.response?.data?.message || err.message);
+    }
+    throw new Error("Unknown error");
+  }
+
+}

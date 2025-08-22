@@ -201,10 +201,10 @@ const NewsDashBoared = () => {
                 onChange={(e) => setVisibility(e.target.value)}
                 required
               >
-                <option value="1">
+                <option value="0">
                   {t("admin.news.add.fields.visibility.options.private")}
                 </option>
-                <option value="0">
+                <option value="1">
                   {t("admin.news.add.fields.visibility.options.public")}
                 </option>
               </select>
