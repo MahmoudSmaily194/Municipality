@@ -43,7 +43,7 @@ export const useCreateNewsItem = () => {
   const queryClient = useQueryClient();
   return useMutation<NewsItemType, Error, FormData>({
     mutationFn: createNewsItem,
-    onSuccess: (data) => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["vissible_news"] });
     },
   });

@@ -6,7 +6,7 @@ import { useSendEmail } from "../../../hooks/useSendEmail";
 import { useTranslation } from "react-i18next";
 
 const ContactForm = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [form, setForm] = useState<ContactFormType>({
     name: "",
     email: "",

@@ -97,7 +97,7 @@ export const useCreateComplaint = () => {
   const queryClient = useQueryClient();
   return useMutation<ComplaintType, Error, FormData>({
     mutationFn: createComplaint,
-    onSuccess: (data) => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["complaints"] });
     },
   });
@@ -106,7 +106,7 @@ export const useCreateComplaintIssueType = () => {
   const queryClient = useQueryClient();
   return useMutation<IssueTypeResponseData, Error, string>({
     mutationFn: createIssueType,
-    onSuccess: (data) => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["complaint"] });
     },
   });

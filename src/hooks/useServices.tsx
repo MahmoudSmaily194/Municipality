@@ -59,7 +59,7 @@ export const useCreateService = () => {
   const queryClient = useQueryClient();
   return useMutation<Service, Error, FormData>({
     mutationFn: createService,
-    onSuccess: (data) => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["services"] });
     },
   });
@@ -95,7 +95,7 @@ export const useCreateSerivceCategory = () => {
   const queryClient = useQueryClient();
   return useMutation<ServiceCategoryRespType, Error, string>({
     mutationFn: CreateServiceCategory,
-    onSuccess: (data) => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["services"] });
     },
   });

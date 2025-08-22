@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 const images = [img1, img2, img3, img4, img5];
 
 const ImageCarousel = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const [currentIndex, setCurrentIndex] = useState(2);
   const goToIndex = (index: number) => {

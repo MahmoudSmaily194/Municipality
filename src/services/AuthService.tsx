@@ -60,7 +60,7 @@ export const useUpdateProfilePhoto = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: updateProfilePhoto,
-    onSuccess: (_, variables) => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["user"] });
     },
   });

@@ -1,15 +1,28 @@
-import { useInfiniteQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import {
+  useInfiniteQuery,
+  useMutation,
+  useQueryClient,
+} from "@tanstack/react-query";
 
 import { createEvent, deleteEvent, fetchedEvents } from "../services/Events";
 import type { FetchPaginatedParamsType } from "../types/FetchNewsParamsType";
 import type { NewsItemType } from "../types/NewsItemType";
 
-export const useEvents = (filters: Omit<FetchPaginatedParamsType, 'PageNumber' | 'PageSize'>) => {
+export const useEvents = (
+  filters: Omit<FetchPaginatedParamsType, "PageNumber" | "PageSize">
+) => {
   return useInfiniteQuery({
-    queryKey: ['events', filters],
+    queryKey: ["events", filters],
     queryFn: ({ pageParam = 1, queryKey }) => {
-      const [, filterParams] = queryKey as [string, Omit<FetchPaginatedParamsType, 'PageNumber' | 'PageSize'>];
-      return fetchedEvents({ ...filterParams, PageNumber: pageParam, PageSize: 5});
+      const [, filterParams] = queryKey as [
+        string,
+        Omit<FetchPaginatedParamsType, "PageNumber" | "PageSize">
+      ];
+      return fetchedEvents({
+        ...filterParams,
+        PageNumber: pageParam,
+        PageSize: 5,
+      });
     },
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPages) => {
@@ -23,7 +36,7 @@ export const useCreateEvent = () => {
   const queryClient = useQueryClient();
   return useMutation<NewsItemType, Error, FormData>({
     mutationFn: createEvent,
-    onSuccess: (data) => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["events"] });
     },
   });
