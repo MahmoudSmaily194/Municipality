@@ -1,9 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { replace, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import DeleteDialog from "../../components/deleteDialog/DeleteDialog";
 import DeleteRowDialog from "../../components/deleteRowDialog/DeleteRowDialog";
 import UploadPhoto from "../../components/uploadePhoto/UploadPhoto";
-import { useDebounce } from "../../hooks/useDebounce";
 import {
   useCreateNewsItem,
   useDeleteNewsItem,
@@ -11,11 +10,11 @@ import {
 } from "../../hooks/useNews";
 import { useDeleteDialogStore } from "../../stores/DeleteRowDialogStore";
 
-import style from "./news_dashboard.module.css";
-import type { FetchPaginatedParamsType } from "../../types/FetchNewsParamsType";
 import toast from "react-hot-toast";
 import { useTranslation } from "react-i18next";
 import DateConverter from "../../components/date/Date";
+import type { FetchPaginatedParamsType } from "../../types/FetchNewsParamsType";
+import style from "./news_dashboard.module.css";
 
 const NewsDashBoared = () => {
   const { t } = useTranslation();
@@ -28,7 +27,7 @@ const NewsDashBoared = () => {
   const { openDialog, isOpen } = useDeleteDialogStore();
   const { mutate: deleteNews } = useDeleteNewsItem();
 
-  const [filters, setFilters] = useState<FetchPaginatedParamsType>({
+  const [filters] = useState<FetchPaginatedParamsType>({
     PageNumber: 1,
     PageSize: 9,
     SortBy: "",
@@ -37,9 +36,7 @@ const NewsDashBoared = () => {
     DateFilter: "",
     SearchTerm: "",
   });
-  const [date, setDate] = useState<string>("");
-  const [searchTerm, setSearchTerm] = useState<string>("");
-  const debouncedSearchTerm = useDebounce(searchTerm, 500);
+
   const {
     data: news,
     fetchNextPage,
@@ -72,8 +69,7 @@ const NewsDashBoared = () => {
     });
   };
 
-  const { mutate, status, error, isError, isSuccess, isPending } =
-    useCreateNewsItem();
+  const { mutate, error, isError, isPending } = useCreateNewsItem();
 
   const handlePublish = () => {
     if (!uploadImage) {

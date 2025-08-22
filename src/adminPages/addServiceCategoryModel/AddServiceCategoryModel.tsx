@@ -1,8 +1,8 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { useTranslation } from "react-i18next";
 import { BiSolidTrash } from "react-icons/bi";
 import DeleteRowDialog from "../../components/deleteRowDialog/DeleteRowDialog";
-import { useDeleteComplaintIssueType } from "../../hooks/useComplaints";
 import {
   useCreateSerivceCategory,
   useDeleteServiceCategory,
@@ -10,7 +10,6 @@ import {
 } from "../../hooks/useServices";
 import { useDeleteDialogStore } from "../../stores/DeleteRowDialogStore";
 import style from "./addServiceCategoryModel.module.css";
-import toast from "react-hot-toast";
 const AddServiceCategoryModel = () => {
   const { t } = useTranslation();
   const { mutate } = useCreateSerivceCategory();
