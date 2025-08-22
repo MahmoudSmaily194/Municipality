@@ -158,7 +158,11 @@ const AdminSettings = () => {
                   <HiOutlineMail />
                   <p>{t("admin.settings.email")}</p>
                 </div>
-                <p>{user?.email}</p>
+                <p dir="rtl" className={style.admin_settings_page_email}>
+                     ......
+                  {user?.email?.split("").slice(0,10).join("")}
+               
+                </p>
               </div>
 
               <div>
