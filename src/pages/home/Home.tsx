@@ -58,9 +58,15 @@ const Home = () => {
         <div className={style.quick_access}>
           <h2>{t("public.home.quickAccess.title")}</h2>
           <div className={style.quick_access_items}>
-            {accessItems(t).map(({ label, iconClass }) => {
+            {accessItems(t).map(({ label, iconClass, url }) => {
               return (
-                <div key={label} className={style.access_item}>
+                <div
+                  onClick={() => {
+                    navigate(url);
+                  }}
+                  key={label}
+                  className={style.access_item}
+                >
                   <div className={`${style.access_icon} ${style[iconClass]}`} />
                   <p className={style.access_label}>{label}</p>
                 </div>

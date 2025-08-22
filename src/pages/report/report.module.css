@@ -119,6 +119,7 @@
 }
 @media (max-width: 467px) {
   .name_phoNb_inpts {
+    height: inherit;
     display: flex;
     flex-direction: column;
   }
