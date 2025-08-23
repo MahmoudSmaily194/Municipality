@@ -5,7 +5,7 @@ import DateConverter from "../../components/date/Date";
 import LazyImage from "../../LazyLoader/LazyImg";
 import { getNewsItemByAdmin, updateNewsItem } from "../../services/News";
 import style from "./viewNewsItemModel.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 const ViewNewsItemModel = () => {
@@ -22,7 +22,7 @@ const ViewNewsItemModel = () => {
   });
 
   // Local state for visibility
-  const [visibility, setVisibility] = useState(newsItem?.visibility?.toString() ?? "0");
+  const [visibility, setVisibility] = useState<number>();
 
   // Mutation for updating news item
   const { mutate: updateNewsMutate, isPending } = useMutation({
@@ -37,7 +37,9 @@ const ViewNewsItemModel = () => {
       toast.error(t("failed"));
     },
   });
-
+  useEffect(() => {
+    setVisibility(newsItem?.visibility?.toString() == "0" ? 0 : 1);
+  }, [newsItem]);
   return (
     <div className={style.viewNewsItemModel_page}>
       <div className={style.viewNewsItemModel}>
@@ -57,13 +59,12 @@ const ViewNewsItemModel = () => {
         <div>
           <h2>{t("admin.viewNewsItem.visibility")}</h2>
           <div className={style.newsItem_visiility_update_model}>
-            <span>{newsItem?.visibility === 1 ? "Public" : "Private"}</span>
             <select
               value={visibility}
-              onChange={(e) => setVisibility(e.target.value)}
+              onChange={(e) => setVisibility(Number(e.target.value))}
             >
-              <option value="0">Private</option>
-              <option value="1">Public</option>
+              <option value={0}>Private</option>
+              <option value={1}>Public</option>
             </select>
             <button
               disabled={isPending}

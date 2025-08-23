@@ -141,7 +141,7 @@ const NewsDashBoared = () => {
                           </td>
                           <td>
                             <button>
-                              {newsItem.visibility
+                              {newsItem.visibility == 0
                                 ? t("admin.news.table.visibility.private")
                                 : t("admin.news.table.visibility.public")}
                             </button>
