@@ -126,7 +126,7 @@
   .search_icon {
     font-size: x-large;
     top: 0.4rem;
-    right: 0.8rem;
+  inset-inline-end: 0.8rem;
   }
 
   .services {

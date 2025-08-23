@@ -9,6 +9,7 @@ import {
 } from "../../hooks/useComplaints";
 import type { FetchPaginatedParamsType } from "../../types/FetchNewsParamsType";
 import style from "./compliants.module.css";
+import LazyImage from "../../LazyLoader/LazyImg";
 const PublicComplaints = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -168,7 +169,11 @@ const PublicComplaints = () => {
                       <button>{complaint.status}</button>
                     </div>
                   </div>
-                  <img src={`${ complaint.imageUrl}`} />
+                  <LazyImage
+                  className={style.img}
+                    src={`${complaint.imageUrl}`}
+                    alt="complaint image"
+                  />
                 </div>
               );
             })}
