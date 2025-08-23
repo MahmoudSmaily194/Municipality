@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import LazyImage from "../../LazyLoader/LazyImg";
-import DateConverter from "../../components/date/Date";
 import { useEvents } from "../../hooks/useEvents";
 import style from "./events.module.css";
 

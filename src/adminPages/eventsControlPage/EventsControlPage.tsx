@@ -1,7 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import DateConverter from "../../components/date/Date";
 import DeleteRowDialog from "../../components/deleteRowDialog/DeleteRowDialog";
 import { useDeleteEvent, useEvents } from "../../hooks/useEvents";
 import { useDeleteDialogStore } from "../../stores/DeleteRowDialogStore";

@@ -1,10 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 import { useNavigate, useParams } from "react-router-dom";
-import DateConverter from "../../../components/date/Date";
+import LazyImage from "../../../LazyLoader/LazyImg";
 import { getEvent } from "../../../services/Events";
 import style from "./eventsViewModel.module.css";
-import LazyImage from "../../../LazyLoader/LazyImg";
 
 const EventsViewModel = () => {
   const { slug } = useParams<{ slug: string }>();
