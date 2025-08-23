@@ -6,11 +6,13 @@ import { useCreateEvent } from "../../hooks/useEvents";
 import toast from "react-hot-toast";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import { useQueryClient } from "@tanstack/react-query";
 // عدّل المسار حسب الحاجة
 
 const EventModel = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
   const [uploadImage, setUploadImage] = useState<File | null>(null);
   const [deleteDialog, setDeleteDialog] = useState(false);
 
@@ -40,6 +42,7 @@ const EventModel = () => {
     createEvent(formData, {
       onSuccess: () => {
         toast.success(t("toast.publishEvent"));
+        queryClient.invalidateQueries({ queryKey: ["events"] });
       },
     });
     // Optional: Reset form after submit

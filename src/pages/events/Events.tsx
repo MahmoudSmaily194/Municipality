@@ -20,7 +20,6 @@ const Events = () => {
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
     useEvents(filters);
 
-
   const [viewMoreMap, setViewMoreMap] = useState<{ [id: string]: boolean }>({});
 
   const toggleViewMore = (id: string) => {
@@ -91,7 +90,11 @@ const Events = () => {
                     </p>
                     <p className={style.date}>
                       <strong>{t("public.events.date")}</strong>&nbsp;&nbsp;{" "}
-                      <DateConverter date={new Date(event.date ?? "")} />
+                      {new Date(event.date ?? "").toLocaleDateString("en-GB", {
+                        day: "2-digit",
+                        month: "2-digit",
+                        year: "numeric",
+                      })}
                     </p>
                     <p style={{ color: "black" }}>
                       <strong>{t("public.events.location")}</strong>&nbsp;&nbsp;
@@ -104,7 +107,7 @@ const Events = () => {
                   <div className={style.event_img_con}>
                     <LazyImage
                       className={style.event_image}
-                      src={ event.imageUrl}
+                      src={event.imageUrl}
                       alt={event.imageUrl}
                     />
                   </div>
@@ -115,9 +118,6 @@ const Events = () => {
 
         {/* Infinite Scroll Trigger */}
         <div ref={loaderRef} style={{ height: "20px" }}></div>
-
-        {isFetchingNextPage && <p>Loading more events...</p>}
-        {!hasNextPage && <p>No more events to load.</p>}
       </div>
     </div>
   );

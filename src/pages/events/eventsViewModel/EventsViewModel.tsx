@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import DateConverter from "../../../components/date/Date";
 import { getEvent } from "../../../services/Events";
 import style from "./eventsViewModel.module.css";
+import LazyImage from "../../../LazyLoader/LazyImg";
 
 const EventsViewModel = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -36,7 +37,11 @@ const EventsViewModel = () => {
             {t("admin.viewEvent.publishedOn")}
             {event?.date ? (
               <span>
-                <DateConverter date={new Date(event.date ?? "")} />
+                {new Date(event.date ?? "").toLocaleDateString("en-GB", {
+                  day: "2-digit",
+                  month: "2-digit",
+                  year: "numeric",
+                })}
               </span>
             ) : (
               <span>Unknown date</span>
@@ -45,7 +50,7 @@ const EventsViewModel = () => {
           <strong>| </strong>
           <span> {t("admin.viewEvent.source")}</span>
         </div>
-        <img src={event?.imageUrl} alt="" />
+        <LazyImage src={event?.imageUrl ?? ""} alt="" />
         <p>{event?.description}</p>
       </div>
     </div>

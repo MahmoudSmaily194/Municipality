@@ -18,6 +18,7 @@
 }
 .newsItem h5 a {
   color: #4f7396;
+  cursor: pointer;
 }
 .newsItem h2 {
   font-weight: 700;

@@ -6,7 +6,6 @@
   justify-content: center;
   align-items: center;
   margin-top: 2rem;
-
   border-inline-start: 2px solid #1a80e5;
 }
 .admin_event {
@@ -70,6 +69,9 @@
   background-size: cover;
   width: 75%;
   height: calc(15rem + 20%);
+}
+.adminViewEventModel_img {
+  width: 100%;
 }
 @media (max-width: 546px) {
   .admin_event_date span {

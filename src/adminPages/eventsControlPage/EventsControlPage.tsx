@@ -95,7 +95,14 @@ const EventsControlPage = () => {
                         {event.title.split(" ").slice(0, 5).join(" ")}
                       </td>
                       <td>
-                        <DateConverter date={new Date(event.date ?? "")} />
+                        {new Date(event.date ?? "").toLocaleDateString(
+                          "en-GB",
+                          {
+                            day: "2-digit",
+                            month: "2-digit",
+                            year: "numeric",
+                          }
+                        )}
                       </td>
                       <td>{event.location}</td>
                       <td>

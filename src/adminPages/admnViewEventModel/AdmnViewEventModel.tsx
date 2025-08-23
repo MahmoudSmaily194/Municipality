@@ -4,11 +4,12 @@ import { useNavigate, useParams } from "react-router-dom";
 import DateConverter from "../../components/date/Date";
 import { getEvent } from "../../services/Events";
 import style from "./adminViewEventModel.module.css";
+import LazyImage from "../../LazyLoader/LazyImg";
 const AdmnViewEventModel = () => {
   const { eventSlug: slug } = useParams<{ eventSlug: string }>();
   const { t } = useTranslation();
   const { data: event } = useQuery({
-    queryKey: ["newsItem", slug],
+    queryKey: ["events", slug],
     queryFn: () => getEvent(slug!),
     enabled: !!slug,
   });
@@ -19,7 +20,7 @@ const AdmnViewEventModel = () => {
         <h5>
           <a
             onClick={() => {
-              navigate("/events", { replace: true });
+              navigate("../events", { replace: true });
             }}
           >
             Events/
@@ -35,7 +36,11 @@ const AdmnViewEventModel = () => {
             {t("admin.viewEvent.date")}
             {event?.date ? (
               <span>
-                <DateConverter date={new Date(event?.date ?? "")} />
+                {new Date(event.date ?? "").toLocaleDateString("en-GB", {
+                  day: "2-digit",
+                  month: "2-digit",
+                  year: "numeric",
+                })}
               </span>
             ) : (
               <span>Unknown date</span>
@@ -44,7 +49,11 @@ const AdmnViewEventModel = () => {
           <strong>| </strong>
           <span>{t("admin.viewEvent.source")} </span>
         </div>
-        <img src={event?.imageUrl} alt="" />
+        <LazyImage
+          className={style.adminViewEventModel_img}
+          src={event?.imageUrl ?? ""}
+          alt=""
+        />
         <p>{event?.description}</p>
       </div>
     </div>
