@@ -5,7 +5,7 @@ import DeleteRowDialog from "../../components/deleteRowDialog/DeleteRowDialog";
 import {
   useCreateComplaintIssueType,
   useDeleteComplaintIssueType,
-  usegetComplaintIssueType
+  usegetComplaintIssueType,
 } from "../../hooks/useComplaints";
 import { useDeleteDialogStore } from "../../stores/DeleteRowDialogStore";
 import style from "./IssueTypeModal.module.css";
@@ -14,30 +14,50 @@ const IssueTypeModal = () => {
   const { t } = useTranslation();
   const { mutate } = useCreateComplaintIssueType();
   const [issueType, setIssueType] = useState<string>("");
-  const [errorMessage, setErrorMessage] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<{
+    duplicate: boolean;
+    empty: boolean;
+  }>({ duplicate: false, empty: false });
   const { data } = usegetComplaintIssueType();
   const { mutate: deleteIssueType } = useDeleteComplaintIssueType();
 
   const { openDialog, isOpen } = useDeleteDialogStore();
+
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+
+    if (issueType.trim().length < 3) {
+      setErrorMessage((prev) => ({
+        ...prev,
+        empty: true,
+      }));
+      return; // stop here if empty
+    }
+
     mutate(issueType, {
       onError: (err: any) => {
         if (err.status === 409) {
-          setErrorMessage(true);
+          setErrorMessage((prev) => ({
+            ...prev,
+            duplicate: true,
+          }));
         } else {
-          alert(`${t("admin.issues.errorMessage")} : ${err.message}`);
+          alert(`${t("admin.issues.errorMessage")} `);
         }
       },
+      onSuccess: () => {
+        setIssueType("");
+        setErrorMessage({ empty: false, duplicate: false });
+      },
     });
-    setErrorMessage(false);
-    setIssueType("");
   };
+
   const handleDeleteClick = (issueId: string) => {
     openDialog(issueId, () => {
       deleteIssueType(issueId);
     });
   };
+
   return (
     <div className={style.issueTypeModal_page_con}>
       <div className={style.issueTypeModal_page}>
@@ -57,17 +77,21 @@ const IssueTypeModal = () => {
                   value={issueType}
                   onChange={(e) => {
                     setIssueType(e.target.value);
-                    setErrorMessage(false);
+                    setErrorMessage({
+                      empty: false,
+                      duplicate: false,
+                    });
                   }}
-                  max={50}
+                  maxLength={50} // fixed attribute
+                  required
                 />
-                {errorMessage && (
+                {errorMessage.duplicate && (
                   <p className={style.error}>
-                    {t(
-                      "admin.issues.duplicateError",
-                      "Issue type name already exists"
-                    )}
+                    {t("admin.issues.duplicateError")}
                   </p>
+                )}
+                {errorMessage.empty && (
+                  <p className={style.error}>{t("admin.issues.empty")}</p>
                 )}
               </div>
               <button onClick={handleSubmit}>

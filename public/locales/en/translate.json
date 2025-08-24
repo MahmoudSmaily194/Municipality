@@ -441,7 +441,9 @@
       "inputLabel": "Issue Type",
       "inputPlaceholder": "Please add Issue Type",
       "submitButton": "Add",
-      "tableTitle": "Issues"
+      "tableTitle": "Issues",
+      "duplicateError": "Issue type name already exists",
+      "empty": "Please enter an issue type name"
     },
     "viewNewsItem": {
       "title": "Title:",
@@ -489,9 +491,9 @@
       "inputPlaceholder": "Please add Service Category",
       "submitButton": "Add",
       "tableTitle": "Categories",
-      "err":"Category name already exists",
-      "nameLength":"Category name must be at least 3 characters",
-      "success":"Service category added successfully"
+      "err": "Category name already exists",
+      "nameLength": "Category name must be at least 3 characters",
+      "success": "Service category added successfully"
     },
     "settings": {
       "title": "Settings",

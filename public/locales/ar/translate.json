@@ -439,7 +439,9 @@
       "inputLabel": "نوع المشكلة",
       "inputPlaceholder": "يرجى إضافة نوع المشكلة",
       "submitButton": "إضافة",
-      "tableTitle": "أنواع المشاكل"
+      "tableTitle": "أنواع المشاكل",
+      "duplicateError": "اسم نوع المشكلة موجود بالفعل",
+      "empty": "يرجى إدخال اسم نوع المشكلة"
     },
     "viewNewsItem": {
       "title": "العنوان:",
