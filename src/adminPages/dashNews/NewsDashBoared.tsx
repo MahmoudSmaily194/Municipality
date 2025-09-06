@@ -15,6 +15,10 @@ import { useTranslation } from "react-i18next";
 import DateConverter from "../../components/date/Date";
 import type { FetchPaginatedParamsType } from "../../types/FetchNewsParamsType";
 import style from "./news_dashboard.module.css";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 
 const NewsDashBoared = () => {
   const { t } = useTranslation();
@@ -196,18 +200,26 @@ const NewsDashBoared = () => {
             />
             <div className={style.visibility_con}>
               <p>{t("admin.news.add.fields.visibility.label")}</p>
-              <select
-                value={visibility}
-                onChange={(e) => setVisibility(e.target.value)}
-                required
-              >
-                <option value="0">
-                  {t("admin.news.add.fields.visibility.options.private")}
-                </option>
-                <option value="1">
-                  {t("admin.news.add.fields.visibility.options.public")}
-                </option>
-              </select>
+              <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+                <InputLabel id="demo-select-small-label">
+                  {t("admin.news.add.fields.visibility.label")}
+                </InputLabel>
+                <Select
+                  labelId="demo-select-small-label"
+                  id="demo-select-small"
+                  label={t("admin.news.add.fields.visibility.label")}
+                  value={visibility}
+                  onChange={(e) => setVisibility(e.target.value)}
+                  required
+                >
+                  <MenuItem value="0">
+                    {t("admin.news.add.fields.visibility.options.private")}
+                  </MenuItem>
+                  <MenuItem value="1">
+                    {t("admin.news.add.fields.visibility.options.public")}
+                  </MenuItem>
+                </Select>
+              </FormControl>
             </div>
             <div className={style.news_dashboard_uploadPhoto_con}>
               <UploadPhoto

@@ -10,7 +10,11 @@ import MunicipalityMap from "../../components/municipalityMap/MunicipalityMap";
 import { useUpdateComplaint } from "../../hooks/useComplaints";
 import { fetchedComplaintById } from "../../services/Complaints";
 import style from "./complaintViewModel.module.css";
-
+import ToggleBtn from "../../components/toggleBtn/ToggleBtn";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
 const StatusEnum: Record<string, number> = {
   Pending: 0,
   InProgress: 1,
@@ -112,23 +116,27 @@ const ComplaintViewModel = () => {
           </header>
 
           {complaint?.imageUrl && (
-            <img src={ complaint.imageUrl} alt="Complaint" />
+            <img src={complaint.imageUrl} alt="Complaint" />
           )}
 
           <div className={style.complaint_viewModel_select}>
-            <label htmlFor="status">
-              <strong>{t("admin.viewComplaint.status")}</strong>
-            </label>
-            <select
-              id="status"
-              value={status}
-              onChange={(e) => setStatus(Number(e.target.value))}
-            >
-              <option value={0}>Pending</option>
-              <option value={1}>In Progress</option>
-              <option value={2}>Resolved</option>
-              <option value={3}>Rejected</option>
-            </select>
+            <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+              <InputLabel id="complaint-status-label">
+                <strong>{t("admin.viewComplaint.status")}</strong>
+              </InputLabel>
+              <Select
+                labelId="complaint-status-label"
+                id="complaint-status"
+                label={t("admin.viewComplaint.status")}
+                value={status}
+                onChange={(e) => setStatus(Number(e.target.value))}
+              >
+                <MenuItem value={0}>Pending</MenuItem>
+                <MenuItem value={1}>In Progress</MenuItem>
+                <MenuItem value={2}>Resolved</MenuItem>
+                <MenuItem value={3}>Rejected</MenuItem>
+              </Select>
+            </FormControl>
           </div>
 
           <header>
@@ -180,13 +188,10 @@ const ComplaintViewModel = () => {
           <div className={style.complaint_viewModel_adminControles}>
             <div>
               <p>{t("admin.viewComplaint.public")}</p>
-              <input
-                type="range"
-                min={0}
-                max={1}
-                step={1}
+              <ToggleBtn
+                id="public-toggle"
                 value={rangeInputs.public}
-                onClick={() =>
+                onChange={() =>
                   setRangeInputs((prev) => ({
                     ...prev,
                     public: prev.public === 1 ? 0 : 1,
@@ -197,13 +202,11 @@ const ComplaintViewModel = () => {
 
             <div>
               <p>{t("admin.viewComplaint.important")}</p>
-              <input
-                type="range"
-                min={0}
-                max={1}
-                step={1}
+
+              <ToggleBtn
+                id="important-toggle"
                 value={rangeInputs.important}
-                onClick={() =>
+                onChange={() =>
                   setRangeInputs((prev) => ({
                     ...prev,
                     important: prev.important === 1 ? 0 : 1,

@@ -33,6 +33,7 @@
   justify-content: center;
 }
 .eventModel_form_con form {
+  margin-top: 1rem;
   width: 100%;
   display: flex;
   align-items: center;
@@ -45,23 +46,13 @@
   flex-direction: column;
   gap: 1rem;
 }
-.eventModel_form_con form label {
-  margin-top: 1.5rem;
-  font-weight: 500;
-}
-.eventModel_form_title_date_inpts {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+
 .eventModel_form_title_date_inpts div {
-  width: 40%;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  margin-top: 0.3rem;
 }
+
 .eventModel_form_con form input {
-  height: 2.5rem;
+  height: 3rem;
   background-color: #e8edf2;
   border: none;
   border-radius: 8px;
@@ -69,9 +60,7 @@
   font-size: 1rem;
   color: #4f7396;
 }
-.eventModel_form_title_date_inpts div input {
-  width: calc(100% - 1rem);
-}
+
 .eventModel_form_con form textarea {
   resize: none;
   height: 8rem;
@@ -119,23 +108,26 @@
   border: 2px solid #0d61b5;
   background-color: #0d61b5;
 }
+.eventModel_form_title_date_inpts .event_title_inp_div {
+  width: 97%;
+}
+.eventModel_form_title_date_inpts .event_title_inp_div input {
+  width: 100%;
+}
 
 @media (max-width: 675px) {
   .eventModel {
     width: 90%;
   }
   .eventModel_form_title_date_inpts {
+    display: flex;
+    flex-direction: column;
     gap: 0.5rem;
   }
-  .eventModel_form_title_date_inpts div {
-    width: 50%;
-  }
+
   .eventModel_form_con form input {
     width: 100%;
     font-size: 0.8rem;
-    padding-inline-start: 0.3rem;
-  }
-  .eventModel label {
-    font-size: 0.8rem;
+    padding-inline-start: 0.7rem;
   }
 }

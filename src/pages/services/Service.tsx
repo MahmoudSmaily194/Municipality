@@ -9,6 +9,10 @@ import { useServiceCategories, useServices } from "../../hooks/useServices";
 import LazyImage from "../../LazyLoader/LazyImg";
 import type { FetchPaginatedParamsType } from "../../types/FetchNewsParamsType";
 import style from "./services.module.css";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 
 const Service = () => {
   const { t } = useTranslation();
@@ -27,7 +31,7 @@ const Service = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const pagesNb = data?.totalPages;
   const currentItems = data?.items;
- 
+
   const { data: categories } = useServiceCategories();
   useEffect(() => {
     setFilters((prev) => ({
@@ -48,25 +52,33 @@ const Service = () => {
 
         <div className={style.services_con}>
           <div className={style.filter_con}>
-            <select
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-            >
-              <option value="" onClick={() => setCategory("")}>
-                {t("public.services.allServices")}
-              </option>
-              {categories?.map((category) => {
-                return (
-                  <option
-                    key={category.id}
-                    onClick={() => setCategory(category.id)}
-                    value={category.id}
-                  >
-                    {category.name}
-                  </option>
-                );
-              })}
-            </select>
+            <FormControl className={style.servicesSelect} size="small">
+              <InputLabel id="demo-select-small-label">
+                {t("public.services.title")}
+              </InputLabel>
+              <Select
+                labelId="demo-select-small-label"
+                id="demo-select-small"
+                label={t("public.services.title")}
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+              >
+                <MenuItem value="" onClick={() => setCategory("")}>
+                  {t("public.services.allServices")}
+                </MenuItem>
+                {categories?.map((category) => {
+                  return (
+                    <MenuItem
+                      key={category.id}
+                      onClick={() => setCategory(category.id)}
+                      value={category.id}
+                    >
+                      {category.name}
+                    </MenuItem>
+                  );
+                })}
+              </Select>
+            </FormControl>
             <div className={style.search_inp}>
               <IoMdSearch className={style.search_icon} />
               <input
@@ -86,7 +98,7 @@ const Service = () => {
                 <div key={service.id} className={style.service}>
                   <LazyImage
                     className={style.service_image}
-                    src={`${ service.imageUrl}`}
+                    src={`${service.imageUrl}`}
                     alt={service.title}
                   />
                   <div className={style.serv_body}>

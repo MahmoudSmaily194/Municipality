@@ -11,6 +11,7 @@ import PublicComplaints from "../pages/publicComplaints/PublicComplaints";
 import NotFound from "../pages/notFound/NotFound";
 import EventsViewModel from "../pages/events/eventsViewModel/EventsViewModel";
 import ServiceViewModel from "../pages/services/serviceViewModel/ServiceViewModel";
+import ToggleBtn from "../components/toggleBtn/ToggleBtn";
 
 const PublicRoutes = () => {
   return (
@@ -26,7 +27,7 @@ const PublicRoutes = () => {
         <Route path="/complaints" element={<PublicComplaints />} />
         <Route path="/report" element={<Report />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path="*" element={<ToggleBtn />} />
       </Routes>
     </PublicLayout>
   );

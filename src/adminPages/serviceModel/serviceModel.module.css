@@ -45,10 +45,7 @@
   flex-direction: column;
   gap: 1rem;
 }
-.serviceModel_form_con form label {
-  margin-top: 1.5rem;
-  font-weight: 500;
-}
+
 
 .serviceModel_form_con form input {
   height: 2.5rem;
@@ -118,12 +115,7 @@
   background-color: #1a80e5;
   color: white;
 }
-.serviceModel_inpts_con select {
-  height: 2.5rem;
-  border: 2px solid #1a80e5;
-  border-radius: 10px;
-  background-color: transparent;
-}
+
 .active {
   background-color: #1a80e5 !important;
   color: white !important;

@@ -13,7 +13,10 @@ import type { ComplaintFormDataType } from "./ComplaintFormDataType";
 
 import style from "./report.module.css";
 import UploadPhoto from "../../components/uploadePhoto/UploadPhoto";
-
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 const Report = () => {
   const { t } = useTranslation();
   const { isOpen } = useAlertDialogStore();
@@ -216,24 +219,31 @@ const Report = () => {
             <label htmlFor="issueType">
               {t("public.reportForm.issueType.label")}
             </label>
-            <select
-              id="issueType"
-              onChange={(event) => {
-                setComplaintFormData((prev) => ({
-                  ...prev,
-                  issueTypeId: event.target.value,
-                }));
-              }}
-            >
-              {data?.map((issue) => {
-                return (
-                  <option key={issue.id} value={issue.id}>
-                    {issue.issueName}
-                  </option>
-                );
-              })}
-            </select>
-
+            <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+              <InputLabel id="demo-select-small-label">
+                {t("public.reportForm.issueType.label")}
+              </InputLabel>
+              <Select
+                labelId="demo-select-small-label"
+                id="issueType"
+                value={complaintFormData.issueTypeId}
+                label={t("public.reportForm.issueType.label")}
+                onChange={(event) => {
+                  setComplaintFormData((prev) => ({
+                    ...prev,
+                    issueTypeId: event.target.value,
+                  }));
+                }}
+              >
+                {data?.map((issue) => {
+                  return (
+                    <MenuItem key={issue.id} value={issue.id}>
+                      {issue.issueName}
+                    </MenuItem>
+                  );
+                })}
+              </Select>
+            </FormControl>
             <label htmlFor="description">
               {t("public.reportForm.description.label")}
             </label>

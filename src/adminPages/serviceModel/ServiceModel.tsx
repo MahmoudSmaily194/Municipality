@@ -8,6 +8,10 @@ import {
   useServiceCategories,
 } from "../../hooks/useServices";
 import style from "./serviceModel.module.css";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 
 type ServiceStatus = 0 | 1; // 0 = Active, 1 = Inactive
 
@@ -109,21 +113,24 @@ const ServiceModel = () => {
                   maxLength={1000}
                 />
 
-                <label htmlFor="categ">
-                  {t("admin.services.add.fields.category.label")}
-                </label>
-                <select
-                  id="categ"
-                  value={categoryId}
-                  onChange={(e) => setCategoryId(e.target.value)}
-                >
-                  {categ?.map((c) => (
-                    <option key={c.id} value={c.id}>
-                      {c.name}
-                    </option>
-                  ))}
-                </select>
-
+                <FormControl>
+                  <InputLabel id="demo-select-small-label">
+                    {t("admin.services.add.fields.category.label")}
+                  </InputLabel>
+                  <Select
+                    labelId="demo-select-small-label"
+                    id="categ"
+                    label={t("admin.services.add.fields.category.label")}
+                    value={categoryId}
+                    onChange={(e) => setCategoryId(e.target.value)}
+                  >
+                    {categ?.map((c) => (
+                      <MenuItem key={c.id} value={c.id}>
+                        {c.name}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
                 <div className={style.serviceModel_status_btns}>
                   <button
                     type="button"

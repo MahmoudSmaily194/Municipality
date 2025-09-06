@@ -1,0 +1,27 @@
+.ToggleBtn_checkbox {
+  display: none;
+}
+.ToggleBtn {
+  position: relative;
+  padding: 0.01px 1.2rem;
+  background-color: #dcdcdc;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.ToggleBtn::before {
+  position: absolute;
+  top: 3px;
+  left: 2px;
+  content: " ";
+  background-color: white;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+}
+.ToggleBtn_checkbox:checked + .ToggleBtn {
+  background-color: blue;
+}
+.ToggleBtn_checkbox:checked + .ToggleBtn::before {
+  right: 2px;
+}

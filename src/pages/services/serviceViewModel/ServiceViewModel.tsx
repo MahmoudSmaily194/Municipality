@@ -27,7 +27,6 @@ const ServiceViewModel = () => {
         </h3>
         <h1>{service?.title}</h1>
         <p>
-          {" "}
           {t("public.viewService.category")} {service?.categoryName}
         </p>
         <LazyImage

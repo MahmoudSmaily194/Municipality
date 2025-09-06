@@ -64,11 +64,8 @@
   align-items: center;
   gap: 1rem;
 }
-.filter_compl_selects select {
-  padding: 0.5rem 0.4rem;
-  background-color: #f0f2f5;
-  border: none;
-  border-radius: 8px;
+.filter_compl_selects .complaint_select {
+  width: 8rem;
 }
 .copmlaints {
   width: 100%;

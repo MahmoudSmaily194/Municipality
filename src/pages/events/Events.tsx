@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import LazyImage from "../../LazyLoader/LazyImg";
 import { useEvents } from "../../hooks/useEvents";
 import style from "./events.module.css";
-
+import dayjs from "dayjs";
 const Events = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -87,13 +87,10 @@ const Events = () => {
                         </span>
                       )}
                     </p>
+
                     <p className={style.date}>
-                      <strong>{t("public.events.date")}</strong>&nbsp;&nbsp;{" "}
-                      {new Date(event.date ?? "").toLocaleDateString("en-GB", {
-                        day: "2-digit",
-                        month: "2-digit",
-                        year: "numeric",
-                      })}
+                      <strong>{t("public.events.date")}</strong>&nbsp;&nbsp;
+                      {dayjs(event.date).format("DD MMMM YYYY HH:mm")}
                     </p>
                     <p style={{ color: "black" }}>
                       <strong>{t("public.events.location")}</strong>&nbsp;&nbsp;

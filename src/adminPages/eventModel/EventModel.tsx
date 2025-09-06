@@ -1,25 +1,28 @@
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { useQueryClient } from "@tanstack/react-query";
+import dayjs from "dayjs";
 import { useState } from "react";
-import UploadPhoto from "../../components/uploadePhoto/UploadPhoto";
-import style from "./eventModel.module.css";
-import DeleteDialog from "../../components/deleteDialog/DeleteDialog";
-import { useCreateEvent } from "../../hooks/useEvents";
 import toast from "react-hot-toast";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import { useQueryClient } from "@tanstack/react-query";
-// عدّل المسار حسب الحاجة
-
+import DeleteDialog from "../../components/deleteDialog/DeleteDialog";
+import UploadPhoto from "../../components/uploadePhoto/UploadPhoto";
+import { useCreateEvent } from "../../hooks/useEvents";
+import style from "./eventModel.module.css";
 const EventModel = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
+
   const [uploadImage, setUploadImage] = useState<File | null>(null);
   const [deleteDialog, setDeleteDialog] = useState(false);
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState<string>("");
 
   const { mutate: createEvent, isPending } = useCreateEvent();
 
@@ -30,7 +33,7 @@ const EventModel = () => {
       return;
     }
     const formData = new FormData();
-    const localDate = new Date(date); // "2025-08-22"
+    const localDate = new Date(date);
     formData.append("Date", localDate.toISOString());
     formData.append("Title", title);
     formData.append("Description", description);
@@ -43,14 +46,14 @@ const EventModel = () => {
       onSuccess: () => {
         toast.success(t("toast.publishEvent"));
         queryClient.invalidateQueries({ queryKey: ["events"] });
+        // Reset form
+        setTitle("");
+        setDescription("");
+        setLocation("");
+        setDate("");
+        setUploadImage(null);
       },
     });
-    // Optional: Reset form after submit
-    setTitle("");
-    setDescription("");
-    setLocation("");
-    setDate("");
-    setUploadImage(null);
   };
 
   return (
@@ -64,10 +67,7 @@ const EventModel = () => {
             <form onSubmit={handleSubmit}>
               <div className={style.eventModel_inpts_con}>
                 <div className={style.eventModel_form_title_date_inpts}>
-                  <div>
-                    <label htmlFor="title">
-                      {t("admin.events.add.fields.title.label")}
-                    </label>
+                  <div className={style.event_title_inp_div}>
                     <input
                       id="title"
                       type="text"
@@ -81,23 +81,21 @@ const EventModel = () => {
                     />
                   </div>
                   <div>
-                    <label htmlFor="date">
-                      {t("admin.events.add.fields.datetime.label")}
-                    </label>
-                    <input
-                      id="date"
-                      type="date"
-                      value={date}
-                      onChange={(e) => setDate(e.target.value)}
-                      style={{
-                        paddingRight: "0.4rem",
-                        width: "calc(100% - 1.4rem)",
-                      }}
-                      maxLength={15}
-                      required
-                    />
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                      <DateTimePicker
+                        sx={{ width: "100%" }}
+                        label={t("admin.events.add.fields.datetime.label")}
+                        value={date ? dayjs(date) : null}
+                        onChange={(newValue) =>
+                          setDate(newValue ? newValue.toISOString() : "")
+                        }
+                        views={["year", "month", "day", "hours", "minutes"]} // 👈 restricts to Y/M/D H:M
+                        format="DD/MM/YYYY HH:mm" // 👈 controls display format
+                      />
+                    </LocalizationProvider>
                   </div>
                 </div>
+
                 <label htmlFor="descri">
                   {t("admin.events.add.fields.description.label")}
                 </label>
@@ -108,6 +106,7 @@ const EventModel = () => {
                   maxLength={1000}
                   required
                 />
+
                 <label htmlFor="loca">
                   {t("admin.events.add.fields.location.label")}
                 </label>
@@ -119,8 +118,9 @@ const EventModel = () => {
                   )}
                   value={location}
                   onChange={(e) => setLocation(e.target.value)}
-                  max={200}
+                  maxLength={200}
                 />
+
                 <div className={style.eventModel_upload_photo}>
                   <UploadPhoto
                     setUploadImage={setUploadImage}
@@ -129,6 +129,7 @@ const EventModel = () => {
                   />
                 </div>
               </div>
+
               <div className={style.eventModel_form_btns}>
                 <button
                   className={style.eventModel_addEvent_btn}
@@ -152,6 +153,7 @@ const EventModel = () => {
           </div>
         </div>
       </div>
+
       {deleteDialog && (
         <DeleteDialog
           setDeleteUploadedImage={setDeleteDialog}

@@ -336,8 +336,7 @@
             "placeholder": "Enter title"
           },
           "datetime": {
-            "label": "Date and time",
-            "placeholder": "mm/dd/yyyy"
+            "label": "Date and time"
           },
           "description": {
             "label": "Description"

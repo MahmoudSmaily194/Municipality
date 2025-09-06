@@ -10,10 +10,16 @@ import {
 import type { FetchPaginatedParamsType } from "../../types/FetchNewsParamsType";
 import style from "./compliants.module.css";
 import LazyImage from "../../LazyLoader/LazyImg";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+
 const PublicComplaints = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { data: issueTypes } = usegetComplaintIssueType();
+
   const [filters, setFilterInp] = useState<FetchPaginatedParamsType>({
     SortBy: "",
     SortDirection: "",
@@ -53,6 +59,7 @@ const PublicComplaints = () => {
       [id]: !prev[id],
     }));
   };
+
   return (
     <div className={style.pub_compls_page}>
       <div className={style.pub_compls}>
@@ -67,6 +74,8 @@ const PublicComplaints = () => {
             <MdAddCircle className={style.addCompl_icon} />
           </button>
         </div>
+
+        {/* Search Input */}
         <div className={style.search_inp}>
           <input
             type="text"
@@ -81,53 +90,70 @@ const PublicComplaints = () => {
           />
           <IoIosSearch className={style.search_icon} />
         </div>
+
+        {/* Filters */}
         <div className={style.filter_compl_selects}>
-          <select
-            onChange={(e) => {
-              setFilterInp((prev) => ({
-                ...prev,
-                IssueTypeId: e.target.value,
-              }));
-            }}
-          >
-            <option value="">{t("public.complaints.issueType")}</option>
-            {issueTypes?.map((issue) => {
-              return (
-                <option key={issue.id} value={issue.id}>
+          {/* Issue Type Filter */}
+          <FormControl className={style.complaint_select}>
+            <InputLabel id="issue-type-label">
+              {t("public.complaints.issueType")}
+            </InputLabel>
+            <Select
+              labelId="issue-type-label"
+              value={filters.IssueTypeId}
+              label={t("public.complaints.issueType")}
+              onChange={(e) =>
+                setFilterInp((prev) => ({
+                  ...prev,
+                  IssueTypeId: e.target.value,
+                }))
+              }
+            >
+              <MenuItem value="">{t("public.complaints.issueType")}</MenuItem>
+              {issueTypes?.map((issue) => (
+                <MenuItem key={issue.id} value={issue.id}>
                   {issue.issueName}
-                </option>
-              );
-            })}
-          </select>
-          <select
-            onChange={(e) => {
-              setFilterInp((prev) => ({
-                ...prev,
-                ComplaintStatus: e.target.value,
-              }));
-            }}
-          >
-            <option value="">{t("public.complaints.status.title")} </option>
-            <option value="Pending">
-              {t("public.complaints.status.pending")}{" "}
-            </option>
-            <option value="InProgress">
-              {t("public.complaints.status.inProgress")}
-            </option>
-            <option value="Resolved">
-              {t("public.complaints.status.resolved")}{" "}
-            </option>
-            <option value="Rejected">
-              {t("public.complaints.status.rejected")}{" "}
-            </option>
-          </select>
-          <select>
-            <option value="">{t("public.complaints.date")}</option>
-            <option value="">Date</option>
-            <option value="">Date</option>
-          </select>
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+
+          {/* Complaint Status Filter */}
+          <FormControl className={style.complaint_select}>
+            <InputLabel id="status-label">
+              {t("public.complaints.status.title")}
+            </InputLabel>
+            <Select
+              labelId="status-label"
+              label={t("public.complaints.status.title")}
+              value={filters.ComplaintStatus}
+              onChange={(e) =>
+                setFilterInp((prev) => ({
+                  ...prev,
+                  ComplaintStatus: e.target.value,
+                }))
+              }
+            >
+              <MenuItem value="">
+                {t("public.complaints.status.title")}
+              </MenuItem>
+              <MenuItem value="Pending">
+                {t("public.complaints.status.pending")}
+              </MenuItem>
+              <MenuItem value="InProgress">
+                {t("public.complaints.status.inProgress")}
+              </MenuItem>
+              <MenuItem value="Resolved">
+                {t("public.complaints.status.resolved")}
+              </MenuItem>
+              <MenuItem value="Rejected">
+                {t("public.complaints.status.rejected")}
+              </MenuItem>
+            </Select>
+          </FormControl>
         </div>
 
+        {/* Complaints List */}
         <div className={style.copmlaints}>
           {data?.pages
             .flatMap((page) => page.items)
@@ -139,8 +165,7 @@ const PublicComplaints = () => {
                 <div key={index} className={style.pub_complaint}>
                   <div className={style.complaint_text_content}>
                     <p>
-                      {t("public.complaints.issueType") + ":"}
-
+                      {t("public.complaints.issueType") + ":"}{" "}
                       {complaint.issueName}
                     </p>
                     <h3>{complaint.fullName}</h3>
@@ -170,15 +195,15 @@ const PublicComplaints = () => {
                     </div>
                   </div>
                   <LazyImage
-                  className={style.img}
+                    className={style.img}
                     src={`${complaint.imageUrl}`}
                     alt="complaint image"
                   />
                 </div>
               );
             })}
-          <div ref={loaderRef} style={{ height: "20px" }}></div>
 
+          <div ref={loaderRef} style={{ height: "20px" }}></div>
           {isFetchingNextPage && <p>Loading more Complaints...</p>}
         </div>
       </div>

@@ -9,7 +9,10 @@ import { useVissibleNews } from "../../hooks/useNews";
 import LazyImage from "../../LazyLoader/LazyImg";
 import type { FetchPaginatedParamsType } from "../../types/FetchNewsParamsType";
 import style from "./news.module.css";
-
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 const News = () => {
   const { t } = useTranslation();
   const [filters, setFilters] = useState<FetchPaginatedParamsType>({
@@ -47,25 +50,35 @@ const News = () => {
 
             <div className={style.news_con}>
               <div className={style.news_filter_con}>
-                <select
-                  value={date}
-                  onChange={(e) => {
-                    setDate(e.target.value);
-                    setCurrentPage(1);
-                  }}
-                >
-                  <option value="">{t("public.news.date.title")}</option>
-                  <option value="today">{t("public.news.date.today")}</option>
-                  <option value="lastweek">
-                    {t("public.news.date.lastWeek")}
-                  </option>
-                  <option value="lastmonth">
-                    {t("public.news.date.lastMonth")}
-                  </option>
-                  <option value="lastyear">
-                    {t("public.news.date.lastYear")}
-                  </option>
-                </select>
+                <FormControl className={style.newsSelect } sx={{ m: 1, minWidth: 120 }} size="small">
+                  <InputLabel id="demo-select-small-label">
+                    {t("public.news.date.title")}
+                  </InputLabel>
+                  <Select
+                    labelId="demo-select-small-label"
+                    id="demo-select-small"
+                    label={t("public.news.date.title")}
+                    value={date}
+                    onChange={(e) => {
+                      setDate(e.target.value);
+                      setCurrentPage(1);
+                    }}
+                  >
+                    <MenuItem value="">{t("public.news.date.title")}</MenuItem>
+                    <MenuItem value="today">
+                      {t("public.news.date.today")}
+                    </MenuItem>
+                    <MenuItem value="lastweek">
+                      {t("public.news.date.lastWeek")}
+                    </MenuItem>
+                    <MenuItem value="lastmonth">
+                      {t("public.news.date.lastMonth")}
+                    </MenuItem>
+                    <MenuItem value="lastyear">
+                      {t("public.news.date.lastYear")}
+                    </MenuItem>
+                  </Select>
+                </FormControl>
                 <div className={style.search_inp}>
                   <IoMdSearch className={style.search_icon} />
                   <input
@@ -82,8 +95,8 @@ const News = () => {
               </div>
               <div className={style.news}>
                 {news?.length == 0 ? (
-                  <div className={style.news_nores}> 
-                  <NoResults />
+                  <div className={style.news_nores}>
+                    <NoResults />
                   </div>
                 ) : (
                   news.map((newsItem) => {
@@ -93,9 +106,7 @@ const News = () => {
                           <LazyImage
                             className={style.newsItem_img}
                             src={
-                              newsItem.imageUrl
-                                ? `${newsItem.imageUrl}`
-                                : ""
+                              newsItem.imageUrl ? `${newsItem.imageUrl}` : ""
                             }
                             alt={newsItem.imageUrl ? newsItem.imageUrl : ""}
                           />

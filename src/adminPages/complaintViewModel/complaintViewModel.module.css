@@ -61,17 +61,7 @@
   height: 2.5rem;
   align-items: center;
 }
-.complaint_viewModel_select select {
-  border: none;
-  background: none;
-  font-size: 16px;
-  color: #333;
-  height: 2.5rem;
-  width: 12rem;
-  padding-inline-start: 0.4rem;
-  border: 2px solid #1a80e5;
-  border-radius: 10px;
-}
+
 .complaint_viewModel_description {
   display: flex;
   flex-direction: column;

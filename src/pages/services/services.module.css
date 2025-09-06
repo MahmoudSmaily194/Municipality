@@ -99,19 +99,10 @@
   font-size: 0.8rem;
   font-weight: 400;
 }
-
-.filter_con select {
-  padding: 0.5rem 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: white;
-  font-size: 1rem;
-  color: #333;
-  appearance: none; /* Removes default styling */
-  background-image: url("arrow.svg"); /* Optional custom arrow */
-  background-repeat: no-repeat;
-  background-position: right 0.75rem center;
+.servicesSelect{
+  width:10rem
 }
+
 
 @media (max-width: 530px) {
   .filter_con {
@@ -120,7 +111,7 @@
     flex-direction: column-reverse;
   }
   .search_inp,
-  select {
+  .servicesSelect {
     width: 100%;
   }
   .search_icon {

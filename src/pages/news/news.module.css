@@ -30,15 +30,7 @@
   justify-content: space-between;
   align-items: center;
 }
-.news_filter_con select {
-  border: none;
-  width: 10%;
-  height: 2.5rem;
-  background-color: #f0f2f5;
-  border-radius: 8px;
-  font-weight: 600;
-  padding-inline-start: 0.3rem;
-}
+
 .news {
   margin-top: 3rem;
   display: flex;
@@ -106,7 +98,10 @@
   .search_inp {
     width: 70%;
   }
-  .news_filter_con select {
+  .search_inp input{
+    width: 100%;
+  }
+  .news_filter_con .newsSelect {
     width: 25%;
   }
   .newsItem_img_con {

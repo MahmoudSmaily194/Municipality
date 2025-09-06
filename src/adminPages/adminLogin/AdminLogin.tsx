@@ -36,11 +36,11 @@ const AdminLogin = () => {
           } else {
             navigate("/");
           }
+          setEmail("");
+          setPassword("");
         },
       }
     );
-    setEmail("");
-    setPassword("");
   };
 
   return (
