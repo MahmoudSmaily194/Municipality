@@ -83,7 +83,7 @@ const EventModel = () => {
                   <div>
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                       <DateTimePicker
-                        sx={{ width: "100%" }}
+                        sx={{ width: "100%",direction:"ltr" }}
                         label={t("admin.events.add.fields.datetime.label")}
                         value={date ? dayjs(date) : null}
                         onChange={(newValue) =>
