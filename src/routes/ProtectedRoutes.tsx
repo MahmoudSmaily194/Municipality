@@ -11,7 +11,7 @@ const ProtectedRoutes = ({ allowedRoles }: { allowedRoles: string[] }) => {
   }
 
   if (!allowedRoles.includes(user.role)) {
-    return <div>Access Denied</div>;
+    return <Navigate to="/admin/login" state={{ from: location }} replace />;
   }
 
   return <Outlet />;
